@@ -66,18 +66,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 pt-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-2">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-1.5 text-primary-foreground/60 text-[10px] md:text-xs"
-            >
-              <span>Dibuat dengan</span>
-              <Heart className="w-3 h-3 text-accent fill-accent" />
-              <span>untuk umat</span>
-            </motion.div>
-
+          <div className="flex items-center justify-center">
             <p className="text-primary-foreground/50 text-[10px] md:text-xs text-center">
               © 2024 El Massa. Semoga diberkahi Allah SWT.
             </p>
