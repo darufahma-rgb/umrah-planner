@@ -15,7 +15,7 @@ const CTASection = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-br from-primary via-rose-dark to-brown relative overflow-hidden">
+    <section className="py-12 md:py-16 bg-gradient-to-br from-pink via-pink-dark to-rose relative overflow-hidden">
       <div className="absolute inset-0 bg-pattern-islamic opacity-20" />
 
       <div className="container mx-auto px-3 md:px-4 relative z-10">
