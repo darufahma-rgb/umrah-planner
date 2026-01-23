@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 const CTASection = () => {
   const openWhatsApp = () => {
     window.open(
-      "https://wa.me/6281234567890?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh.",
+      "https://wa.me/6281249476778?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh.",
       "_blank"
     );
   };
 
   const callPhone = () => {
-    window.open("tel:+6281234567890", "_blank");
+    window.open("tel:+6281249476778", "_blank");
   };
 
   return (
