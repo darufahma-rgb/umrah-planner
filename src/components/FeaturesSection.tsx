@@ -48,8 +48,8 @@ const FeaturesSection = () => {
               viewport={{ once: true }}
               className="text-center group cursor-default"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 rounded-full bg-primary-foreground/10 flex items-center justify-center">
-                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+              <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 bg-primary-foreground/10 flex items-center justify-center rotate-45">
+                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-accent -rotate-45" />
               </div>
               <h3 className="font-medium text-primary-foreground text-[10px] md:text-xs mb-0.5 leading-tight">
                 {feature.title}
