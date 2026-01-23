@@ -3,6 +3,7 @@ import { Calendar } from "lucide-react";
 import ItineraryDay from "./ItineraryDay";
 import heroImage from "@/assets/hero-makkah.jpg";
 import madinahImage from "@/assets/madinah-mosque.jpg";
+import { motion } from "framer-motion";
 
 const itineraryData = [
   {
@@ -134,7 +135,13 @@ const ItinerarySection = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
           <Badge variant="outline" className="mb-4 border-accent text-accent">
             <Calendar className="w-3 h-3 mr-1" />
             10 Hari Perjalanan
@@ -144,13 +151,13 @@ const ItinerarySection = () => {
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Itinerary lengkap perjalanan ibadah Umroh bersama El Massa
-            dari Pangkal Pinang menuju Tanah Suci
+            dari Pangkal Pinang menuju Tanah Suci. <span className="text-accent font-medium">Klik kartu untuk detail.</span>
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {itineraryData.map((item) => (
+          {itineraryData.map((item, index) => (
             <ItineraryDay
               key={item.day}
               day={item.day}
@@ -159,6 +166,7 @@ const ItinerarySection = () => {
               activities={item.activities}
               image={item.image}
               highlight={item.highlight}
+              index={index}
             />
           ))}
         </div>
