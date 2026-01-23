@@ -3,7 +3,7 @@ import madinahImage from "@/assets/madinah-mosque.jpg";
 import heroImage from "@/assets/hero-makkah.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Star, ChevronRight, ChevronDown } from "lucide-react";
+import { MapPin, Star, ChevronRight, ChevronDown, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Collapsible,
@@ -14,24 +14,25 @@ import {
 interface LocationData {
   name: string;
   description: string;
+  mapsUrl: string;
 }
 
 const makkahLocations: LocationData[] = [
-  { name: "Masjidil Haram & Ka'bah", description: "Pusat ibadah umat Islam, tempat melaksanakan Thawaf" },
-  { name: "Maqam Ibrahim", description: "Tempat berdiri Nabi Ibrahim saat membangun Ka'bah" },
-  { name: "Bukit Safa & Marwah", description: "Lokasi pelaksanaan Sa'i, mengikuti jejak Siti Hajar" },
-  { name: "Jabal Rahmah", description: "Bukit Kasih Sayang di Padang Arafah" },
-  { name: "Padang Arafah", description: "Lokasi wukuf saat ibadah Haji" },
-  { name: "Muzdalifah & Mina", description: "Tempat mabit dan melempar jumrah" },
+  { name: "Masjidil Haram & Ka'bah", description: "Pusat ibadah umat Islam, tempat melaksanakan Thawaf", mapsUrl: "https://maps.google.com/?q=Masjid+al-Haram,Mecca" },
+  { name: "Maqam Ibrahim", description: "Tempat berdiri Nabi Ibrahim saat membangun Ka'bah", mapsUrl: "https://maps.google.com/?q=Maqam+Ibrahim,Mecca" },
+  { name: "Bukit Safa & Marwah", description: "Lokasi pelaksanaan Sa'i, mengikuti jejak Siti Hajar", mapsUrl: "https://maps.google.com/?q=Safa+and+Marwah,Mecca" },
+  { name: "Jabal Rahmah", description: "Bukit Kasih Sayang di Padang Arafah", mapsUrl: "https://maps.google.com/?q=Jabal+Rahmah,Arafat" },
+  { name: "Padang Arafah", description: "Lokasi wukuf saat ibadah Haji", mapsUrl: "https://maps.google.com/?q=Mount+Arafat,Saudi+Arabia" },
+  { name: "Muzdalifah & Mina", description: "Tempat mabit dan melempar jumrah", mapsUrl: "https://maps.google.com/?q=Mina,Mecca" },
 ];
 
 const madinahLocations: LocationData[] = [
-  { name: "Masjid Nabawi", description: "Masjid Nabi Muhammad SAW, masjid kedua tersuci" },
-  { name: "Raudhah (Taman Surga)", description: "Area antara mimbar dan makam Rasulullah" },
-  { name: "Makam Rasulullah SAW", description: "Tempat peristirahatan terakhir Nabi Muhammad" },
-  { name: "Masjid Quba", description: "Masjid pertama yang dibangun dalam Islam" },
-  { name: "Jabal Uhud", description: "Lokasi Perang Uhud, makam para syuhada" },
-  { name: "Masjid Qiblatain", description: "Masjid tempat perpindahan arah kiblat" },
+  { name: "Masjid Nabawi", description: "Masjid Nabi Muhammad SAW, masjid kedua tersuci", mapsUrl: "https://maps.google.com/?q=Al-Masjid+an-Nabawi,Madinah" },
+  { name: "Raudhah (Taman Surga)", description: "Area antara mimbar dan makam Rasulullah", mapsUrl: "https://maps.google.com/?q=Rawdah+Sharif,Madinah" },
+  { name: "Makam Rasulullah SAW", description: "Tempat peristirahatan terakhir Nabi Muhammad", mapsUrl: "https://maps.google.com/?q=Tomb+of+Prophet+Muhammad,Madinah" },
+  { name: "Masjid Quba", description: "Masjid pertama yang dibangun dalam Islam", mapsUrl: "https://maps.google.com/?q=Masjid+Quba,Madinah" },
+  { name: "Jabal Uhud", description: "Lokasi Perang Uhud, makam para syuhada", mapsUrl: "https://maps.google.com/?q=Mount+Uhud,Madinah" },
+  { name: "Masjid Qiblatain", description: "Masjid tempat perpindahan arah kiblat", mapsUrl: "https://maps.google.com/?q=Masjid+al-Qiblatayn,Madinah" },
 ];
 
 interface LocationCardProps {
@@ -87,8 +88,20 @@ const LocationCard = ({
               {locations.slice(0, 3).map((loc) => (
                 <li key={loc.name} className="flex items-start gap-2 text-sm text-foreground">
                   <ChevronRight className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-medium">{loc.name}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-medium">{loc.name}</span>
+                      <a
+                        href={loc.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-accent hover:text-gold-dark transition-colors flex-shrink-0"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        Maps
+                      </a>
+                    </div>
                     <p className="text-muted-foreground text-xs">{loc.description}</p>
                   </div>
                 </li>
@@ -106,8 +119,20 @@ const LocationCard = ({
                   {locations.slice(3).map((loc) => (
                     <li key={loc.name} className="flex items-start gap-2 text-sm text-foreground">
                       <ChevronRight className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="font-medium">{loc.name}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-medium">{loc.name}</span>
+                          <a
+                            href={loc.mapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-xs text-accent hover:text-gold-dark transition-colors flex-shrink-0"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink className="w-3 h-3" />
+                            Maps
+                          </a>
+                        </div>
                         <p className="text-muted-foreground text-xs">{loc.description}</p>
                       </div>
                     </li>
