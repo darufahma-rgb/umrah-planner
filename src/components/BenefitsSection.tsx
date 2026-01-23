@@ -25,12 +25,15 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
+import hotelMakkah from '@/assets/hotel-makkah.jpg';
+import hotelMadinah from '@/assets/hotel-madinah.jpg';
 
 interface BenefitItem {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   desc: string;
   details: string[];
+  isHotel?: boolean;
 }
 
 const benefits: BenefitItem[] = [
@@ -70,6 +73,7 @@ const benefits: BenefitItem[] = [
     icon: Building2, 
     title: 'Hotel Makkah & Madinah', 
     desc: 'Bintang 4-5',
+    isHotel: true,
     details: [
       'Hotel bintang 4-5 di Makkah',
       'Hotel bintang 4-5 di Madinah',
@@ -289,8 +293,8 @@ const BenefitsSection = () => {
         </motion.div>
       </div>
 
-      {/* Detail Dialog */}
-      <Dialog open={!!selectedBenefit} onOpenChange={() => setSelectedBenefit(null)}>
+      {/* Detail Dialog - Regular */}
+      <Dialog open={!!selectedBenefit && !selectedBenefit.isHotel} onOpenChange={() => setSelectedBenefit(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
@@ -325,6 +329,75 @@ const BenefitsSection = () => {
                 </motion.li>
               ))}
             </ul>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Hotel Dialog - Special Layout */}
+      <Dialog open={!!selectedBenefit && selectedBenefit.isHotel} onOpenChange={() => setSelectedBenefit(null)}>
+        <DialogContent className="sm:max-w-lg p-0 overflow-hidden bg-primary">
+          <div className="p-4 sm:p-6">
+            {/* Grid of hotel cards */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {/* Hotel Makkah */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
+              >
+                <img 
+                  src={hotelMakkah} 
+                  alt="Hotel Makkah" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
+                  <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Makkah</p>
+                  <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
+                    Grand<br />Al Massa
+                  </h3>
+                  <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
+                </div>
+              </motion.div>
+
+              {/* Hotel Madinah */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
+              >
+                <img 
+                  src={hotelMadinah} 
+                  alt="Hotel Madinah" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
+                  <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Madinah</p>
+                  <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
+                    Daar<br />El Naeem
+                  </h3>
+                  <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Additional info */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="mt-4 text-center"
+            >
+              <p className="text-xs sm:text-sm text-white/90">
+                Lokasi strategis dekat Masjidil Haram & Masjid Nabawi
+              </p>
+              <p className="text-[10px] sm:text-xs text-white/70 mt-1">
+                Fasilitas: Kamar ber-AC, WiFi gratis, Restoran halal
+              </p>
+            </motion.div>
           </div>
         </DialogContent>
       </Dialog>
