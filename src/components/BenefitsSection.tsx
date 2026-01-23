@@ -57,26 +57,26 @@ const BenefitsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              transition={{ duration: 0.4, delay: index * 0.03 }}
               whileHover={{ scale: 1.03, y: -2 }}
               className="group"
             >
-              <div className="flex items-center gap-3 md:gap-4 bg-card border border-border/50 rounded-xl p-4 md:p-5 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
-                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <benefit.icon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
+              <div className="flex items-center gap-4 bg-card border border-border/50 rounded-xl p-4 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <benefit.icon className="w-6 h-6 text-accent" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-sm md:text-base lg:text-lg font-semibold text-foreground leading-tight">
+                  <h3 className="text-base font-semibold text-foreground leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-base text-muted-foreground leading-tight mt-0.5">
+                  <p className="text-sm text-muted-foreground leading-tight mt-0.5">
                     {benefit.desc}
                   </p>
                 </div>
