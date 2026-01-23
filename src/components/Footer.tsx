@@ -1,11 +1,11 @@
-import { Heart, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Heart, Phone, MapPin, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import logoElmassa from "@/assets/logo-elmassa.png";
 
 const Footer = () => {
   const openWhatsApp = () => {
     window.open(
-      "https://wa.me/6281234567890?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh",
+      "https://wa.me/6281249476778?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh",
       "_blank"
     );
   };
@@ -32,11 +32,11 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="tel:+6281234567890"
+                  href="tel:+6281249476778"
                   className="flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors text-xs"
                 >
                   <Phone className="w-3 h-3" />
-                  +62 812-3456-7890
+                  +62 812-4947-6778
                 </a>
               </li>
               <li>
@@ -47,15 +47,6 @@ const Footer = () => {
                   <MessageCircle className="w-3 h-3" />
                   WhatsApp
                 </button>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@elmassa.com"
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors text-xs"
-                >
-                  <Mail className="w-3 h-3" />
-                  info@elmassa.com
-                </a>
               </li>
             </ul>
           </div>
