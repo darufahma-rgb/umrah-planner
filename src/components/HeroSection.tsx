@@ -53,7 +53,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6 md:mb-10"
           >
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-primary-foreground leading-tight tracking-tight">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-primary-foreground leading-tight tracking-tight">
               Itinerary Perjalanan Umrah
             </h1>
             <span className="inline-block mt-4 text-primary-foreground/70 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-light">
