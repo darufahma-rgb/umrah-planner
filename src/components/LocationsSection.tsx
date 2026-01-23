@@ -158,8 +158,8 @@ const LocationCard = ({
 
 const LocationsSection = () => {
   return (
-    <section className="py-10 md:py-16 bg-pink">
-      <div className="container mx-auto px-3 md:px-4">
+    <section className="py-10 md:py-16 bg-gradient-pink bg-pattern-dots relative overflow-hidden">
+      <div className="container mx-auto px-3 md:px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -37,8 +37,8 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-16 md:py-28 bg-pink">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-28 bg-gradient-pink bg-pattern-dots relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
