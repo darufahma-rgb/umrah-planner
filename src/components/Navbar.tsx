@@ -49,7 +49,7 @@ const Navbar = () => {
   };
 
   const openWhatsApp = () => {
-    window.open("https://wa.me/6281234567890?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh", "_blank");
+    window.open("https://wa.me/6281249476778?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh", "_blank");
   };
 
   return (

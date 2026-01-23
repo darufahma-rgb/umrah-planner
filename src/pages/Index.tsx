@@ -7,6 +7,7 @@ import LocationsSection from "@/components/LocationsSection";
 import TipsSection from "@/components/TipsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const Index = () => {
   return (
@@ -30,6 +31,7 @@ const Index = () => {
         <CTASection />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 };
