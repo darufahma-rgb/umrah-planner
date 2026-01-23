@@ -68,7 +68,7 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/10 pt-4">
           <div className="flex items-center justify-center">
             <p className="text-primary-foreground/50 text-[10px] md:text-xs text-center">
-              © 2024 El Massa. Semoga diberkahi Allah SWT.
+              © 2026 El Massa. Semoga diberkahi Allah SWT.
             </p>
           </div>
         </div>
