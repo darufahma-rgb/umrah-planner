@@ -84,6 +84,11 @@ export default {
           DEFAULT: "hsl(var(--cream))",
           dark: "hsl(var(--cream-dark))",
         },
+        pink: {
+          DEFAULT: "hsl(var(--pink))",
+          light: "hsl(var(--pink-light))",
+          dark: "hsl(var(--pink-dark))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

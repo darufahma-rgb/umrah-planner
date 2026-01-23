@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-pink-dark to-rose py-8 md:py-10">
+    <footer className="bg-gradient-to-b from-secondary to-primary py-8 md:py-10">
       <div className="container mx-auto px-3 md:px-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-6">
           {/* Brand */}
