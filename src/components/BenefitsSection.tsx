@@ -37,7 +37,7 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-16 md:py-28 bg-gradient-to-b from-background to-muted/30">
+    <section className="py-16 md:py-28 bg-pink">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
