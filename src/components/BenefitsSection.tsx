@@ -27,6 +27,36 @@ import {
 } from '@/components/ui/dialog';
 import hotelMakkah from '@/assets/hotel-makkah.jpg';
 import hotelMadinah from '@/assets/hotel-madinah.jpg';
+import hotelMakkah2 from '@/assets/hotel-makkah-2.jpg';
+import hotelMadinah2 from '@/assets/hotel-madinah-2.jpg';
+
+// Hotel slides data
+const hotelSlides = [
+  {
+    makkah: {
+      image: hotelMakkah,
+      name: 'Grand',
+      subname: 'Al Massa',
+    },
+    madinah: {
+      image: hotelMadinah,
+      name: 'Daar',
+      subname: 'El Naeem',
+    },
+  },
+  {
+    makkah: {
+      image: hotelMakkah2,
+      name: 'Zamzam',
+      subname: 'Tower',
+    },
+    madinah: {
+      image: hotelMadinah2,
+      name: 'Al Haram/',
+      subname: 'Dallah',
+    },
+  },
+];
 
 interface BenefitItem {
   icon: React.ComponentType<{ className?: string }>;
@@ -214,6 +244,7 @@ const benefits: BenefitItem[] = [
 
 const BenefitsSection = () => {
   const [selectedBenefit, setSelectedBenefit] = useState<BenefitItem | null>(null);
+  const [hotelSlideIndex, setHotelSlideIndex] = useState(0);
 
   return (
     <section className="py-16 md:py-28 bg-cream relative overflow-hidden">
@@ -333,55 +364,78 @@ const BenefitsSection = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Hotel Dialog - Special Layout */}
-      <Dialog open={!!selectedBenefit && selectedBenefit.isHotel} onOpenChange={() => setSelectedBenefit(null)}>
+      {/* Hotel Dialog - Special Layout with Carousel */}
+      <Dialog 
+        open={!!selectedBenefit && selectedBenefit.isHotel} 
+        onOpenChange={() => {
+          setSelectedBenefit(null);
+          setHotelSlideIndex(0);
+        }}
+      >
         <DialogContent className="sm:max-w-lg p-0 overflow-hidden bg-primary">
           <div className="p-4 sm:p-6">
-            {/* Grid of hotel cards */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {/* Hotel Makkah */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
-              >
-                <img 
-                  src={hotelMakkah} 
-                  alt="Hotel Makkah" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
-                  <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Makkah</p>
-                  <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
-                    Grand<br />Al Massa
-                  </h3>
-                  <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
-                </div>
-              </motion.div>
+            {/* Carousel Container */}
+            <div className="relative overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={hotelSlideIndex}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="grid grid-cols-2 gap-3 sm:gap-4"
+                >
+                  {/* Hotel Makkah */}
+                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img 
+                      src={hotelSlides[hotelSlideIndex].makkah.image} 
+                      alt="Hotel Makkah" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
+                      <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Makkah</p>
+                      <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
+                        {hotelSlides[hotelSlideIndex].makkah.name}<br />{hotelSlides[hotelSlideIndex].makkah.subname}
+                      </h3>
+                      <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
+                    </div>
+                  </div>
 
-              {/* Hotel Madinah */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
-              >
-                <img 
-                  src={hotelMadinah} 
-                  alt="Hotel Madinah" 
-                  className="w-full h-full object-cover"
+                  {/* Hotel Madinah */}
+                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img 
+                      src={hotelSlides[hotelSlideIndex].madinah.image} 
+                      alt="Hotel Madinah" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
+                      <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Madinah</p>
+                      <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
+                        {hotelSlides[hotelSlideIndex].madinah.name}<br />{hotelSlides[hotelSlideIndex].madinah.subname}
+                      </h3>
+                      <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Carousel Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {hotelSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setHotelSlideIndex(index)}
+                  className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${
+                    index === hotelSlideIndex 
+                      ? 'bg-white scale-125' 
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
-                  <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Madinah</p>
-                  <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
-                    Daar<br />El Naeem
-                  </h3>
-                  <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
-                </div>
-              </motion.div>
+              ))}
             </div>
 
             {/* Additional info */}
