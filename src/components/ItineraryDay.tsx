@@ -74,20 +74,20 @@ const ItineraryDay = ({
         viewport={{ once: true, margin: "-30px" }}
       >
         <Card
-          className="group overflow-hidden border border-border hover:border-accent/50 hover:shadow-lg transition-all duration-300 h-full cursor-pointer"
+          className="group overflow-hidden bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full cursor-pointer rounded-xl"
           onClick={() => setIsModalOpen(true)}
         >
           {/* Image Header */}
           {image && (
-            <div className="relative h-24 md:h-32 overflow-hidden">
+            <div className="relative h-28 md:h-36 overflow-hidden">
               <img
                 src={image}
                 alt={title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
               <Badge
-                className={`absolute top-2 left-2 text-[10px] md:text-xs ${getHighlightColor(highlight)}`}
+                className="absolute top-2 left-2 text-[10px] md:text-xs bg-white text-primary font-semibold border-0"
               >
                 Hari {day}
               </Badge>
@@ -95,23 +95,23 @@ const ItineraryDay = ({
           )}
 
           {!image && (
-            <div className={`h-16 md:h-20 ${getHighlightColor(highlight)} flex items-center justify-center relative`}>
-              <Icon className="w-6 h-6 md:w-8 md:h-8 opacity-30" />
-              <Badge className="absolute top-2 left-2 bg-background/90 text-foreground text-[10px] md:text-xs">
+            <div className="h-20 md:h-24 bg-gradient-to-br from-primary to-secondary flex items-center justify-center relative">
+              <Icon className="w-8 h-8 md:w-10 md:h-10 text-white/40" />
+              <Badge className="absolute top-2 left-2 bg-white text-primary text-[10px] md:text-xs font-semibold border-0">
                 Hari {day}
               </Badge>
             </div>
           )}
 
-          <CardContent className="p-3 md:p-4">
+          <CardContent className="p-3 md:p-4 bg-white">
             {/* Location */}
-            <div className="flex items-center gap-1 text-muted-foreground text-[10px] md:text-xs mb-1">
+            <div className="flex items-center gap-1 text-gray-500 text-[10px] md:text-xs mb-1">
               <MapPin className="w-3 h-3 flex-shrink-0" />
               <span className="truncate">{location}</span>
             </div>
 
             {/* Title */}
-            <h3 className="font-serif text-xs md:text-sm font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors leading-tight">
+            <h3 className="font-serif text-xs md:text-sm font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition-colors leading-tight">
               {title}
             </h3>
 
@@ -119,8 +119,8 @@ const ItineraryDay = ({
             <ul className="hidden md:block space-y-1">
               {activities.slice(0, 2).map((activity, idx) => (
                 <li key={idx} className="flex items-start gap-1.5 text-[10px] md:text-xs">
-                  <span className="w-1 h-1 bg-accent rounded-full mt-1.5 flex-shrink-0" />
-                  <span className="text-muted-foreground line-clamp-1">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full mt-1 flex-shrink-0" />
+                  <span className="text-gray-600 line-clamp-1">
                     {activity.description}
                   </span>
                 </li>
@@ -128,9 +128,9 @@ const ItineraryDay = ({
             </ul>
 
             {/* View More */}
-            <div className="mt-2 flex items-center text-[10px] md:text-xs font-medium text-accent group-hover:text-gold-dark transition-colors">
-              Detail
-              <ChevronRight className="w-3 h-3 ml-0.5 group-hover:translate-x-0.5 transition-transform" />
+            <div className="mt-2 flex items-center text-[10px] md:text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+              Lihat Detail
+              <ChevronRight className="w-3 h-3 ml-0.5 group-hover:translate-x-1 transition-transform" />
             </div>
           </CardContent>
         </Card>
