@@ -55,7 +55,7 @@ const HeroSection = () => {
           >
             <h1 
               className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-wide drop-shadow-lg"
-              style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2)' }}
+              style={{ textShadow: '0 4px 20px rgba(139,90,43,0.5), 0 2px 8px rgba(139,90,43,0.4)' }}
             >
               Itinerary <span className="ml-2 md:ml-4 inline-block translate-y-1 md:translate-y-2">Umrah</span>
             </h1>
