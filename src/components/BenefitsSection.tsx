@@ -16,7 +16,8 @@ import {
   Camera, 
   Gift,
   ChefHat,
-  Info
+  Info,
+  Star
 } from 'lucide-react';
 import {
   Dialog,
@@ -33,6 +34,7 @@ import hotelMadinah2 from '@/assets/hotel-madinah-2.jpg';
 // Hotel slides data
 const hotelSlides = [
   {
+    stars: 4,
     makkah: {
       image: hotelMakkah,
       name: 'Grand',
@@ -45,6 +47,7 @@ const hotelSlides = [
     },
   },
   {
+    stars: 5,
     makkah: {
       image: hotelMakkah2,
       name: 'Zamzam',
@@ -374,6 +377,18 @@ const BenefitsSection = () => {
       >
         <DialogContent className="sm:max-w-lg p-0 overflow-hidden bg-primary">
           <div className="p-4 sm:p-6">
+            {/* Star Rating Badge */}
+            <div className="flex justify-center mb-3">
+              <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1.5">
+                {Array.from({ length: hotelSlides[hotelSlideIndex].stars }).map((_, i) => (
+                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 fill-yellow-400" />
+                ))}
+                <span className="text-white text-xs sm:text-sm ml-1 font-medium">
+                  Bintang {hotelSlides[hotelSlideIndex].stars}
+                </span>
+              </div>
+            </div>
+
             {/* Carousel Container */}
             <div className="relative overflow-hidden">
               <AnimatePresence mode="wait">

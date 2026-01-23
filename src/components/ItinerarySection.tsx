@@ -81,7 +81,7 @@ const itineraryData = [
     highlight: "worship" as const,
   },
   {
-    day: 7,
+    day: 6,
     title: "Tour & Ziarah Mekah",
     location: "Mekah & Sekitarnya",
     mapsUrl: "https://maps.google.com/?q=Jabal+Rahmah,Arafat",
@@ -92,6 +92,20 @@ const itineraryData = [
       { description: "Umroh ke-2 (opsional)" },
     ],
     highlight: "ziarah" as const,
+  },
+  {
+    day: 7,
+    title: "Ibadah Bebas",
+    location: "Mekah Al-Mukarramah",
+    mapsUrl: "https://maps.google.com/?q=Masjid+al-Haram,Mecca",
+    image: heroImage,
+    activities: [
+      { description: "Jamaah memperbanyak ibadah di Masjidil Haram" },
+      { description: "Tawaf Sunnah" },
+      { description: "Itikaf & Dzikir" },
+      { description: "Belanja oleh-oleh (opsional)" },
+    ],
+    highlight: "worship" as const,
   },
   {
     day: 8,
