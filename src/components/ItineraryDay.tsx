@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Plane, Building, Sunrise, Moon, ChevronRight, ExternalLink } from "lucide-react";
+import { MapPin, Plane, Building, Sunrise, Moon, ChevronRight } from "lucide-react";
 import ItineraryModal from "./ItineraryModal";
 import { motion } from "framer-motion";
 
@@ -65,13 +65,6 @@ const ItineraryDay = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const Icon = getIcon(highlight);
 
-  const handleMapsClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (mapsUrl) {
-      window.open(mapsUrl, "_blank", "noopener,noreferrer");
-    }
-  };
-
   return (
     <>
       <motion.div
@@ -111,21 +104,10 @@ const ItineraryDay = ({
           )}
 
           <CardContent className="p-3 md:p-4">
-            {/* Location with Maps Link */}
-            <div className="flex items-center justify-between gap-1 mb-1">
-              <div className="flex items-center gap-1 text-muted-foreground text-[10px] md:text-xs min-w-0">
-                <MapPin className="w-3 h-3 flex-shrink-0" />
-                <span className="truncate">{location}</span>
-              </div>
-              {mapsUrl && (
-                <button
-                  onClick={handleMapsClick}
-                  className="flex items-center gap-0.5 text-[9px] md:text-[10px] font-medium text-accent hover:text-gold-dark transition-colors flex-shrink-0"
-                >
-                  <ExternalLink className="w-2.5 h-2.5" />
-                  <span className="hidden sm:inline">Maps</span>
-                </button>
-              )}
+            {/* Location */}
+            <div className="flex items-center gap-1 text-muted-foreground text-[10px] md:text-xs mb-1">
+              <MapPin className="w-3 h-3 flex-shrink-0" />
+              <span className="truncate">{location}</span>
             </div>
 
             {/* Title */}
@@ -160,7 +142,6 @@ const ItineraryDay = ({
         day={day}
         title={title}
         location={location}
-        mapsUrl={mapsUrl}
         activities={activities}
         image={image}
         highlight={highlight}

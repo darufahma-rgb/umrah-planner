@@ -46,21 +46,27 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 pt-24 md:pt-32 pb-8 md:pb-12">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Title with Year - Mobile: Side by side like reference */}
+          {/* Title with Year below */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-4 md:mb-8"
           >
-            <div className="flex items-start justify-center gap-2">
-              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-wide">
-                Itinerary Umrah
-              </h1>
-              <span className="text-white/70 text-xl sm:text-2xl md:text-3xl font-light mt-1">
-                2026
-              </span>
-            </div>
+            <h1 
+              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-wide drop-shadow-lg"
+              style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2)' }}
+            >
+              Itinerary Umrah
+            </h1>
+            <motion.span 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="inline-block mt-3 md:mt-4 text-white/80 text-2xl sm:text-3xl md:text-4xl font-light"
+            >
+              2026
+            </motion.span>
           </motion.div>
 
           {/* Description */}
@@ -84,7 +90,7 @@ const HeroSection = () => {
           >
             <Button
               onClick={scrollToItinerary}
-              className="bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/30 rounded-full px-6 py-5 md:px-8 md:py-6 text-xs sm:text-sm md:text-base font-medium tracking-wider uppercase group transition-all"
+              className="bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/30 rounded-full px-6 py-5 md:px-8 md:py-6 text-xs sm:text-sm md:text-base font-medium tracking-wider uppercase group transition-all shadow-lg"
             >
               View Itinerary
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -97,7 +103,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto"
+          className="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto pb-4"
         >
           {destinations.map((dest, index) => (
             <motion.div
@@ -106,7 +112,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.2 + index * 0.15 }}
               whileHover={{ y: -4, scale: 1.02 }}
-              className="group relative h-36 sm:h-40 md:h-48 lg:h-56 rounded-2xl overflow-hidden cursor-pointer"
+              className="group relative h-32 sm:h-36 md:h-44 lg:h-52 rounded-2xl overflow-hidden cursor-pointer shadow-xl"
               onClick={scrollToItinerary}
             >
               {/* Card Background Image */}
@@ -117,20 +123,20 @@ const HeroSection = () => {
               />
               
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               
               {/* Glassmorphism Label - Like reference with arrow */}
               <div className="absolute bottom-3 left-3 right-3">
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/20 flex items-center justify-between">
+                <div className="bg-white/15 backdrop-blur-md rounded-xl p-3 border border-white/25 flex items-center justify-between shadow-lg">
                   <div>
                     <h3 className="font-display text-xl sm:text-2xl text-white font-medium leading-tight">
                       {dest.name}
                     </h3>
-                    <p className="text-white/70 text-[10px] sm:text-xs tracking-wider uppercase mt-0.5">
+                    <p className="text-white/80 text-[10px] sm:text-xs tracking-wider uppercase mt-0.5">
                       {dest.subtitle}
                     </p>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 text-white/80 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </motion.div>
