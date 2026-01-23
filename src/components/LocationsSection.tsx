@@ -168,14 +168,14 @@ const LocationsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 md:mb-10"
         >
-          <Badge variant="outline" className="mb-3 border-primary text-primary text-xs">
+          <Badge className="mb-3 bg-white/90 text-primary border-0 text-xs shadow-sm">
             <MapPin className="w-3 h-3 mr-1" />
             Dua Kota Suci
           </Badge>
-          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-2">
+          <h2 className="font-serif text-2xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
             Destinasi Ziarah
           </h2>
-          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
+          <p className="text-white/90 text-sm max-w-xl mx-auto drop-shadow">
             Kunjungi tempat-tempat suci yang penuh berkah.
           </p>
         </motion.div>
