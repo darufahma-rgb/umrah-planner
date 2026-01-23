@@ -3,6 +3,12 @@ import { Calendar } from "lucide-react";
 import ItineraryDay from "./ItineraryDay";
 import heroImage from "@/assets/hero-makkah.jpg";
 import madinahImage from "@/assets/madinah-mosque.jpg";
+import departureImage from "@/assets/departure-airport.jpg";
+import masjidQubaImage from "@/assets/masjid-quba.jpg";
+import umrahPilgrimsImage from "@/assets/umrah-pilgrims.jpg";
+import jabalRahmahImage from "@/assets/jabal-rahmah.jpg";
+import cityTaifImage from "@/assets/city-taif.jpg";
+import jeddahAirportImage from "@/assets/jeddah-airport.jpg";
 import { motion } from "framer-motion";
 
 const itineraryData = [
@@ -11,6 +17,7 @@ const itineraryData = [
     title: "Pangkal Pinang - Jakarta - Jeddah",
     location: "Pangkal Pinang → Jakarta → Jeddah → Madinah",
     mapsUrl: "https://maps.google.com/?q=Madinah,Saudi+Arabia",
+    image: departureImage,
     activities: [
       { time: "09:00", description: "Berkumpul di Bandara Depati Amir Pangkal Pinang" },
       { time: "12:10", description: "Take-off ke Jakarta (IU 822)" },
@@ -26,6 +33,7 @@ const itineraryData = [
     title: "Madinah - Rawdhah & Ziarah",
     location: "Madinah Al-Munawwarah",
     mapsUrl: "https://maps.google.com/?q=Al-Masjid+an-Nabawi,Madinah",
+    image: madinahImage,
     activities: [
       { time: "Pagi", description: "Rawdhah untuk jemaah perempuan (InsyaAllah)" },
       { time: "Siang", description: "Rawdhah untuk jemaah laki-laki" },
@@ -34,7 +42,6 @@ const itineraryData = [
       { description: "Masjid Ali, Masjid Ghamamah, Pemakaman Baqi" },
       { description: "Ibadah bebas: Itikaf, Tadarus di Masjid Nabawi" },
     ],
-    image: madinahImage,
     highlight: "worship" as const,
   },
   {
@@ -42,6 +49,7 @@ const itineraryData = [
     title: "Tour & Ziarah Madinah",
     location: "Madinah & Sekitarnya",
     mapsUrl: "https://maps.google.com/?q=Masjid+Quba,Madinah",
+    image: masjidQubaImage,
     activities: [
       { description: "Masjid Quba - Masjid pertama dibangun Rasulullah" },
       { description: "Jabal Uhud & Makam Para Syuhada" },
@@ -57,6 +65,7 @@ const itineraryData = [
     title: "Madinah - Mekah (Pelaksanaan Umroh)",
     location: "Madinah → Mekah",
     mapsUrl: "https://maps.google.com/?q=Masjid+al-Haram,Mecca",
+    image: umrahPilgrimsImage,
     activities: [
       { time: "Pagi", description: "Check-out hotel, koper di depan kamar" },
       { time: "14:00", description: "Bus berangkat menuju Mekah" },
@@ -72,13 +81,13 @@ const itineraryData = [
     title: "Ibadah di Masjidil Haram",
     location: "Mekah Al-Mukarramah",
     mapsUrl: "https://maps.google.com/?q=Masjid+al-Haram,Mecca",
+    image: heroImage,
     activities: [
       { description: "Acara bebas - memperbanyak ibadah" },
       { description: "Itikaf di Masjidil Haram" },
       { description: "Tawaf Sunnah" },
       { time: "Siang", description: "Shalat Jumat berjamaah di Masjidil Haram" },
     ],
-    image: heroImage,
     highlight: "worship" as const,
   },
   {
@@ -86,6 +95,7 @@ const itineraryData = [
     title: "Tour & Ziarah Mekah",
     location: "Mekah & Sekitarnya",
     mapsUrl: "https://maps.google.com/?q=Jabal+Rahmah,Arafat",
+    image: jabalRahmahImage,
     activities: [
       { description: "Jabal Tsur" },
       { description: "Padang Arafah & Jabal Rahmah" },
@@ -101,6 +111,7 @@ const itineraryData = [
     title: "City Tour Thaif",
     location: "Mekah → Thaif → Mekah",
     mapsUrl: "https://maps.google.com/?q=Taif,Saudi+Arabia",
+    image: cityTaifImage,
     activities: [
       { time: "Pagi", description: "Sarapan di hotel" },
       { description: "Bonus City Tour Thaif GRATIS dari El Massa" },
@@ -115,6 +126,7 @@ const itineraryData = [
     title: "Mekah - Jeddah (Kepulangan)",
     location: "Mekah → Jeddah",
     mapsUrl: "https://maps.google.com/?q=King+Abdulaziz+International+Airport,Jeddah",
+    image: jeddahAirportImage,
     activities: [
       { time: "Pagi", description: "Sarapan & persiapan check-out" },
       { time: "14:00", description: "Check-out hotel, koper di depan kamar" },
@@ -129,6 +141,7 @@ const itineraryData = [
     title: "Jakarta - Pangkal Pinang",
     location: "Jakarta → Pangkal Pinang",
     mapsUrl: "https://maps.google.com/?q=Depati+Amir+Airport,Pangkal+Pinang",
+    image: departureImage,
     activities: [
       { time: "07:35", description: "Tiba di Jakarta" },
       { time: "15:15", description: "Penerbangan ke Pangkal Pinang (IU 818)" },
