@@ -16,7 +16,7 @@ import {
   Camera, 
   Gift,
   ChefHat,
-  X
+  Info
 } from 'lucide-react';
 import {
   Dialog,
@@ -247,12 +247,16 @@ const BenefitsSection = () => {
               className="group cursor-pointer"
               onClick={() => setSelectedBenefit(benefit)}
             >
-              <div className="flex items-center gap-2 md:gap-4 bg-card border border-border/50 rounded-lg md:rounded-xl p-2.5 md:p-4 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+              <div className="relative flex items-center gap-2 md:gap-4 bg-card border border-border/50 rounded-lg md:rounded-xl p-2.5 md:p-4 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+                {/* Click indicator icon */}
+                <div className="absolute top-1.5 right-1.5 md:top-2 md:right-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                  <Info className="w-3 h-3 md:w-4 md:h-4 text-accent" />
+                </div>
                 <div className="flex-shrink-0 w-9 h-9 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                   <benefit.icon className="w-4 h-4 md:w-6 md:h-6 text-accent" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xs md:text-base font-semibold text-foreground leading-tight">
+                  <h3 className="text-xs md:text-base font-semibold text-foreground leading-tight pr-4">
                     {benefit.title}
                   </h3>
                   <p className="text-[10px] md:text-sm text-muted-foreground leading-tight mt-0.5">
