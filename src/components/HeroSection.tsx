@@ -91,13 +91,13 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Bottom Destination Cards */}
-      <div className="relative z-10 container mx-auto px-3 md:px-4 pb-4 md:pb-8">
+      {/* Bottom Destination Cards - Stacked on mobile */}
+      <div className="relative z-10 container mx-auto px-4 pb-6 md:pb-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="grid grid-cols-3 gap-2 md:gap-6"
+          className="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6"
         >
           {destinations.map((dest, index) => (
             <motion.div
@@ -106,7 +106,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.2 + index * 0.15 }}
               whileHover={{ y: -4, scale: 1.02 }}
-              className="group relative h-28 sm:h-36 md:h-56 lg:h-64 rounded-xl md:rounded-2xl overflow-hidden cursor-pointer"
+              className="group relative h-40 sm:h-48 md:h-56 lg:h-64 rounded-2xl overflow-hidden cursor-pointer"
               onClick={scrollToItinerary}
             >
               {/* Card Background Image */}
@@ -120,12 +120,12 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               
               {/* Glassmorphism Label */}
-              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4">
-                <div className="bg-white/10 backdrop-blur-md rounded-lg md:rounded-xl p-2 md:p-4 border border-white/20">
-                  <h3 className="font-serif text-sm sm:text-base md:text-2xl lg:text-3xl text-white font-light leading-tight">
+              <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 md:p-4 border border-white/20">
+                  <h3 className="font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl text-white font-medium leading-tight">
                     {dest.name}
                   </h3>
-                  <p className="text-white/70 text-[8px] sm:text-[10px] md:text-xs lg:text-sm tracking-wider uppercase hidden sm:block">
+                  <p className="text-white/70 text-xs sm:text-sm md:text-xs lg:text-sm tracking-wider uppercase mt-1">
                     {dest.subtitle}
                   </p>
                 </div>
