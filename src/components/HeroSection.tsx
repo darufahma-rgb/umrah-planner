@@ -50,7 +50,7 @@ const HeroSection = () => {
           {/* Stats Row */}
           <div className="mt-16 grid grid-cols-3 gap-4 max-w-xl mx-auto">
             <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-4 border border-primary-foreground/20">
-              <p className="text-3xl md:text-4xl font-serif font-bold text-accent">9</p>
+              <p className="text-3xl md:text-4xl font-serif font-bold text-accent">10</p>
               <p className="text-xs md:text-sm text-primary-foreground/80">Hari</p>
             </div>
             <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-4 border border-primary-foreground/20">
@@ -58,8 +58,8 @@ const HeroSection = () => {
               <p className="text-xs md:text-sm text-primary-foreground/80">Kota Suci</p>
             </div>
             <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-4 border border-primary-foreground/20">
-              <p className="text-3xl md:text-4xl font-serif font-bold text-accent">15+</p>
-              <p className="text-xs md:text-sm text-primary-foreground/80">Lokasi</p>
+              <p className="text-3xl md:text-4xl font-serif font-bold text-accent">3</p>
+              <p className="text-xs md:text-sm text-primary-foreground/80">Kota Transit</p>
             </div>
           </div>
         </div>
