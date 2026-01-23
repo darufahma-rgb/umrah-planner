@@ -17,73 +17,43 @@ const tips = [
   {
     icon: Shirt,
     title: "Pakaian Ihram",
-    description: "Siapkan 2 set pakaian ihram untuk pria. Wanita menggunakan pakaian biasa yang menutup aurat dengan baik.",
-    details: [
-      "Pakaian ihram berwarna putih bersih",
-      "Sandal yang nyaman untuk berjalan jauh",
-      "Pakaian ganti secukupnya",
-      "Jaket tipis untuk AC di pesawat/hotel",
-    ],
+    description: "Siapkan 2 set pakaian ihram untuk pria.",
+    details: ["Pakaian ihram putih", "Sandal nyaman", "Jaket tipis"],
     color: "bg-primary/10 text-primary",
   },
   {
     icon: Stethoscope,
     title: "Kesehatan",
-    description: "Bawa obat-obatan pribadi, vitamin, dan masker. Pastikan vaksinasi meningitis sudah lengkap.",
-    details: [
-      "Vaksin meningitis (wajib)",
-      "Obat-obatan rutin pribadi",
-      "Vitamin dan suplemen",
-      "Masker dan hand sanitizer",
-    ],
+    description: "Bawa obat pribadi, vitamin, dan masker.",
+    details: ["Vaksin meningitis", "Obat rutin", "Hand sanitizer"],
     color: "bg-accent/10 text-accent",
   },
   {
     icon: BookOpen,
-    title: "Buku Doa & Manasik",
-    description: "Siapkan buku panduan manasik dan kumpulan doa untuk dipelajari selama perjalanan.",
-    details: [
-      "Buku panduan manasik umrah",
-      "Kumpulan doa harian",
-      "Al-Quran ukuran saku",
-      "Tasbih untuk dzikir",
-    ],
+    title: "Buku Doa",
+    description: "Buku panduan manasik dan kumpulan doa.",
+    details: ["Panduan manasik", "Al-Quran saku", "Tasbih"],
     color: "bg-rose-light/10 text-rose-light",
   },
   {
     icon: Smartphone,
     title: "Komunikasi",
-    description: "Siapkan SIM card lokal Saudi atau paket roaming untuk tetap terhubung dengan keluarga.",
-    details: [
-      "Paket roaming internasional",
-      "Power bank kapasitas besar",
-      "Charger dan kabel USB",
-      "Download aplikasi offline map",
-    ],
+    description: "SIM card lokal atau paket roaming.",
+    details: ["Paket roaming", "Power bank", "Offline maps"],
     color: "bg-brown/10 text-brown",
   },
   {
     icon: Heart,
-    title: "Niat yang Ikhlas",
-    description: "Perbaiki niat sebelum berangkat, mohon maaf kepada keluarga dan lunasi hutang piutang.",
-    details: [
-      "Mohon maaf kepada keluarga",
-      "Selesaikan hutang piutang",
-      "Buat wasiat sederhana",
-      "Niatkan ibadah karena Allah",
-    ],
+    title: "Niat Ikhlas",
+    description: "Mohon maaf dan lunasi hutang piutang.",
+    details: ["Mohon maaf", "Lunasi hutang", "Niat lillah"],
     color: "bg-accent/10 text-accent",
   },
   {
     icon: FileText,
-    title: "Dokumen Penting",
-    description: "Pastikan paspor berlaku minimal 6 bulan, visa umrah, dan fotokopi dokumen penting.",
-    details: [
-      "Paspor (min. 6 bulan berlaku)",
-      "Visa umrah",
-      "Fotokopi KTP & KK",
-      "Pas foto ukuran 4x6 (latar putih)",
-    ],
+    title: "Dokumen",
+    description: "Paspor min. 6 bulan, visa, fotokopi KTP.",
+    details: ["Paspor aktif", "Visa umrah", "Pas foto 4x6"],
     color: "bg-rose/10 text-rose",
   },
 ];
@@ -98,23 +68,23 @@ const TipCard = ({ tip, index }: TipCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      viewport={{ once: true, margin: "-30px" }}
     >
       <Card
-        className="border border-border hover:border-accent/30 hover:shadow-lg transition-all duration-300 group cursor-pointer h-full"
+        className="border border-border hover:border-accent/30 hover:shadow-md transition-all duration-300 group cursor-pointer h-full"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <CardContent className="p-6">
-          <div className={`w-12 h-12 rounded-xl ${tip.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-            <tip.icon className="w-6 h-6" />
+        <CardContent className="p-3 md:p-4">
+          <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg ${tip.color} flex items-center justify-center mb-2`}>
+            <tip.icon className="w-4 h-4 md:w-5 md:h-5" />
           </div>
-          <h3 className="font-serif text-lg font-bold text-foreground mb-2">
+          <h3 className="font-semibold text-foreground text-xs md:text-sm mb-1">
             {tip.title}
           </h3>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+          <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed mb-2">
             {tip.description}
           </p>
 
@@ -124,11 +94,11 @@ const TipCard = ({ tip, index }: TipCardProps) => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="space-y-2 mb-3 overflow-hidden"
+                className="space-y-1 mb-2 overflow-hidden"
               >
                 {tip.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-sm">
-                    <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+                  <li key={idx} className="flex items-center gap-1.5 text-[10px] md:text-xs">
+                    <span className="w-1 h-1 bg-accent rounded-full" />
                     <span className="text-foreground">{detail}</span>
                   </li>
                 ))}
@@ -136,10 +106,10 @@ const TipCard = ({ tip, index }: TipCardProps) => {
             )}
           </AnimatePresence>
 
-          <button className="flex items-center gap-1 text-sm font-medium text-accent hover:text-gold-dark transition-colors">
-            {isExpanded ? "Sembunyikan" : "Lihat detail"}
+          <button className="flex items-center gap-0.5 text-[10px] md:text-xs font-medium text-accent">
+            {isExpanded ? "Tutup" : "Detail"}
             <ChevronDown
-              className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+              className={`w-3 h-3 transition-transform ${isExpanded ? "rotate-180" : ""}`}
             />
           </button>
         </CardContent>
@@ -150,31 +120,30 @@ const TipCard = ({ tip, index }: TipCardProps) => {
 
 const TipsSection = () => {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="py-10 md:py-16 bg-background">
+      <div className="container mx-auto px-3 md:px-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-6 md:mb-10"
         >
-          <Badge variant="outline" className="mb-4 border-accent text-accent">
+          <Badge variant="outline" className="mb-3 border-accent text-accent text-xs">
             <Lightbulb className="w-3 h-3 mr-1" />
             Persiapan Umrah
           </Badge>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-2">
             Tips Perjalanan
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Persiapkan diri dengan baik agar ibadah umrah berjalan lancar dan penuh berkah.{" "}
-            <span className="text-accent font-medium">Klik untuk melihat detail.</span>
+          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
+            Persiapkan diri dengan baik untuk ibadah yang lancar.
           </p>
         </motion.div>
 
         {/* Tips Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 max-w-4xl mx-auto">
           {tips.map((tip, index) => (
             <TipCard key={tip.title} tip={tip} index={index} />
           ))}

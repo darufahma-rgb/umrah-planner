@@ -75,26 +75,26 @@ const ItineraryDay = ({
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.4, delay: index * 0.05 }}
+        viewport={{ once: true, margin: "-30px" }}
       >
         <Card
-          className="group overflow-hidden border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 h-full cursor-pointer"
+          className="group overflow-hidden border border-border hover:border-accent/50 hover:shadow-lg transition-all duration-300 h-full cursor-pointer"
           onClick={() => setIsModalOpen(true)}
         >
           {/* Image Header */}
           {image && (
-            <div className="relative h-40 overflow-hidden">
+            <div className="relative h-24 md:h-32 overflow-hidden">
               <img
                 src={image}
                 alt={title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
               <Badge
-                className={`absolute top-3 left-3 ${getHighlightColor(highlight)}`}
+                className={`absolute top-2 left-2 text-[10px] md:text-xs ${getHighlightColor(highlight)}`}
               >
                 Hari {day}
               </Badge>
@@ -102,50 +102,43 @@ const ItineraryDay = ({
           )}
 
           {!image && (
-            <div className={`h-24 ${getHighlightColor(highlight)} flex items-center justify-center relative`}>
-              <Icon className="w-10 h-10 opacity-30 group-hover:scale-110 transition-transform" />
-              <Badge
-                className="absolute top-3 left-3 bg-background/90 text-foreground"
-              >
+            <div className={`h-16 md:h-20 ${getHighlightColor(highlight)} flex items-center justify-center relative`}>
+              <Icon className="w-6 h-6 md:w-8 md:h-8 opacity-30" />
+              <Badge className="absolute top-2 left-2 bg-background/90 text-foreground text-[10px] md:text-xs">
                 Hari {day}
               </Badge>
             </div>
           )}
 
-          <CardContent className="p-5">
+          <CardContent className="p-3 md:p-4">
             {/* Location with Maps Link */}
-            <div className="flex items-center justify-between gap-2 mb-2">
-              <div className="flex items-center gap-1.5 text-muted-foreground text-sm min-w-0">
-                <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+            <div className="flex items-center justify-between gap-1 mb-1">
+              <div className="flex items-center gap-1 text-muted-foreground text-[10px] md:text-xs min-w-0">
+                <MapPin className="w-3 h-3 flex-shrink-0" />
                 <span className="truncate">{location}</span>
               </div>
               {mapsUrl && (
                 <button
                   onClick={handleMapsClick}
-                  className="flex items-center gap-1 text-xs font-medium text-accent hover:text-gold-dark transition-colors flex-shrink-0 bg-accent/10 hover:bg-accent/20 px-2 py-1 rounded-full"
+                  className="flex items-center gap-0.5 text-[9px] md:text-[10px] font-medium text-accent hover:text-gold-dark transition-colors flex-shrink-0"
                 >
-                  <ExternalLink className="w-3 h-3" />
-                  Maps
+                  <ExternalLink className="w-2.5 h-2.5" />
+                  <span className="hidden sm:inline">Maps</span>
                 </button>
               )}
             </div>
 
             {/* Title */}
-            <h3 className="font-serif text-lg font-bold text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+            <h3 className="font-serif text-xs md:text-sm font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors leading-tight">
               {title}
             </h3>
 
-            {/* Activities */}
-            <ul className="space-y-2">
-              {activities.slice(0, 3).map((activity, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm">
-                  <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
+            {/* Activities - Hidden on mobile */}
+            <ul className="hidden md:block space-y-1">
+              {activities.slice(0, 2).map((activity, idx) => (
+                <li key={idx} className="flex items-start gap-1.5 text-[10px] md:text-xs">
+                  <span className="w-1 h-1 bg-accent rounded-full mt-1.5 flex-shrink-0" />
                   <span className="text-muted-foreground line-clamp-1">
-                    {activity.time && (
-                      <span className="font-medium text-foreground mr-1">
-                        {activity.time}
-                      </span>
-                    )}
                     {activity.description}
                   </span>
                 </li>
@@ -153,9 +146,9 @@ const ItineraryDay = ({
             </ul>
 
             {/* View More */}
-            <div className="mt-4 flex items-center text-sm font-medium text-accent group-hover:text-gold-dark transition-colors">
-              Lihat Detail
-              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            <div className="mt-2 flex items-center text-[10px] md:text-xs font-medium text-accent group-hover:text-gold-dark transition-colors">
+              Detail
+              <ChevronRight className="w-3 h-3 ml-0.5 group-hover:translate-x-0.5 transition-transform" />
             </div>
           </CardContent>
         </Card>
