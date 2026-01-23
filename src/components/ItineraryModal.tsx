@@ -110,8 +110,8 @@ const ItineraryModal = ({
 
         <ScrollArea className="px-4 md:px-6 pb-4 md:pb-6 max-h-[50vh]">
           <div className="space-y-1 mt-3">
-            <h4 className="font-semibold text-foreground flex items-center gap-2 mb-2 text-sm">
-              <Clock className="w-3.5 h-3.5 text-accent" />
+            <h4 className="font-semibold text-foreground flex items-center gap-2 mb-2 text-sm bg-white text-primary rounded-lg px-3 py-2 w-fit">
+              <Clock className="w-3.5 h-3.5 text-primary" />
               Jadwal Kegiatan
             </h4>
             <ul className="space-y-2">
