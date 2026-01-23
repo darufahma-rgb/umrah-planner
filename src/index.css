@@ -165,6 +165,7 @@
 
   .bg-gradient-pink {
     background-color: hsl(349 90% 68%);
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M40 0L80 40L40 80L0 40z M40 10L70 40L40 70L10 40z'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   .animate-fade-up {
