@@ -27,13 +27,13 @@ const tips = [
     icon: BookOpen,
     title: "Buku Doa & Manasik",
     description: "Siapkan buku panduan manasik dan kumpulan doa untuk dipelajari selama perjalanan.",
-    color: "bg-emerald-light/10 text-emerald-light",
+    color: "bg-rose-light/10 text-rose-light",
   },
   {
     icon: Smartphone,
     title: "Komunikasi",
     description: "Siapkan SIM card lokal Saudi atau paket roaming untuk tetap terhubung dengan keluarga.",
-    color: "bg-primary/10 text-primary",
+    color: "bg-brown/10 text-brown",
   },
   {
     icon: Heart,
@@ -45,7 +45,7 @@ const tips = [
     icon: FileText,
     title: "Dokumen Penting",
     description: "Pastikan paspor berlaku minimal 6 bulan, visa umrah, dan fotokopi dokumen penting.",
-    color: "bg-emerald-light/10 text-emerald-light",
+    color: "bg-rose/10 text-rose",
   },
 ];
 
