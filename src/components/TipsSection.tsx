@@ -130,14 +130,14 @@ const TipsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 md:mb-10"
         >
-          <Badge variant="outline" className="mb-3 border-accent text-accent text-xs">
+          <Badge className="mb-3 bg-white/90 text-primary border-0 text-xs shadow-sm">
             <Lightbulb className="w-3 h-3 mr-1" />
             Persiapan Umrah
           </Badge>
-          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-2">
+          <h2 className="font-serif text-2xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
             Tips Perjalanan
           </h2>
-          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
+          <p className="text-white/90 text-sm max-w-xl mx-auto drop-shadow">
             Persiapkan diri dengan baik untuk ibadah yang lancar.
           </p>
         </motion.div>
