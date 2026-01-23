@@ -89,6 +89,10 @@ export default {
           light: "hsl(var(--pink-light))",
           dark: "hsl(var(--pink-dark))",
         },
+        whatsapp: {
+          DEFAULT: "hsl(var(--whatsapp))",
+          hover: "hsl(var(--whatsapp-hover))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

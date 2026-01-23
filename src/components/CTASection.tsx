@@ -43,9 +43,8 @@ const CTASection = () => {
               <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
-              variant="outline"
               onClick={openWhatsApp}
-              className="w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-6 py-5 text-sm group"
+              className="w-full sm:w-auto bg-whatsapp hover:bg-whatsapp-hover text-white px-6 py-5 text-sm group border-0"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Chat WhatsApp

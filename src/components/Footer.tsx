@@ -42,7 +42,7 @@ const Footer = () => {
               <li>
                 <button
                   onClick={openWhatsApp}
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors text-xs"
+                  className="flex items-center gap-2 text-whatsapp hover:text-whatsapp-hover transition-colors text-xs"
                 >
                   <MessageCircle className="w-3 h-3" />
                   WhatsApp
