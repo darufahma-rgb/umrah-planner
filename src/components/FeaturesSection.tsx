@@ -15,12 +15,12 @@ const features = [
   {
     icon: Users,
     title: "Muthawwif Berpengalaman",
-    description: "Pembimbing ibadah profesional & bersertifikat",
+    description: "Pembimbing ibadah profesional",
   },
   {
     icon: Clock,
     title: "10 Hari Perjalanan",
-    description: "Waktu optimal untuk ibadah yang khusyuk",
+    description: "Waktu optimal untuk ibadah",
   },
   {
     icon: Shield,
@@ -30,35 +30,31 @@ const features = [
   {
     icon: Headphones,
     title: "Layanan 24 Jam",
-    description: "Pendampingan & bantuan setiap saat",
+    description: "Pendampingan setiap saat",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section className="py-16 bg-primary">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+    <section className="py-8 md:py-12 bg-primary">
+      <div className="container mx-auto px-3 md:px-4">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
               className="text-center group cursor-default"
             >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary-foreground/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors"
-              >
-                <feature.icon className="w-6 h-6 text-accent" />
-              </motion.div>
-              <h3 className="font-semibold text-primary-foreground text-sm mb-1">
+              <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 rounded-full bg-primary-foreground/10 flex items-center justify-center">
+                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+              </div>
+              <h3 className="font-medium text-primary-foreground text-[10px] md:text-xs mb-0.5 leading-tight">
                 {feature.title}
               </h3>
-              <p className="text-xs text-primary-foreground/70">
+              <p className="text-[8px] md:text-[10px] text-primary-foreground/60 hidden md:block">
                 {feature.description}
               </p>
             </motion.div>
