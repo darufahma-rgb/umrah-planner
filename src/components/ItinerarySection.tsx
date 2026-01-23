@@ -144,16 +144,16 @@ const ItinerarySection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 md:mb-10"
         >
-          <Badge variant="outline" className="mb-3 border-accent text-accent text-xs">
+          <Badge className="mb-3 bg-white/90 text-primary border-0 text-xs shadow-sm">
             <Calendar className="w-3 h-3 mr-1" />
             10 Hari Perjalanan
           </Badge>
-          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-2">
+          <h2 className="font-serif text-2xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
             Jadwal Perjalanan
           </h2>
-          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
+          <p className="text-white/90 text-sm max-w-xl mx-auto drop-shadow">
             Itinerary lengkap perjalanan Umroh El Massa.{" "}
-            <span className="text-accent font-medium">Klik untuk detail.</span>
+            <span className="text-white font-semibold">Klik untuk detail.</span>
           </p>
         </motion.div>
 
