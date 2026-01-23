@@ -1,6 +1,7 @@
 import { useState } from "react";
 import madinahImage from "@/assets/madinah-mosque.jpg";
 import heroImage from "@/assets/hero-makkah.jpg";
+import cityTaifImage from "@/assets/city-taif.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Star, ChevronRight, ChevronDown, ExternalLink } from "lucide-react";
@@ -33,6 +34,15 @@ const madinahLocations: LocationData[] = [
   { name: "Masjid Quba", description: "Masjid pertama dalam Islam", mapsUrl: "https://maps.google.com/?q=Masjid+Quba,Madinah" },
   { name: "Jabal Uhud", description: "Lokasi Perang Uhud", mapsUrl: "https://maps.google.com/?q=Mount+Uhud,Madinah" },
   { name: "Masjid Qiblatain", description: "Tempat perpindahan kiblat", mapsUrl: "https://maps.google.com/?q=Masjid+al-Qiblatayn,Madinah" },
+];
+
+const thaifLocations: LocationData[] = [
+  { name: "Masjid Abdullah bin Abbas", description: "Masjid bersejarah di Thaif", mapsUrl: "https://maps.google.com/?q=Abdullah+Ibn+Abbas+Mosque,Taif" },
+  { name: "Wadi Liyyah", description: "Lembah indah dengan pemandangan alam", mapsUrl: "https://maps.google.com/?q=Wadi+Liyyah,Taif" },
+  { name: "Pasar Tradisional Thaif", description: "Pusat oleh-oleh dan buah-buahan", mapsUrl: "https://maps.google.com/?q=Taif+Traditional+Market" },
+  { name: "Kebun Mawar Thaif", description: "Penghasil minyak mawar terkenal", mapsUrl: "https://maps.google.com/?q=Taif+Rose+Farm" },
+  { name: "Al Rudaf Park", description: "Taman hijau dengan udara sejuk", mapsUrl: "https://maps.google.com/?q=Al+Rudaf+Park,Taif" },
+  { name: "Shubra Palace", description: "Istana bersejarah Ottoman", mapsUrl: "https://maps.google.com/?q=Shubra+Palace,Taif" },
 ];
 
 interface LocationCardProps {
@@ -170,7 +180,7 @@ const LocationsSection = () => {
         >
           <Badge className="mb-3 bg-white/90 text-primary border-0 text-xs shadow-sm">
             <MapPin className="w-3 h-3 mr-1" />
-            Dua Kota Suci
+            Tiga Kota Suci
           </Badge>
           <h2 className="font-serif text-2xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
             Destinasi Ziarah
@@ -181,7 +191,7 @@ const LocationsSection = () => {
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
           <LocationCard
             title="Makkah Al-Mukarramah"
             subtitle="Kota Suci"
@@ -197,6 +207,14 @@ const LocationsSection = () => {
             image={madinahImage}
             locations={madinahLocations}
             index={1}
+          />
+          <LocationCard
+            title="Thaif"
+            subtitle="Kota Bunga"
+            description="Kota sejuk dengan kebun mawar dan pemandangan indah."
+            image={cityTaifImage}
+            locations={thaifLocations}
+            index={2}
           />
         </div>
       </div>
