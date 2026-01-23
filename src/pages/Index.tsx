@@ -15,14 +15,14 @@ const Index = () => {
       <main>
         <HeroSection />
         <FeaturesSection />
-        <section id="fasilitas">
-          <BenefitsSection />
-        </section>
         <section id="jadwal">
           <ItinerarySection />
         </section>
         <section id="lokasi">
           <LocationsSection />
+        </section>
+        <section id="fasilitas">
+          <BenefitsSection />
         </section>
         <section id="tips">
           <TipsSection />
