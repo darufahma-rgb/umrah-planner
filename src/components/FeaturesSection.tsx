@@ -1,4 +1,5 @@
 import { Plane, Hotel, Users, Clock, Shield, Headphones } from "lucide-react";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -38,21 +39,29 @@ const FeaturesSection = () => {
     <section className="py-16 bg-primary">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {features.map((feature) => (
-            <div
+          {features.map((feature, index) => (
+            <motion.div
               key={feature.title}
-              className="text-center group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="text-center group cursor-default"
             >
-              <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary-foreground/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary-foreground/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors"
+              >
                 <feature.icon className="w-6 h-6 text-accent" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold text-primary-foreground text-sm mb-1">
                 {feature.title}
               </h3>
               <p className="text-xs text-primary-foreground/70">
                 {feature.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

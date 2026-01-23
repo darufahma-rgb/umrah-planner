@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Plane, Building, Sunrise, Moon } from "lucide-react";
+import { MapPin, Plane, Building, Sunrise, Moon, ChevronRight } from "lucide-react";
+import ItineraryModal from "./ItineraryModal";
+import { motion } from "framer-motion";
 
 interface Activity {
   time?: string;
@@ -14,6 +17,7 @@ interface ItineraryDayProps {
   activities: Activity[];
   image?: string;
   highlight?: "departure" | "umrah" | "worship" | "ziarah" | "travel";
+  index?: number;
 }
 
 const getIcon = (highlight?: string) => {
@@ -54,74 +58,100 @@ const ItineraryDay = ({
   activities,
   image,
   highlight,
+  index = 0,
 }: ItineraryDayProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const Icon = getIcon(highlight);
 
   return (
-    <Card className="group overflow-hidden border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 h-full">
-      {/* Image Header */}
-      {image && (
-        <div className="relative h-40 overflow-hidden">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-          <Badge
-            className={`absolute top-3 left-3 ${getHighlightColor(highlight)}`}
-          >
-            Hari {day}
-          </Badge>
-        </div>
-      )}
-
-      {!image && (
-        <div className={`h-24 ${getHighlightColor(highlight)} flex items-center justify-center relative`}>
-          <Icon className="w-10 h-10 opacity-30" />
-          <Badge
-            className="absolute top-3 left-3 bg-background/90 text-foreground"
-          >
-            Hari {day}
-          </Badge>
-        </div>
-      )}
-
-      <CardContent className="p-5">
-        {/* Location */}
-        <div className="flex items-center gap-1.5 text-muted-foreground text-sm mb-2">
-          <MapPin className="w-3.5 h-3.5" />
-          <span>{location}</span>
-        </div>
-
-        {/* Title */}
-        <h3 className="font-serif text-lg font-bold text-foreground mb-4 line-clamp-2">
-          {title}
-        </h3>
-
-        {/* Activities */}
-        <ul className="space-y-2">
-          {activities.slice(0, 4).map((activity, index) => (
-            <li key={index} className="flex items-start gap-2 text-sm">
-              <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
-              <span className="text-muted-foreground">
-                {activity.time && (
-                  <span className="font-medium text-foreground mr-1">
-                    {activity.time}
-                  </span>
-                )}
-                {activity.description}
-              </span>
-            </li>
-          ))}
-          {activities.length > 4 && (
-            <li className="text-sm text-accent font-medium">
-              +{activities.length - 4} kegiatan lainnya
-            </li>
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <Card
+          className="group overflow-hidden border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 h-full cursor-pointer"
+          onClick={() => setIsModalOpen(true)}
+        >
+          {/* Image Header */}
+          {image && (
+            <div className="relative h-40 overflow-hidden">
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+              <Badge
+                className={`absolute top-3 left-3 ${getHighlightColor(highlight)}`}
+              >
+                Hari {day}
+              </Badge>
+            </div>
           )}
-        </ul>
-      </CardContent>
-    </Card>
+
+          {!image && (
+            <div className={`h-24 ${getHighlightColor(highlight)} flex items-center justify-center relative`}>
+              <Icon className="w-10 h-10 opacity-30 group-hover:scale-110 transition-transform" />
+              <Badge
+                className="absolute top-3 left-3 bg-background/90 text-foreground"
+              >
+                Hari {day}
+              </Badge>
+            </div>
+          )}
+
+          <CardContent className="p-5">
+            {/* Location */}
+            <div className="flex items-center gap-1.5 text-muted-foreground text-sm mb-2">
+              <MapPin className="w-3.5 h-3.5" />
+              <span className="truncate">{location}</span>
+            </div>
+
+            {/* Title */}
+            <h3 className="font-serif text-lg font-bold text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+              {title}
+            </h3>
+
+            {/* Activities */}
+            <ul className="space-y-2">
+              {activities.slice(0, 3).map((activity, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
+                  <span className="text-muted-foreground line-clamp-1">
+                    {activity.time && (
+                      <span className="font-medium text-foreground mr-1">
+                        {activity.time}
+                      </span>
+                    )}
+                    {activity.description}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            {/* View More */}
+            <div className="mt-4 flex items-center text-sm font-medium text-accent group-hover:text-gold-dark transition-colors">
+              Lihat Detail
+              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      <ItineraryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        day={day}
+        title={title}
+        location={location}
+        activities={activities}
+        image={image}
+        highlight={highlight}
+      />
+    </>
   );
 };
 
