@@ -29,7 +29,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
+    <section className="relative min-h-[120svh] flex flex-col overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <motion.img
@@ -40,36 +40,36 @@ const HeroSection = () => {
           alt="Masjidil Haram - Makkah"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/80" />
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center container mx-auto px-4 pt-20 pb-4">
-        <div className="max-w-4xl">
-          {/* Title with Year */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center container mx-auto px-4 pt-24 pb-8">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Title */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex items-start gap-2 md:gap-4 mb-4 md:mb-6"
+            className="mb-6 md:mb-10"
           >
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-light text-primary-foreground leading-none tracking-tight">
-              Umrah
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-primary-foreground leading-tight tracking-tight">
+              Itinerary Perjalanan Umrah
             </h1>
-            <span className="text-primary-foreground/60 text-lg sm:text-xl md:text-3xl lg:text-4xl font-light mt-1 md:mt-4">
+            <span className="inline-block mt-4 text-primary-foreground/70 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-light">
               2025
             </span>
           </motion.div>
 
-          {/* Description with left border */}
+          {/* Description */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="border-l-2 border-primary-foreground/40 pl-4 md:pl-6 max-w-md md:max-w-xl mb-6 md:mb-10"
+            className="max-w-2xl mx-auto mb-8 md:mb-12"
           >
-            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-primary-foreground/80 font-light leading-relaxed">
-              Wujudkan perjalanan suci Anda. Pengalaman spiritual yang penuh berkah menuju Tanah Suci bersama El Massa.
+            <p className="text-base sm:text-lg md:text-2xl lg:text-3xl text-primary-foreground/80 font-light leading-relaxed">
+              Wujudkan perjalanan suci Anda bersama El Massa Tour & Travel
             </p>
           </motion.div>
 
@@ -78,14 +78,14 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex justify-start"
+            className="flex justify-center"
           >
             <Button
               onClick={scrollToItinerary}
-              className="bg-primary-foreground/20 hover:bg-primary-foreground/30 backdrop-blur-md text-primary-foreground border border-primary-foreground/30 rounded-full px-6 py-5 md:px-8 md:py-6 text-xs sm:text-sm md:text-base font-medium tracking-wider uppercase group transition-all"
+              className="bg-primary-foreground/20 hover:bg-primary-foreground/30 backdrop-blur-md text-primary-foreground border border-primary-foreground/30 rounded-full px-8 py-6 md:px-10 md:py-7 text-sm sm:text-base md:text-lg font-medium tracking-wider uppercase group transition-all"
             >
-              Lihat Itinerary
-              <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              Lihat Jadwal Lengkap
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
         </div>

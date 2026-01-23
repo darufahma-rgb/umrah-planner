@@ -37,27 +37,27 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-background to-muted/30">
+    <section className="py-16 md:py-28 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
+          className="text-center mb-12 md:mb-16"
         >
-          <span className="text-accent font-medium text-sm tracking-wider uppercase">
+          <span className="text-accent font-medium text-base md:text-lg tracking-wider uppercase">
             Fasilitas Include
           </span>
-          <h2 className="text-2xl md:text-4xl font-serif font-bold text-foreground mt-2">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mt-3">
             Benefit Perjalanan Umrah
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm md:text-base">
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-base md:text-lg lg:text-xl">
             Nikmati berbagai fasilitas lengkap bersama El Massa Tour & Travel
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -68,15 +68,15 @@ const BenefitsSection = () => {
               whileHover={{ scale: 1.03, y: -2 }}
               className="group"
             >
-              <div className="flex items-center gap-2 md:gap-3 bg-card border border-border/50 rounded-lg p-2.5 md:p-3 h-full hover:border-accent/50 hover:shadow-md transition-all duration-300">
-                <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <benefit.icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+              <div className="flex items-center gap-3 md:gap-4 bg-card border border-border/50 rounded-xl p-4 md:p-5 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <benefit.icon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xs md:text-sm font-semibold text-foreground leading-tight">
+                  <h3 className="text-sm md:text-base lg:text-lg font-semibold text-foreground leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-[10px] md:text-xs text-muted-foreground leading-tight">
+                  <p className="text-xs md:text-sm lg:text-base text-muted-foreground leading-tight mt-0.5">
                     {benefit.desc}
                   </p>
                 </div>
@@ -91,15 +91,15 @@ const BenefitsSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 justify-center"
+          className="mt-10 md:mt-14 flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <div className="bg-accent/10 border border-accent/30 rounded-lg px-4 py-2 text-center">
-            <span className="text-xs md:text-sm text-foreground">
+          <div className="bg-accent/10 border border-accent/30 rounded-xl px-6 py-3 text-center">
+            <span className="text-sm md:text-base lg:text-lg text-foreground">
               <span className="font-semibold text-accent">Bonus:</span> Air Zamzam 5 Liter Gratis untuk acara selamatan
             </span>
           </div>
-          <div className="bg-secondary/20 border border-secondary/30 rounded-lg px-4 py-2 text-center">
-            <span className="text-xs md:text-sm text-muted-foreground">
+          <div className="bg-secondary/20 border border-secondary/30 rounded-xl px-6 py-3 text-center">
+            <span className="text-sm md:text-base lg:text-lg text-muted-foreground">
               <span className="font-semibold">Exclude:</span> Paspor, Vaksin, Bagasi Tambahan
             </span>
           </div>
