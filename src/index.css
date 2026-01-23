@@ -8,99 +8,104 @@
 
 @layer base {
   :root {
-    --background: 30 25% 97%;
-    --foreground: 15 30% 20%;
+    --background: 350 30% 95%;
+    --foreground: 25 40% 20%;
 
-    --card: 30 20% 99%;
-    --card-foreground: 15 30% 20%;
+    --card: 350 25% 98%;
+    --card-foreground: 25 40% 20%;
 
-    --popover: 30 20% 99%;
-    --popover-foreground: 15 30% 20%;
+    --popover: 350 25% 98%;
+    --popover-foreground: 25 40% 20%;
 
-    --primary: 350 35% 45%;
-    --primary-foreground: 30 25% 97%;
+    --primary: 25 45% 35%;
+    --primary-foreground: 350 30% 97%;
 
-    --secondary: 25 30% 92%;
-    --secondary-foreground: 15 30% 25%;
+    --secondary: 25 35% 30%;
+    --secondary-foreground: 350 25% 95%;
 
-    --muted: 25 20% 94%;
-    --muted-foreground: 15 15% 45%;
+    --muted: 350 20% 90%;
+    --muted-foreground: 25 25% 40%;
 
-    --accent: 38 75% 55%;
-    --accent-foreground: 15 30% 15%;
+    --accent: 43 80% 50%;
+    --accent-foreground: 25 40% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 350 30% 98%;
 
-    --border: 25 20% 88%;
-    --input: 25 20% 88%;
-    --ring: 350 35% 45%;
+    --border: 350 20% 85%;
+    --input: 350 20% 85%;
+    --ring: 43 80% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom Umrah Colors - Pink Brown & Gold */
-    --rose: 350 35% 45%;
-    --rose-light: 350 30% 55%;
-    --rose-dark: 350 40% 35%;
-    --brown: 15 35% 35%;
-    --brown-light: 15 25% 50%;
-    --gold: 38 75% 55%;
-    --gold-dark: 35 65% 45%;
-    --cream: 30 25% 97%;
-    --cream-dark: 30 20% 92%;
+    /* Custom Umrah Colors - Pink, Brown & Gold */
+    --rose: 350 40% 70%;
+    --rose-light: 350 35% 80%;
+    --rose-dark: 350 45% 60%;
+    --brown: 25 45% 35%;
+    --brown-light: 25 35% 50%;
+    --brown-dark: 25 50% 25%;
+    --gold: 43 80% 50%;
+    --gold-light: 43 75% 65%;
+    --gold-dark: 40 70% 40%;
+    --cream: 350 30% 95%;
+    --cream-dark: 350 25% 88%;
+    --pink: 350 40% 85%;
+    --pink-light: 350 35% 92%;
+    --pink-dark: 350 45% 75%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(350 40% 35%) 0%, hsl(15 35% 40%) 50%, hsl(38 60% 50%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38 75% 55%) 0%, hsl(35 65% 45%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(30 20% 99%) 0%, hsl(30 15% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(25 50% 30%) 0%, hsl(25 45% 35%) 50%, hsl(43 80% 50%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 80% 55%) 0%, hsl(40 70% 45%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(350 25% 98%) 0%, hsl(350 20% 94%) 100%);
 
-    --sidebar-background: 30 20% 98%;
-    --sidebar-foreground: 15 30% 25%;
-    --sidebar-primary: 350 35% 45%;
-    --sidebar-primary-foreground: 30 25% 97%;
-    --sidebar-accent: 25 25% 94%;
-    --sidebar-accent-foreground: 15 30% 20%;
-    --sidebar-border: 25 20% 88%;
-    --sidebar-ring: 38 75% 55%;
+    --sidebar-background: 350 25% 96%;
+    --sidebar-foreground: 25 40% 25%;
+    --sidebar-primary: 25 45% 35%;
+    --sidebar-primary-foreground: 350 30% 97%;
+    --sidebar-accent: 350 20% 90%;
+    --sidebar-accent-foreground: 25 40% 20%;
+    --sidebar-border: 350 20% 85%;
+    --sidebar-ring: 43 80% 50%;
   }
 
   .dark {
-    --background: 15 25% 8%;
-    --foreground: 30 25% 95%;
+    --background: 25 30% 10%;
+    --foreground: 350 25% 92%;
 
-    --card: 15 20% 12%;
-    --card-foreground: 30 25% 95%;
+    --card: 25 25% 14%;
+    --card-foreground: 350 25% 92%;
 
-    --popover: 15 20% 12%;
-    --popover-foreground: 30 25% 95%;
+    --popover: 25 25% 14%;
+    --popover-foreground: 350 25% 92%;
 
-    --primary: 38 70% 55%;
-    --primary-foreground: 15 25% 10%;
+    --primary: 43 75% 55%;
+    --primary-foreground: 25 30% 10%;
 
-    --secondary: 15 20% 18%;
-    --secondary-foreground: 30 25% 90%;
+    --secondary: 25 30% 22%;
+    --secondary-foreground: 350 25% 88%;
 
-    --muted: 15 20% 18%;
-    --muted-foreground: 30 15% 65%;
+    --muted: 25 25% 20%;
+    --muted-foreground: 350 20% 60%;
 
-    --accent: 38 70% 50%;
-    --accent-foreground: 15 25% 10%;
+    --accent: 43 75% 50%;
+    --accent-foreground: 25 30% 10%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 30 25% 95%;
+    --destructive-foreground: 350 25% 92%;
 
-    --border: 15 20% 20%;
-    --input: 15 20% 20%;
-    --ring: 38 70% 55%;
+    --border: 25 25% 22%;
+    --input: 25 25% 22%;
+    --ring: 43 75% 55%;
 
-    --sidebar-background: 15 20% 10%;
-    --sidebar-foreground: 30 25% 90%;
-    --sidebar-primary: 38 70% 55%;
-    --sidebar-primary-foreground: 15 25% 10%;
-    --sidebar-accent: 15 20% 15%;
-    --sidebar-accent-foreground: 30 25% 90%;
-    --sidebar-border: 15 20% 18%;
-    --sidebar-ring: 38 70% 55%;
+    --sidebar-background: 25 25% 12%;
+    --sidebar-foreground: 350 25% 88%;
+    --sidebar-primary: 43 75% 55%;
+    --sidebar-primary-foreground: 25 30% 10%;
+    --sidebar-accent: 25 25% 18%;
+    --sidebar-accent-foreground: 350 25% 88%;
+    --sidebar-border: 25 25% 20%;
+    --sidebar-ring: 43 75% 55%;
   }
 }
 
