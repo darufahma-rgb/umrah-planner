@@ -10,50 +10,99 @@ import {
   FileText,
   Lightbulb,
   ChevronDown,
+  ExternalLink,
+  Info,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const tips = [
+interface TipItem {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  details: string[];
+  color: string;
+  externalLink?: string;
+}
+
+const tips: TipItem[] = [
   {
     icon: Shirt,
     title: "Pakaian Ihram",
     description: "Siapkan 2 set pakaian ihram untuk pria.",
-    details: ["Pakaian ihram putih", "Sandal nyaman", "Jaket tipis"],
+    details: [
+      "Pakaian ihram putih bersih (2 lembar kain)",
+      "Sandal nyaman tanpa jahitan atas",
+      "Jaket tipis untuk AC pesawat",
+      "Ikat pinggang ihram",
+      "Tas kecil untuk perlengkapan sholat"
+    ],
     color: "bg-primary/10 text-primary",
   },
   {
     icon: Stethoscope,
     title: "Kesehatan",
     description: "Bawa obat pribadi, vitamin, dan masker.",
-    details: ["Vaksin meningitis", "Obat rutin", "Hand sanitizer"],
+    details: [
+      "Vaksin meningitis wajib",
+      "Obat-obatan rutin pribadi",
+      "Vitamin dan suplemen",
+      "Hand sanitizer dan masker",
+      "Plester dan obat luka",
+      "Obat maag dan diare"
+    ],
     color: "bg-accent/10 text-accent",
   },
   {
     icon: BookOpen,
     title: "Buku Doa",
     description: "Buku panduan manasik dan kumpulan doa.",
-    details: ["Panduan manasik", "Al-Quran saku", "Tasbih"],
+    details: [
+      "Download buku panduan manasik dari Kemenag",
+      "Berisi tuntunan lengkap haji dan umrah",
+      "Doa-doa thawaf dan sa'i",
+      "Panduan ziarah ke tempat bersejarah"
+    ],
     color: "bg-rose-light/10 text-rose-light",
+    externalLink: "https://cdn.kemenag.go.id/storage/archives/buku-tuntunan-manasik-haji-dan-umrah-1-2pdf.pdf",
   },
   {
     icon: Smartphone,
     title: "Komunikasi",
     description: "SIM card lokal atau paket roaming.",
-    details: ["Paket roaming", "Power bank", "Offline maps"],
+    details: [
+      "Aktifkan paket roaming sebelum berangkat",
+      "Bawa power bank kapasitas besar",
+      "Download offline maps Makkah & Madinah",
+      "Simpan nomor darurat travel",
+      "Siapkan aplikasi penerjemah"
+    ],
     color: "bg-brown/10 text-brown",
   },
   {
     icon: Heart,
     title: "Niat Ikhlas",
     description: "Mohon maaf dan lunasi hutang piutang.",
-    details: ["Mohon maaf", "Lunasi hutang", "Niat lillah"],
+    details: [
+      "Mohon maaf kepada keluarga dan kerabat",
+      "Lunasi semua hutang piutang",
+      "Niatkan ibadah karena Allah",
+      "Buat wasiat sebelum berangkat",
+      "Titipkan anak dan keluarga"
+    ],
     color: "bg-accent/10 text-accent",
   },
   {
     icon: FileText,
     title: "Dokumen",
     description: "Paspor min. 6 bulan, visa, fotokopi KTP.",
-    details: ["Paspor aktif", "Visa umrah", "Pas foto 4x6"],
+    details: [
+      "Paspor aktif minimal 6 bulan",
+      "Visa umrah (diurus travel)",
+      "Fotokopi KTP dan KK",
+      "Pas foto 4x6 background putih",
+      "Buku kuning vaksin",
+      "Surat keterangan sehat"
+    ],
     color: "bg-rose/10 text-rose",
   },
 ];
@@ -66,6 +115,14 @@ interface TipCardProps {
 const TipCard = ({ tip, index }: TipCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const handleClick = () => {
+    if (tip.externalLink) {
+      window.open(tip.externalLink, '_blank', 'noopener,noreferrer');
+    } else {
+      setIsExpanded(!isExpanded);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -74,44 +131,64 @@ const TipCard = ({ tip, index }: TipCardProps) => {
       viewport={{ once: true, margin: "-30px" }}
     >
       <Card
-        className="border border-border hover:border-accent/30 hover:shadow-md transition-all duration-300 group cursor-pointer h-full"
-        onClick={() => setIsExpanded(!isExpanded)}
+        className="border border-border hover:border-accent/30 hover:shadow-md transition-all duration-300 group cursor-pointer h-full relative"
+        onClick={handleClick}
       >
         <CardContent className="p-3 md:p-4">
+          {/* Click indicator icon */}
+          <div className="absolute top-2 right-2 opacity-50 group-hover:opacity-100 transition-opacity">
+            {tip.externalLink ? (
+              <ExternalLink className="w-3 h-3 md:w-4 md:h-4 text-accent" />
+            ) : (
+              <Info className="w-3 h-3 md:w-4 md:h-4 text-accent" />
+            )}
+          </div>
+          
           <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg ${tip.color} flex items-center justify-center mb-2`}>
             <tip.icon className="w-4 h-4 md:w-5 md:h-5" />
           </div>
-          <h3 className="font-semibold text-foreground text-xs md:text-sm mb-1">
+          <h3 className="font-semibold text-foreground text-xs md:text-sm mb-1 pr-4">
             {tip.title}
           </h3>
           <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed mb-2">
             {tip.description}
           </p>
 
-          <AnimatePresence>
-            {isExpanded && (
-              <motion.ul
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="space-y-1 mb-2 overflow-hidden"
-              >
-                {tip.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-center gap-1.5 text-[10px] md:text-xs">
-                    <span className="w-1 h-1 bg-accent rounded-full" />
-                    <span className="text-foreground">{detail}</span>
-                  </li>
-                ))}
-              </motion.ul>
-            )}
-          </AnimatePresence>
+          {!tip.externalLink && (
+            <>
+              <AnimatePresence>
+                {isExpanded && (
+                  <motion.ul
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="space-y-1 mb-2 overflow-hidden"
+                  >
+                    {tip.details.map((detail, idx) => (
+                      <li key={idx} className="flex items-center gap-1.5 text-[10px] md:text-xs">
+                        <span className="w-1 h-1 bg-accent rounded-full" />
+                        <span className="text-foreground">{detail}</span>
+                      </li>
+                    ))}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
 
-          <button className="flex items-center gap-0.5 text-[10px] md:text-xs font-medium text-accent">
-            {isExpanded ? "Tutup" : "Detail"}
-            <ChevronDown
-              className={`w-3 h-3 transition-transform ${isExpanded ? "rotate-180" : ""}`}
-            />
-          </button>
+              <button className="flex items-center gap-0.5 text-[10px] md:text-xs font-medium text-accent">
+                {isExpanded ? "Tutup" : "Detail"}
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                />
+              </button>
+            </>
+          )}
+
+          {tip.externalLink && (
+            <button className="flex items-center gap-1 text-[10px] md:text-xs font-medium text-accent">
+              Download PDF
+              <ExternalLink className="w-3 h-3" />
+            </button>
+          )}
         </CardContent>
       </Card>
     </motion.div>
