@@ -57,7 +57,7 @@ const BenefitsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -68,15 +68,15 @@ const BenefitsSection = () => {
               whileHover={{ scale: 1.03, y: -2 }}
               className="group"
             >
-              <div className="flex items-center gap-4 bg-card border border-border/50 rounded-xl p-4 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <benefit.icon className="w-6 h-6 text-accent" />
+              <div className="flex items-center gap-2 md:gap-4 bg-card border border-border/50 rounded-lg md:rounded-xl p-2.5 md:p-4 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+                <div className="flex-shrink-0 w-9 h-9 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <benefit.icon className="w-4 h-4 md:w-6 md:h-6 text-accent" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-base font-semibold text-foreground leading-tight">
+                  <h3 className="text-xs md:text-base font-semibold text-foreground leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-tight mt-0.5">
+                  <p className="text-[10px] md:text-sm text-muted-foreground leading-tight mt-0.5">
                     {benefit.desc}
                   </p>
                 </div>

@@ -158,7 +158,7 @@ const LocationCard = ({
 
 const LocationsSection = () => {
   return (
-    <section className="py-10 md:py-16 bg-secondary/30">
+    <section className="py-10 md:py-16 bg-pink/50">
       <div className="container mx-auto px-3 md:px-4">
         {/* Header */}
         <motion.div
