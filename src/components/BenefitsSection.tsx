@@ -293,34 +293,34 @@ const BenefitsSection = () => {
       <Dialog open={!!selectedBenefit} onOpenChange={() => setSelectedBenefit(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
               {selectedBenefit && (
-                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-                  <selectedBenefit.icon className="w-6 h-6 text-accent" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <selectedBenefit.icon className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                 </div>
               )}
-              <div>
-                <DialogTitle className="text-xl font-serif">
+              <div className="min-w-0">
+                <DialogTitle className="text-base sm:text-xl font-serif leading-tight">
                   {selectedBenefit?.title}
                 </DialogTitle>
-                <DialogDescription className="text-accent">
+                <DialogDescription className="text-accent text-xs sm:text-sm">
                   {selectedBenefit?.desc}
                 </DialogDescription>
               </div>
             </div>
           </DialogHeader>
-          <div className="mt-4">
-            <h4 className="font-semibold text-foreground mb-3">Detail:</h4>
-            <ul className="space-y-2">
+          <div className="mt-2 sm:mt-4">
+            <h4 className="font-semibold text-foreground mb-2 sm:mb-3 text-sm sm:text-base">Detail:</h4>
+            <ul className="space-y-1.5 sm:space-y-2">
               {selectedBenefit?.details.map((detail, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="flex items-start gap-2 text-muted-foreground"
+                  className="flex items-start gap-2 text-muted-foreground text-xs sm:text-sm"
                 >
-                  <span className="text-accent mt-1">•</span>
+                  <span className="text-accent mt-0.5 sm:mt-1">•</span>
                   <span>{detail}</span>
                 </motion.li>
               ))}
