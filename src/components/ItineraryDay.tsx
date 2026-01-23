@@ -39,9 +39,9 @@ const getHighlightColor = (highlight?: string) => {
     case "worship":
       return "bg-accent text-accent-foreground";
     case "ziarah":
-      return "bg-emerald-light/20 text-foreground";
+      return "bg-rose-light/20 text-foreground";
     case "travel":
-      return "bg-muted text-muted-foreground";
+      return "bg-brown/10 text-foreground";
     default:
       return "bg-card text-card-foreground";
   }

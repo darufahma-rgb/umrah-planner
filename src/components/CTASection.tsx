@@ -3,7 +3,7 @@ import { Phone, MessageCircle, ArrowRight } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-primary via-primary to-emerald-light relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-primary via-rose-dark to-brown relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-pattern-islamic opacity-30" />
       
