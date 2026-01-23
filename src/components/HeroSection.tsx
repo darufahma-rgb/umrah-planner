@@ -54,8 +54,8 @@ const HeroSection = () => {
             className="mb-4 md:mb-8"
           >
             <div className="flex items-start justify-center gap-2">
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-wide">
-                Umrah
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-wide">
+                Itinerary Umrah
               </h1>
               <span className="text-white/70 text-xl sm:text-2xl md:text-3xl font-light mt-1">
                 2026
