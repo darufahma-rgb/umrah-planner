@@ -134,7 +134,7 @@ const itineraryData = [
 
 const ItinerarySection = () => {
   return (
-    <section className="py-10 md:py-16 bg-background">
+    <section className="py-10 md:py-16 bg-pink">
       <div className="container mx-auto px-3 md:px-4">
         {/* Header */}
         <motion.div
