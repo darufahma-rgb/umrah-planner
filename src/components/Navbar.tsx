@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoElmassa from "@/assets/logo-elmassa.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -63,13 +64,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
-            <span
-              className={`font-serif text-xl font-bold transition-colors ${
-                isScrolled ? "text-foreground" : "text-primary-foreground"
+            <img
+              src={logoElmassa}
+              alt="El Massa Tour & Travel"
+              className={`h-10 w-auto transition-all ${
+                isScrolled ? "brightness-100" : "brightness-0 invert"
               }`}
-            >
-              ✦ El Massa Umrah
-            </span>
+            />
           </a>
 
           {/* Desktop Navigation */}

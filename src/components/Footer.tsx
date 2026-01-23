@@ -1,5 +1,6 @@
 import { Heart, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import logoElmassa from "@/assets/logo-elmassa.png";
 
 const Footer = () => {
   const openWhatsApp = () => {
@@ -15,9 +16,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="font-serif text-2xl font-bold text-primary-foreground mb-2">
-              ✦ El Massa Umrah
-            </h3>
+            <img
+              src={logoElmassa}
+              alt="El Massa Tour & Travel"
+              className="h-16 w-auto mb-4 brightness-0 invert"
+            />
             <p className="text-primary-foreground/70 text-sm mb-4">
               Perjalanan spiritual menuju Tanah Suci dengan pelayanan terbaik dan
               pengalaman yang tak terlupakan.
