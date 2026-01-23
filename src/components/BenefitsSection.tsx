@@ -72,11 +72,11 @@ const BenefitsSection = () => {
                 <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                   <benefit.icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
                 </div>
-                <div className="min-w-0">
-                  <h3 className="text-xs md:text-sm font-semibold text-foreground leading-tight truncate">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-xs md:text-sm font-semibold text-foreground leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-[10px] md:text-xs text-muted-foreground truncate">
+                  <p className="text-[10px] md:text-xs text-muted-foreground leading-tight">
                     {benefit.desc}
                   </p>
                 </div>
