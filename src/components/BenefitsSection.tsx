@@ -37,7 +37,7 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-16 md:py-28 bg-gradient-pink bg-pattern-dots relative overflow-hidden">
+    <section className="py-16 md:py-28 bg-cream relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,13 +46,13 @@ const BenefitsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <span className="text-white font-medium text-base md:text-lg tracking-wider uppercase drop-shadow">
+          <span className="text-accent font-medium text-base md:text-lg tracking-wider uppercase">
             Fasilitas Include
           </span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mt-3 drop-shadow-lg">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mt-3">
             Benefit Perjalanan Umrah
           </h2>
-          <p className="text-white/90 mt-4 max-w-2xl mx-auto text-base md:text-lg lg:text-xl drop-shadow">
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-base md:text-lg lg:text-xl">
             Nikmati berbagai fasilitas lengkap bersama El Massa Tour & Travel
           </p>
         </motion.div>
