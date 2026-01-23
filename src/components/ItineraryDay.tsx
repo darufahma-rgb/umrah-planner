@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Plane, Building, Sunrise, Moon, ChevronRight } from "lucide-react";
+import { MapPin, Plane, Building, Sunrise, Moon, ChevronRight, ExternalLink } from "lucide-react";
 import ItineraryModal from "./ItineraryModal";
 import { motion } from "framer-motion";
 
@@ -14,6 +14,7 @@ interface ItineraryDayProps {
   day: number;
   title: string;
   location: string;
+  mapsUrl?: string;
   activities: Activity[];
   image?: string;
   highlight?: "departure" | "umrah" | "worship" | "ziarah" | "travel";
@@ -55,6 +56,7 @@ const ItineraryDay = ({
   day,
   title,
   location,
+  mapsUrl,
   activities,
   image,
   highlight,
@@ -62,6 +64,13 @@ const ItineraryDay = ({
 }: ItineraryDayProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const Icon = getIcon(highlight);
+
+  const handleMapsClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (mapsUrl) {
+      window.open(mapsUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <>
@@ -104,10 +113,21 @@ const ItineraryDay = ({
           )}
 
           <CardContent className="p-5">
-            {/* Location */}
-            <div className="flex items-center gap-1.5 text-muted-foreground text-sm mb-2">
-              <MapPin className="w-3.5 h-3.5" />
-              <span className="truncate">{location}</span>
+            {/* Location with Maps Link */}
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <div className="flex items-center gap-1.5 text-muted-foreground text-sm min-w-0">
+                <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+                <span className="truncate">{location}</span>
+              </div>
+              {mapsUrl && (
+                <button
+                  onClick={handleMapsClick}
+                  className="flex items-center gap-1 text-xs font-medium text-accent hover:text-gold-dark transition-colors flex-shrink-0 bg-accent/10 hover:bg-accent/20 px-2 py-1 rounded-full"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  Maps
+                </button>
+              )}
             </div>
 
             {/* Title */}
@@ -147,6 +167,7 @@ const ItineraryDay = ({
         day={day}
         title={title}
         location={location}
+        mapsUrl={mapsUrl}
         activities={activities}
         image={image}
         highlight={highlight}

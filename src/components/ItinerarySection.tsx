@@ -10,6 +10,7 @@ const itineraryData = [
     day: 1,
     title: "Pangkal Pinang - Jakarta - Jeddah",
     location: "Pangkal Pinang → Jakarta → Jeddah → Madinah",
+    mapsUrl: "https://maps.google.com/?q=Madinah,Saudi+Arabia",
     activities: [
       { time: "09:00", description: "Berkumpul di Bandara Depati Amir Pangkal Pinang" },
       { time: "12:10", description: "Take-off ke Jakarta (IU 822)" },
@@ -24,6 +25,7 @@ const itineraryData = [
     day: 2,
     title: "Madinah - Rawdhah & Ziarah",
     location: "Madinah Al-Munawwarah",
+    mapsUrl: "https://maps.google.com/?q=Al-Masjid+an-Nabawi,Madinah",
     activities: [
       { time: "Pagi", description: "Rawdhah untuk jemaah perempuan (InsyaAllah)" },
       { time: "Siang", description: "Rawdhah untuk jemaah laki-laki" },
@@ -39,6 +41,7 @@ const itineraryData = [
     day: 3,
     title: "Tour & Ziarah Madinah",
     location: "Madinah & Sekitarnya",
+    mapsUrl: "https://maps.google.com/?q=Masjid+Quba,Madinah",
     activities: [
       { description: "Masjid Quba - Masjid pertama dibangun Rasulullah" },
       { description: "Jabal Uhud & Makam Para Syuhada" },
@@ -53,6 +56,7 @@ const itineraryData = [
     day: 4,
     title: "Madinah - Mekah (Pelaksanaan Umroh)",
     location: "Madinah → Mekah",
+    mapsUrl: "https://maps.google.com/?q=Masjid+al-Haram,Mecca",
     activities: [
       { time: "Pagi", description: "Check-out hotel, koper di depan kamar" },
       { time: "14:00", description: "Bus berangkat menuju Mekah" },
@@ -67,6 +71,7 @@ const itineraryData = [
     day: 5,
     title: "Ibadah di Masjidil Haram",
     location: "Mekah Al-Mukarramah",
+    mapsUrl: "https://maps.google.com/?q=Masjid+al-Haram,Mecca",
     activities: [
       { description: "Acara bebas - memperbanyak ibadah" },
       { description: "Itikaf di Masjidil Haram" },
@@ -80,6 +85,7 @@ const itineraryData = [
     day: 7,
     title: "Tour & Ziarah Mekah",
     location: "Mekah & Sekitarnya",
+    mapsUrl: "https://maps.google.com/?q=Jabal+Rahmah,Arafat",
     activities: [
       { description: "Jabal Tsur" },
       { description: "Padang Arafah & Jabal Rahmah" },
@@ -94,6 +100,7 @@ const itineraryData = [
     day: 8,
     title: "City Tour Thaif",
     location: "Mekah → Thaif → Mekah",
+    mapsUrl: "https://maps.google.com/?q=Taif,Saudi+Arabia",
     activities: [
       { time: "Pagi", description: "Sarapan di hotel" },
       { description: "Bonus City Tour Thaif GRATIS dari El Massa" },
@@ -107,6 +114,7 @@ const itineraryData = [
     day: 9,
     title: "Mekah - Jeddah (Kepulangan)",
     location: "Mekah → Jeddah",
+    mapsUrl: "https://maps.google.com/?q=King+Abdulaziz+International+Airport,Jeddah",
     activities: [
       { time: "Pagi", description: "Sarapan & persiapan check-out" },
       { time: "14:00", description: "Check-out hotel, koper di depan kamar" },
@@ -120,6 +128,7 @@ const itineraryData = [
     day: 10,
     title: "Jakarta - Pangkal Pinang",
     location: "Jakarta → Pangkal Pinang",
+    mapsUrl: "https://maps.google.com/?q=Depati+Amir+Airport,Pangkal+Pinang",
     activities: [
       { time: "07:35", description: "Tiba di Jakarta" },
       { time: "15:15", description: "Penerbangan ke Pangkal Pinang (IU 818)" },
@@ -163,6 +172,7 @@ const ItinerarySection = () => {
               day={item.day}
               title={item.title}
               location={item.location}
+              mapsUrl={item.mapsUrl}
               activities={item.activities}
               image={item.image}
               highlight={item.highlight}

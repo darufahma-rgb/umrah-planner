@@ -5,8 +5,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Clock, Plane, CheckCircle2 } from "lucide-react";
+import { MapPin, Clock, Plane, CheckCircle2, ExternalLink } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 
 interface Activity {
   time?: string;
@@ -19,6 +20,7 @@ interface ItineraryModalProps {
   day: number;
   title: string;
   location: string;
+  mapsUrl?: string;
   activities: Activity[];
   image?: string;
   highlight?: string;
@@ -47,10 +49,16 @@ const ItineraryModal = ({
   day,
   title,
   location,
+  mapsUrl,
   activities,
   image,
   highlight,
 }: ItineraryModalProps) => {
+  const handleMapsClick = () => {
+    if (mapsUrl) {
+      window.open(mapsUrl, "_blank", "noopener,noreferrer");
+    }
+  };
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-lg max-h-[85vh] p-0 overflow-hidden">
@@ -73,9 +81,22 @@ const ItineraryModal = ({
         )}
 
         <DialogHeader className={`px-6 ${image ? "pt-2" : "pt-6"}`}>
-          <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
-            <MapPin className="w-4 h-4" />
-            <span>{location}</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-muted-foreground text-sm">
+              <MapPin className="w-4 h-4" />
+              <span>{location}</span>
+            </div>
+            {mapsUrl && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleMapsClick}
+                className="text-accent border-accent/30 hover:bg-accent/10 hover:text-gold-dark"
+              >
+                <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                Buka Maps
+              </Button>
+            )}
           </div>
           <DialogTitle className="font-serif text-2xl text-foreground">
             {!image && <span className="text-accent mr-2">Hari {day}:</span>}
