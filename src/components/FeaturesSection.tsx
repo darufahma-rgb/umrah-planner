@@ -18,7 +18,7 @@ const features = [
   },
   {
     icon: Clock,
-    title: "9 Hari Perjalanan",
+    title: "10 Hari Perjalanan",
     description: "Waktu optimal untuk ibadah yang khusyuk",
   },
   {

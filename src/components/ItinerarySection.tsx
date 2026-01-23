@@ -7,110 +7,123 @@ import madinahImage from "@/assets/madinah-mosque.jpg";
 const itineraryData = [
   {
     day: 1,
-    title: "Keberangkatan dari Indonesia",
-    location: "Jakarta - Jeddah",
+    title: "Pangkal Pinang - Jakarta - Jeddah",
+    location: "Pangkal Pinang → Jakarta → Jeddah → Madinah",
     activities: [
-      { time: "06:00", description: "Berkumpul di Bandara Soekarno-Hatta" },
-      { time: "09:00", description: "Check-in & pengurusan bagasi" },
-      { time: "12:00", description: "Penerbangan menuju Jeddah" },
-      { description: "Persiapan niat ihram di pesawat" },
+      { time: "09:00", description: "Berkumpul di Bandara Depati Amir Pangkal Pinang" },
+      { time: "12:10", description: "Take-off ke Jakarta (IU 822)" },
+      { time: "13:20", description: "Tiba di Bandara Jakarta" },
+      { time: "00:40", description: "Penerbangan ke Jeddah (SV 827) Saudia Airlines" },
+      { time: "06:40", description: "Tiba di Jeddah, lanjut bus ke Madinah" },
+      { description: "Check-in hotel Madinah & beristirahat" },
     ],
     highlight: "departure" as const,
   },
   {
     day: 2,
-    title: "Tiba di Makkah - Umrah",
-    location: "Makkah Al-Mukarramah",
+    title: "Madinah - Rawdhah & Ziarah",
+    location: "Madinah Al-Munawwarah",
     activities: [
-      { time: "Pagi", description: "Tiba di Jeddah, perjalanan ke Makkah" },
-      { description: "Check-in hotel dekat Masjidil Haram" },
-      { description: "Melaksanakan Umrah (Thawaf & Sa'i)" },
-      { description: "Tahallul (potong rambut)" },
+      { time: "Pagi", description: "Rawdhah untuk jemaah perempuan (InsyaAllah)" },
+      { time: "Siang", description: "Rawdhah untuk jemaah laki-laki" },
+      { description: "Ziarah & Pengenalan sekitar Masjid Nabawi" },
+      { description: "Bani Tsaqifah, Makam Rasulullah & Sahabat" },
+      { description: "Masjid Ali, Masjid Ghamamah, Pemakaman Baqi" },
+      { description: "Ibadah bebas: Itikaf, Tadarus di Masjid Nabawi" },
     ],
-    image: heroImage,
-    highlight: "umrah" as const,
-  },
-  {
-    day: 3,
-    title: "Ibadah di Masjidil Haram",
-    location: "Makkah Al-Mukarramah",
-    activities: [
-      { time: "Subuh", description: "Shalat Subuh berjamaah" },
-      { description: "Thawaf Sunnah" },
-      { description: "Dzikir dan doa di Multazam" },
-      { description: "Minum air zamzam" },
-    ],
+    image: madinahImage,
     highlight: "worship" as const,
   },
   {
-    day: 4,
-    title: "Ziarah Makkah",
-    location: "Makkah & Sekitarnya",
+    day: 3,
+    title: "Tour & Ziarah Madinah",
+    location: "Madinah & Sekitarnya",
     activities: [
-      { description: "Ziarah ke Jabal Rahmah" },
-      { description: "Padang Arafah" },
-      { description: "Muzdalifah" },
-      { description: "Mina & Jamarat" },
-      { description: "Jabal Tsur" },
+      { description: "Masjid Quba - Masjid pertama dibangun Rasulullah" },
+      { description: "Jabal Uhud & Makam Para Syuhada" },
+      { description: "Kebun Kurma (kondisional)" },
+      { description: "Melewati Masjid Qiblatain & Masjid Khandaq" },
+      { description: "Ibadah bebas di Masjid Nabawi" },
+      { time: "Sore/Malam", description: "Manasik singkat persiapan Umroh" },
     ],
     highlight: "ziarah" as const,
+  },
+  {
+    day: 4,
+    title: "Madinah - Mekah (Pelaksanaan Umroh)",
+    location: "Madinah → Mekah",
+    activities: [
+      { time: "Pagi", description: "Check-out hotel, koper di depan kamar" },
+      { time: "14:00", description: "Bus berangkat menuju Mekah" },
+      { description: "Miqat di Masjid Bir Ali/Dzulhulaifah" },
+      { description: "Mengenakan Ihram & melafazkan niat Umroh" },
+      { description: "Memperbanyak Talbiyah selama perjalanan" },
+      { description: "Tiba di Mekah, pelaksanaan Umroh dibimbing Muthawif" },
+    ],
+    highlight: "umrah" as const,
   },
   {
     day: 5,
-    title: "Perjalanan ke Madinah",
-    location: "Makkah - Madinah",
+    title: "Ibadah di Masjidil Haram",
+    location: "Mekah Al-Mukarramah",
     activities: [
-      { time: "Pagi", description: "Check-out hotel Makkah" },
-      { description: "Perjalanan darat ke Madinah (±450 km)" },
-      { description: "Check-in hotel Madinah" },
-      { time: "Maghrib", description: "Shalat di Masjid Nabawi" },
+      { description: "Acara bebas - memperbanyak ibadah" },
+      { description: "Itikaf di Masjidil Haram" },
+      { description: "Tawaf Sunnah" },
+      { time: "Siang", description: "Shalat Jumat berjamaah di Masjidil Haram" },
     ],
-    highlight: "travel" as const,
-  },
-  {
-    day: 6,
-    title: "Ziarah Madinah",
-    location: "Madinah Al-Munawwarah",
-    activities: [
-      { description: "Ziarah ke Makam Rasulullah SAW" },
-      { description: "Raudhah (Taman Surga)" },
-      { description: "Masjid Quba" },
-      { description: "Masjid Qiblatain" },
-    ],
-    image: madinahImage,
-    highlight: "ziarah" as const,
+    image: heroImage,
+    highlight: "worship" as const,
   },
   {
     day: 7,
-    title: "Lanjutan Ziarah Madinah",
-    location: "Madinah & Sekitarnya",
+    title: "Tour & Ziarah Mekah",
+    location: "Mekah & Sekitarnya",
     activities: [
-      { description: "Jabal Uhud & Makam Syuhada" },
-      { description: "Kebun Kurma" },
-      { description: "Kompleks Percetakan Al-Quran" },
-      { time: "Malam", description: "Shalat di Masjid Nabawi" },
+      { description: "Jabal Tsur" },
+      { description: "Padang Arafah & Jabal Rahmah" },
+      { description: "Muzdalifah & Mina" },
+      { description: "Jabal Nur (kondisional)" },
+      { description: "Miqat di Masjid Ji'ronah" },
+      { description: "Umroh ke-2 (opsional bagi yang berminat)" },
     ],
     highlight: "ziarah" as const,
   },
   {
     day: 8,
-    title: "Hari Terakhir di Madinah",
-    location: "Madinah Al-Munawwarah",
+    title: "City Tour Thaif",
+    location: "Mekah → Thaif → Mekah",
     activities: [
-      { description: "Ibadah bebas di Masjid Nabawi" },
-      { description: "Persiapan kepulangan" },
-      { time: "Sore", description: "Perjalanan ke Jeddah" },
+      { time: "Pagi", description: "Sarapan di hotel" },
+      { description: "Bonus City Tour Thaif GRATIS dari El Massa" },
+      { description: "Menikmati keindahan kota Thaif" },
+      { description: "Wahana berbayar (opsional)" },
+      { description: "Kembali ke Mekah" },
     ],
-    highlight: "worship" as const,
+    highlight: "travel" as const,
   },
   {
     day: 9,
-    title: "Kepulangan ke Indonesia",
-    location: "Jeddah - Jakarta",
+    title: "Mekah - Jeddah (Kepulangan)",
+    location: "Mekah → Jeddah",
     activities: [
-      { time: "Dini Hari", description: "Check-in bandara Jeddah" },
-      { description: "Penerbangan kembali ke Indonesia" },
-      { time: "Malam", description: "Tiba di Tanah Air dengan selamat" },
+      { time: "Pagi", description: "Sarapan & persiapan check-out" },
+      { time: "14:00", description: "Check-out hotel, koper di depan kamar" },
+      { description: "Perjalanan ke Bandara Jeddah" },
+      { time: "17:30", description: "Take-off dari Jeddah (SV 816)" },
+      { description: "Penerbangan menuju Jakarta" },
+    ],
+    highlight: "departure" as const,
+  },
+  {
+    day: 10,
+    title: "Jakarta - Pangkal Pinang",
+    location: "Jakarta → Pangkal Pinang",
+    activities: [
+      { time: "07:35", description: "Tiba di Jakarta" },
+      { time: "15:15", description: "Penerbangan ke Pangkal Pinang (IU 818)" },
+      { time: "16:30", description: "Tiba di Bandara Pangkal Pinang" },
+      { description: "Selesai rangkaian perjalanan ibadah bersama El Massa" },
     ],
     highlight: "departure" as const,
   },
@@ -124,14 +137,14 @@ const ItinerarySection = () => {
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-accent text-accent">
             <Calendar className="w-3 h-3 mr-1" />
-            9 Hari Perjalanan
+            10 Hari Perjalanan
           </Badge>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
             Jadwal Perjalanan Umrah
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Ikuti perjalanan spiritual Anda hari demi hari dengan itinerary lengkap
-            yang telah kami susun dengan penuh kekhusyukan.
+            Itinerary lengkap perjalanan ibadah Umroh bersama El Massa
+            dari Pangkal Pinang menuju Tanah Suci
           </p>
         </div>
 
