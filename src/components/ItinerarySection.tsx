@@ -1,6 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Clock, Plane, Building, Sunrise } from "lucide-react";
+import { Calendar } from "lucide-react";
+import ItineraryDay from "./ItineraryDay";
+import heroImage from "@/assets/hero-makkah.jpg";
+import madinahImage from "@/assets/madinah-mosque.jpg";
 
 const itineraryData = [
   {
@@ -8,134 +10,120 @@ const itineraryData = [
     title: "Keberangkatan dari Indonesia",
     location: "Jakarta - Jeddah",
     activities: [
-      "Berkumpul di Bandara Soekarno-Hatta",
-      "Penerbangan menuju Jeddah",
-      "Persiapan niat ihram di pesawat",
+      { time: "06:00", description: "Berkumpul di Bandara Soekarno-Hatta" },
+      { time: "09:00", description: "Check-in & pengurusan bagasi" },
+      { time: "12:00", description: "Penerbangan menuju Jeddah" },
+      { description: "Persiapan niat ihram di pesawat" },
     ],
-    icon: Plane,
-    highlight: "departure",
+    highlight: "departure" as const,
   },
   {
     day: 2,
     title: "Tiba di Makkah - Umrah",
     location: "Makkah Al-Mukarramah",
     activities: [
-      "Tiba di Jeddah, perjalanan ke Makkah",
-      "Check-in hotel",
-      "Melaksanakan Umrah (Thawaf & Sa'i)",
-      "Tahallul",
+      { time: "Pagi", description: "Tiba di Jeddah, perjalanan ke Makkah" },
+      { description: "Check-in hotel dekat Masjidil Haram" },
+      { description: "Melaksanakan Umrah (Thawaf & Sa'i)" },
+      { description: "Tahallul (potong rambut)" },
     ],
-    icon: Building,
-    highlight: "umrah",
+    image: heroImage,
+    highlight: "umrah" as const,
   },
   {
     day: 3,
     title: "Ibadah di Masjidil Haram",
     location: "Makkah Al-Mukarramah",
     activities: [
-      "Shalat Subuh berjamaah di Masjidil Haram",
-      "Thawaf Sunnah",
-      "Dzikir dan doa di Multazam",
-      "Minum air zamzam",
+      { time: "Subuh", description: "Shalat Subuh berjamaah" },
+      { description: "Thawaf Sunnah" },
+      { description: "Dzikir dan doa di Multazam" },
+      { description: "Minum air zamzam" },
     ],
-    icon: Sunrise,
-    highlight: "worship",
+    highlight: "worship" as const,
   },
   {
     day: 4,
     title: "Ziarah Makkah",
     location: "Makkah & Sekitarnya",
     activities: [
-      "Ziarah ke Jabal Rahmah",
-      "Padang Arafah",
-      "Muzdalifah",
-      "Mina & Jamarat",
+      { description: "Ziarah ke Jabal Rahmah" },
+      { description: "Padang Arafah" },
+      { description: "Muzdalifah" },
+      { description: "Mina & Jamarat" },
+      { description: "Jabal Tsur" },
     ],
-    icon: MapPin,
-    highlight: "ziarah",
+    highlight: "ziarah" as const,
   },
   {
     day: 5,
     title: "Perjalanan ke Madinah",
     location: "Makkah - Madinah",
     activities: [
-      "Check-out hotel Makkah",
-      "Perjalanan darat ke Madinah (±450 km)",
-      "Check-in hotel Madinah",
-      "Shalat di Masjid Nabawi",
+      { time: "Pagi", description: "Check-out hotel Makkah" },
+      { description: "Perjalanan darat ke Madinah (±450 km)" },
+      { description: "Check-in hotel Madinah" },
+      { time: "Maghrib", description: "Shalat di Masjid Nabawi" },
     ],
-    icon: Plane,
-    highlight: "travel",
+    highlight: "travel" as const,
   },
   {
     day: 6,
     title: "Ziarah Madinah",
     location: "Madinah Al-Munawwarah",
     activities: [
-      "Ziarah ke Makam Rasulullah SAW",
-      "Raudhah (Taman Surga)",
-      "Masjid Quba",
-      "Masjid Qiblatain",
+      { description: "Ziarah ke Makam Rasulullah SAW" },
+      { description: "Raudhah (Taman Surga)" },
+      { description: "Masjid Quba" },
+      { description: "Masjid Qiblatain" },
     ],
-    icon: Building,
-    highlight: "ziarah",
+    image: madinahImage,
+    highlight: "ziarah" as const,
   },
   {
     day: 7,
     title: "Lanjutan Ziarah Madinah",
     location: "Madinah & Sekitarnya",
     activities: [
-      "Jabal Uhud & Makam Syuhada",
-      "Kebun Kurma",
-      "Kompleks Percetakan Al-Quran",
-      "Shalat di Masjid Nabawi",
+      { description: "Jabal Uhud & Makam Syuhada" },
+      { description: "Kebun Kurma" },
+      { description: "Kompleks Percetakan Al-Quran" },
+      { time: "Malam", description: "Shalat di Masjid Nabawi" },
     ],
-    icon: MapPin,
-    highlight: "ziarah",
+    highlight: "ziarah" as const,
   },
   {
     day: 8,
     title: "Hari Terakhir di Madinah",
     location: "Madinah Al-Munawwarah",
     activities: [
-      "Ibadah bebas di Masjid Nabawi",
-      "Persiapan kepulangan",
-      "Perjalanan ke Jeddah",
+      { description: "Ibadah bebas di Masjid Nabawi" },
+      { description: "Persiapan kepulangan" },
+      { time: "Sore", description: "Perjalanan ke Jeddah" },
     ],
-    icon: Sunrise,
-    highlight: "worship",
+    highlight: "worship" as const,
   },
   {
     day: 9,
     title: "Kepulangan ke Indonesia",
     location: "Jeddah - Jakarta",
     activities: [
-      "Penerbangan kembali ke Indonesia",
-      "Tiba di Tanah Air dengan selamat",
+      { time: "Dini Hari", description: "Check-in bandara Jeddah" },
+      { description: "Penerbangan kembali ke Indonesia" },
+      { time: "Malam", description: "Tiba di Tanah Air dengan selamat" },
     ],
-    icon: Plane,
-    highlight: "departure",
+    highlight: "departure" as const,
   },
 ];
 
-const getHighlightStyle = (highlight: string) => {
-  const styles: Record<string, string> = {
-    departure: "bg-secondary",
-    umrah: "bg-primary text-primary-foreground",
-    worship: "bg-accent/20 border-accent",
-    ziarah: "bg-emerald-light/10 border-emerald-light/30",
-    travel: "bg-muted",
-  };
-  return styles[highlight] || "bg-card";
-};
-
 const ItinerarySection = () => {
   return (
-    <section className="py-20 bg-background bg-pattern-islamic">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-up">
+        {/* Header */}
+        <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-accent text-accent">
-            <Clock className="w-3 h-3 mr-1" />
+            <Calendar className="w-3 h-3 mr-1" />
             9 Hari Perjalanan
           </Badge>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
@@ -147,55 +135,19 @@ const ItinerarySection = () => {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary" />
-
-          <div className="space-y-8">
-            {itineraryData.map((item, index) => (
-              <div
-                key={item.day}
-                className={`relative flex flex-col md:flex-row gap-4 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 w-8 h-8 -translate-x-1/2 bg-primary rounded-full flex items-center justify-center border-4 border-background z-10">
-                  <span className="text-xs font-bold text-primary-foreground">
-                    {item.day}
-                  </span>
-                </div>
-
-                {/* Card */}
-                <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}>
-                  <Card className={`border ${getHighlightStyle(item.highlight)} shadow-sm hover:shadow-lg transition-shadow duration-300`}>
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                        <item.icon className="w-4 h-4" />
-                        <span className="text-sm">{item.location}</span>
-                      </div>
-                      <CardTitle className="font-serif text-xl text-foreground">
-                        Hari {item.day}: {item.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {item.activities.map((activity, actIndex) => (
-                          <li
-                            key={actIndex}
-                            className="flex items-start gap-2 text-sm text-muted-foreground"
-                          >
-                            <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
-                            {activity}
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {itineraryData.map((item) => (
+            <ItineraryDay
+              key={item.day}
+              day={item.day}
+              title={item.title}
+              location={item.location}
+              activities={item.activities}
+              image={item.image}
+              highlight={item.highlight}
+            />
+          ))}
         </div>
       </div>
     </section>
