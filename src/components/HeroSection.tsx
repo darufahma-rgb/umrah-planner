@@ -76,7 +76,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="max-w-md md:max-w-xl mx-auto mb-8 md:mb-10"
           >
-            <p className="text-sm sm:text-base md:text-xl text-white/80 font-light leading-relaxed">
+            <p className="text-sm sm:text-base md:text-xl text-white/80 font-semibold leading-relaxed">
               Wujudkan perjalanan suci Anda. Pengalaman spiritual yang penuh berkah bersama El Massa Tour & Travel.
             </p>
           </motion.div>
