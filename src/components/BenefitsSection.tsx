@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Plane, 
   Luggage, 
@@ -14,28 +15,202 @@ import {
   Droplets, 
   Camera, 
   Gift,
-  ChefHat
+  ChefHat,
+  X
 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 
-const benefits = [
-  { icon: Plane, title: 'Tiket Pesawat PP', desc: 'CGK - JED (Saudia/Garuda)' },
-  { icon: Luggage, title: 'Bagasi 1 x 23 KG', desc: 'Sesuai Maskapai' },
-  { icon: FileText, title: 'Visa Umrah', desc: 'Proses Lengkap' },
-  { icon: Building2, title: 'Hotel Makkah & Madinah', desc: 'Bintang 4-5' },
-  { icon: Utensils, title: 'Makan 3x Sehari', desc: 'Menu Indonesia' },
-  { icon: Bus, title: 'Bus AC Modern', desc: 'Transportasi Nyaman' },
-  { icon: Briefcase, title: 'Perlengkapan Umrah', desc: '+ Koper Eksklusif' },
-  { icon: Users, title: 'Tour Leader & Muthowwif', desc: 'Berpengalaman' },
-  { icon: MapPin, title: 'Handling Bandara', desc: 'Jakarta & Jeddah' },
-  { icon: BookOpen, title: 'Bimbingan Manasik 3x', desc: 'Sebelum Berangkat' },
-  { icon: HeartPulse, title: 'Free Medical Checkup', desc: '30 Hari Sebelum' },
-  { icon: Droplets, title: 'Air Zamzam 5 Liter', desc: 'Saat Kepulangan' },
-  { icon: ChefHat, title: 'Free Ayam Albaik', desc: 'Saat Kepulangan' },
-  { icon: Camera, title: 'Dokumentasi', desc: 'Foto & Video' },
-  { icon: Gift, title: 'Bingkisan Kenangan', desc: 'Saat Kepulangan' },
+interface BenefitItem {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  desc: string;
+  details: string[];
+}
+
+const benefits: BenefitItem[] = [
+  { 
+    icon: Plane, 
+    title: 'Tiket Pesawat PP', 
+    desc: 'CGK - JED (Saudia/Garuda)',
+    details: [
+      'Tiket PP Jakarta (CGK) - Jeddah (JED)',
+      'Pilihan maskapai: Saudia Airlines atau Garuda Indonesia',
+      'Kelas ekonomi dengan layanan halal meal',
+      'Termasuk airport tax dan fuel surcharge'
+    ]
+  },
+  { 
+    icon: Luggage, 
+    title: 'Bagasi 1 x 23 KG', 
+    desc: 'Sesuai Maskapai',
+    details: [
+      'Bagasi check-in 1 x 23 kg',
+      'Hand luggage 7 kg',
+      'Sesuai ketentuan maskapai penerbangan'
+    ]
+  },
+  { 
+    icon: FileText, 
+    title: 'Visa Umrah', 
+    desc: 'Proses Lengkap',
+    details: [
+      'Proses visa umrah lengkap',
+      'Pengurusan dokumen resmi',
+      'Asuransi perjalanan sudah termasuk',
+      'Biaya visa sudah termasuk dalam paket'
+    ]
+  },
+  { 
+    icon: Building2, 
+    title: 'Hotel Makkah & Madinah', 
+    desc: 'Bintang 4-5',
+    details: [
+      'Hotel bintang 4-5 di Makkah',
+      'Hotel bintang 4-5 di Madinah',
+      'Lokasi dekat dengan Masjidil Haram & Masjid Nabawi',
+      'Kamar ber-AC dengan fasilitas lengkap',
+      'WiFi gratis'
+    ]
+  },
+  { 
+    icon: Utensils, 
+    title: 'Makan 3x Sehari', 
+    desc: 'Menu Indonesia',
+    details: [
+      'Sarapan, makan siang, dan makan malam',
+      'Menu masakan Indonesia',
+      'Makanan halal terjamin',
+      'Buffet di hotel atau catering khusus'
+    ]
+  },
+  { 
+    icon: Bus, 
+    title: 'Bus AC Modern', 
+    desc: 'Transportasi Nyaman',
+    details: [
+      'Bus AC modern dan nyaman',
+      'Untuk seluruh perjalanan di Arab Saudi',
+      'Airport transfer termasuk',
+      'Perjalanan wisata ke tempat bersejarah'
+    ]
+  },
+  { 
+    icon: Briefcase, 
+    title: 'Perlengkapan Umrah', 
+    desc: '+ Koper Eksklusif',
+    details: [
+      'Koper',
+      'Bahan baju',
+      'Hijab',
+      'Mukenah',
+      'Ihram untuk laki-laki',
+      'Buku panduan',
+      'Tag koper',
+      'Syal',
+      'ID card',
+      'Tas ransel kecil',
+      'Tas serut untuk sandal',
+      'Tas passport dan dokumen'
+    ]
+  },
+  { 
+    icon: Users, 
+    title: 'Tour Leader & Muthowwif', 
+    desc: 'Berpengalaman',
+    details: [
+      'Tour leader berpengalaman dari Indonesia',
+      'Muthowwif (pembimbing ibadah) profesional',
+      'Pendampingan selama perjalanan',
+      'Bantuan 24 jam selama di Arab Saudi'
+    ]
+  },
+  { 
+    icon: MapPin, 
+    title: 'Handling Bandara', 
+    desc: 'Jakarta & Jeddah',
+    details: [
+      'Handling di Bandara Soekarno-Hatta Jakarta',
+      'Handling di Bandara King Abdulaziz Jeddah',
+      'Bantuan check-in dan boarding',
+      'Porter untuk bagasi'
+    ]
+  },
+  { 
+    icon: BookOpen, 
+    title: 'Bimbingan Manasik 3x', 
+    desc: 'Sebelum Berangkat',
+    details: [
+      '3 kali bimbingan manasik sebelum berangkat',
+      'Materi tata cara umrah lengkap',
+      'Praktik langsung gerakan ibadah',
+      'Doa-doa umrah dan ziarah',
+      'Sesi tanya jawab dengan ustadz'
+    ]
+  },
+  { 
+    icon: HeartPulse, 
+    title: 'Free Medical Checkup', 
+    desc: '30 Hari Sebelum',
+    details: [
+      'Pemeriksaan kesehatan gratis',
+      'Dilakukan 30 hari sebelum keberangkatan',
+      'Pemeriksaan darah lengkap',
+      'Konsultasi dengan dokter'
+    ]
+  },
+  { 
+    icon: Droplets, 
+    title: 'Air Zamzam 5 Liter', 
+    desc: 'Saat Kepulangan',
+    details: [
+      'Air zamzam 5 liter per jamaah',
+      'Kemasan resmi dan higienis',
+      'Diberikan saat kepulangan',
+      'Bonus untuk acara selamatan di rumah'
+    ]
+  },
+  { 
+    icon: ChefHat, 
+    title: 'Free Ayam Albaik', 
+    desc: 'Saat Kepulangan',
+    details: [
+      'Ayam Albaik gratis',
+      'Makanan khas Arab Saudi yang populer',
+      'Diberikan saat kepulangan'
+    ]
+  },
+  { 
+    icon: Camera, 
+    title: 'Dokumentasi', 
+    desc: 'Foto & Video',
+    details: [
+      'Dokumentasi foto selama perjalanan',
+      'Video highlight perjalanan',
+      'Foto bersama di tempat-tempat bersejarah',
+      'File digital diberikan setelah pulang'
+    ]
+  },
+  { 
+    icon: Gift, 
+    title: 'Bingkisan Kenangan', 
+    desc: 'Saat Kepulangan',
+    details: [
+      'Bingkisan oleh-oleh khas Tanah Suci',
+      'Kenang-kenangan perjalanan umrah',
+      'Diberikan saat kepulangan'
+    ]
+  },
 ];
 
 const BenefitsSection = () => {
+  const [selectedBenefit, setSelectedBenefit] = useState<BenefitItem | null>(null);
+
   return (
     <section className="py-16 md:py-28 bg-cream relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
@@ -55,6 +230,9 @@ const BenefitsSection = () => {
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-base md:text-lg lg:text-xl">
             Nikmati berbagai fasilitas lengkap bersama El Massa Tour & Travel
           </p>
+          <p className="text-accent text-sm mt-2">
+            Klik item untuk melihat detail
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4">
@@ -66,7 +244,8 @@ const BenefitsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.03 }}
               whileHover={{ scale: 1.03, y: -2 }}
-              className="group"
+              className="group cursor-pointer"
+              onClick={() => setSelectedBenefit(benefit)}
             >
               <div className="flex items-center gap-2 md:gap-4 bg-card border border-border/50 rounded-lg md:rounded-xl p-2.5 md:p-4 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
                 <div className="flex-shrink-0 w-9 h-9 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
@@ -105,6 +284,46 @@ const BenefitsSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Detail Dialog */}
+      <Dialog open={!!selectedBenefit} onOpenChange={() => setSelectedBenefit(null)}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              {selectedBenefit && (
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                  <selectedBenefit.icon className="w-6 h-6 text-accent" />
+                </div>
+              )}
+              <div>
+                <DialogTitle className="text-xl font-serif">
+                  {selectedBenefit?.title}
+                </DialogTitle>
+                <DialogDescription className="text-accent">
+                  {selectedBenefit?.desc}
+                </DialogDescription>
+              </div>
+            </div>
+          </DialogHeader>
+          <div className="mt-4">
+            <h4 className="font-semibold text-foreground mb-3">Detail:</h4>
+            <ul className="space-y-2">
+              {selectedBenefit?.details.map((detail, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex items-start gap-2 text-muted-foreground"
+                >
+                  <span className="text-accent mt-1">•</span>
+                  <span>{detail}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
