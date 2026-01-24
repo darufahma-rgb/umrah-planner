@@ -57,9 +57,9 @@ const Footer = () => {
             <div className="flex items-start gap-2 text-primary-foreground/70 text-xs">
               <MapPin className="w-3 h-3 mt-0.5 flex-shrink-0" />
               <p>
-                Jl. Masjid Raya No. 123
+                Ruko Bes Cinema, Jl. Jendral Sudirman
                 <br />
-                Pangkal Pinang, Bangka Belitung
+                Selindung Baru, Pangkal Pinang
               </p>
             </div>
           </div>
