@@ -167,7 +167,7 @@ const ItinerarySection = () => {
         >
           <Badge className="mb-3 bg-white/90 text-primary border-0 text-xs shadow-sm">
             <Calendar className="w-3 h-3 mr-1" />
-            10 Hari Perjalanan
+            11 Hari Perjalanan
           </Badge>
           <h2 className="font-serif text-2xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
             Jadwal Perjalanan
@@ -186,7 +186,6 @@ const ItinerarySection = () => {
               day={item.day}
               title={item.title}
               location={item.location}
-              mapsUrl={item.mapsUrl}
               activities={item.activities}
               image={item.image}
               highlight={item.highlight}
