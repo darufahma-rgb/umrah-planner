@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 const itineraryData = [
   {
     day: 1,
+    date: "08 Juli 2026",
     title: "Pangkal Pinang - Jakarta",
     location: "Pangkal Pinang → Jakarta",
     image: departureImage,
@@ -28,6 +29,7 @@ const itineraryData = [
   },
   {
     day: 2,
+    date: "09 Juli 2026",
     title: "Jakarta - Jeddah - Madinah",
     location: "Jakarta → Jeddah → Madinah",
     image: jeddahAirportImage,
@@ -41,6 +43,7 @@ const itineraryData = [
   },
   {
     day: 3,
+    date: "10 Juli 2026",
     title: "Madinah - Rawdah & Ziarah",
     location: "Madinah Al-Munawwarah",
     image: madinahImage,
@@ -56,6 +59,7 @@ const itineraryData = [
   },
   {
     day: 4,
+    date: "11 Juli 2026",
     title: "Madinah - Tour Sejarah",
     location: "Madinah & Sekitarnya",
     image: masjidQubaImage,
@@ -68,6 +72,7 @@ const itineraryData = [
   },
   {
     day: 5,
+    date: "12 Juli 2026",
     title: "Madinah - Mekah (Umrah)",
     location: "Madinah → Mekah",
     image: umrahPilgrimsImage,
@@ -82,17 +87,18 @@ const itineraryData = [
   },
   {
     day: 6,
+    date: "13 Juli 2026",
     title: "Ibadah Mandiri di Masjidil Haram",
     location: "Mekah Al-Mukarramah",
     image: heroImage,
     activities: [
       { description: "Acara bebas, memperbanyak ibadah (Itikaf, Tawaf Sunnah) di Masjidil Haram" },
-      { time: "Siang", description: "Shalat Jumat di Masjidil Haram" },
     ],
     highlight: "worship" as const,
   },
   {
     day: 7,
+    date: "14 Juli 2026",
     title: "Ziarah Sejarah Mekah",
     location: "Mekah & Sekitarnya",
     image: jabalRahmahImage,
@@ -104,6 +110,7 @@ const itineraryData = [
   },
   {
     day: 8,
+    date: "15 Juli 2026",
     title: "City Tour Thaif",
     location: "Mekah → Thaif → Mekah",
     image: cityTaifImage,
@@ -116,6 +123,7 @@ const itineraryData = [
   },
   {
     day: 9,
+    date: "16 Juli 2026",
     title: "Mekah - Jeddah - Jakarta",
     location: "Mekah → Jeddah → Jakarta",
     image: jeddahAirportImage,
@@ -129,6 +137,7 @@ const itineraryData = [
   },
   {
     day: 10,
+    date: "17 Juli 2026",
     title: "Tiba di Jakarta",
     location: "Jakarta",
     image: departureImage,
@@ -140,6 +149,7 @@ const itineraryData = [
   },
   {
     day: 11,
+    date: "18 Juli 2026",
     title: "Jakarta - Pangkal Pinang",
     location: "Jakarta → Pangkal Pinang",
     image: departureImage,
@@ -184,6 +194,7 @@ const ItinerarySection = () => {
             <ItineraryDay
               key={item.day}
               day={item.day}
+              date={item.date}
               title={item.title}
               location={item.location}
               activities={item.activities}
