@@ -12,6 +12,7 @@ interface Activity {
 
 interface ItineraryDayProps {
   day: number;
+  date?: string;
   title: string;
   location: string;
   mapsUrl?: string;
@@ -54,6 +55,7 @@ const getHighlightColor = (highlight?: string) => {
 
 const ItineraryDay = ({
   day,
+  date,
   title,
   location,
   mapsUrl,
@@ -89,7 +91,7 @@ const ItineraryDay = ({
               <Badge
                 className="absolute top-2 left-2 text-[10px] md:text-xs bg-white text-primary font-semibold border-0"
               >
-                Hari {day}
+                Hari {day} {date && `• ${date}`}
               </Badge>
             </div>
           )}
@@ -98,7 +100,7 @@ const ItineraryDay = ({
             <div className="h-20 md:h-24 bg-gradient-to-br from-primary to-secondary flex items-center justify-center relative">
               <Icon className="w-8 h-8 md:w-10 md:h-10 text-white/40" />
               <Badge className="absolute top-2 left-2 bg-white text-primary text-[10px] md:text-xs font-semibold border-0">
-                Hari {day}
+                Hari {day} {date && `• ${date}`}
               </Badge>
             </div>
           )}
