@@ -341,37 +341,54 @@ const BenefitsSection = () => {
 
       {/* Detail Dialog - Regular */}
       <Dialog open={!!selectedBenefit && !selectedBenefit.isHotel} onOpenChange={() => setSelectedBenefit(null)}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
-              {selectedBenefit && (
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <selectedBenefit.icon className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
-                </div>
-              )}
-              <div className="min-w-0">
-                <DialogTitle className="text-base sm:text-xl font-serif leading-tight">
-                  {selectedBenefit?.title}
-                </DialogTitle>
-                <DialogDescription className="text-accent text-xs sm:text-sm">
-                  {selectedBenefit?.desc}
-                </DialogDescription>
+        <DialogContent className="sm:max-w-sm p-0 overflow-hidden border-0 shadow-2xl rounded-3xl">
+          {/* Gradient Header */}
+          <div
+            className="relative flex flex-col items-center pt-8 pb-6 px-6"
+            style={{ background: "linear-gradient(135deg, hsl(25 48% 26%) 0%, hsl(25 52% 20%) 60%, hsl(349 60% 38%) 100%)" }}
+          >
+            {/* Decorative ring */}
+            <div className="absolute top-4 right-4 w-20 h-20 rounded-full border border-white/10 opacity-40" />
+            <div className="absolute -bottom-3 -left-3 w-16 h-16 rounded-full border border-white/10 opacity-30" />
+
+            {/* Icon circle */}
+            {selectedBenefit && (
+              <div className="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center mb-4 shadow-lg">
+                <selectedBenefit.icon className="w-8 h-8 text-white" strokeWidth={1.5} />
               </div>
-            </div>
-          </DialogHeader>
-          <div className="mt-2 sm:mt-4">
-            <h4 className="font-semibold text-foreground mb-2 sm:mb-3 text-sm sm:text-base">Detail:</h4>
-            <ul className="space-y-1.5 sm:space-y-2">
+            )}
+
+            <DialogTitle className="font-sans text-lg font-bold text-white text-center leading-tight">
+              {selectedBenefit?.title}
+            </DialogTitle>
+            <DialogDescription className="font-sans text-xs text-white/65 mt-1 text-center tracking-wide">
+              {selectedBenefit?.desc}
+            </DialogDescription>
+
+            {/* Gold divider */}
+            <div className="mt-4 h-px w-12 bg-gradient-to-r from-transparent via-accent to-transparent opacity-70" />
+          </div>
+
+          {/* Body */}
+          <div className="bg-white px-5 pt-5 pb-6">
+            <p className="font-sans text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-3">
+              Yang termasuk
+            </p>
+            <ul className="space-y-2">
               {selectedBenefit?.details.map((detail, index) => (
                 <motion.li
                   key={index}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="flex items-start gap-2 text-muted-foreground text-xs sm:text-sm"
+                  transition={{ delay: index * 0.06 }}
+                  className="flex items-start gap-3"
                 >
-                  <span className="text-accent mt-0.5 sm:mt-1">•</span>
-                  <span>{detail}</span>
+                  <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-accent/12 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 12 12">
+                      <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed">{detail}</span>
                 </motion.li>
               ))}
             </ul>
@@ -379,7 +396,7 @@ const BenefitsSection = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Hotel Dialog - Special Layout with Carousel */}
+      {/* Hotel Dialog - Premium Redesign */}
       <Dialog 
         open={!!selectedBenefit && selectedBenefit.isHotel} 
         onOpenChange={() => {
@@ -387,97 +404,116 @@ const BenefitsSection = () => {
           setHotelSlideIndex(0);
         }}
       >
-        <DialogContent className="sm:max-w-lg p-0 overflow-hidden bg-primary">
-          <div className="p-4 sm:p-6">
-            {/* Star Rating Badge */}
-            <div className="flex justify-center mb-3">
-              <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1.5">
-                {Array.from({ length: hotelSlides[hotelSlideIndex].stars }).map((_, i) => (
-                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 fill-yellow-400" />
-                ))}
-                <span className="text-white text-xs sm:text-sm ml-1 font-medium">
-                  Bintang {hotelSlides[hotelSlideIndex].stars}
-                </span>
-              </div>
+        <DialogContent className="sm:max-w-md p-0 overflow-hidden border-0 shadow-2xl rounded-3xl">
+          {/* Header */}
+          <div
+            className="relative flex flex-col items-center pt-7 pb-5 px-6"
+            style={{ background: "linear-gradient(135deg, hsl(25 48% 26%) 0%, hsl(25 52% 20%) 60%, hsl(349 60% 38%) 100%)" }}
+          >
+            <div className="absolute top-3 right-5 w-24 h-24 rounded-full border border-white/10 opacity-30" />
+
+            {/* Star rating toggle */}
+            <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-4">
+              {Array.from({ length: hotelSlides[hotelSlideIndex].stars }).map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 text-yellow-300 fill-yellow-300" />
+              ))}
+              <span className="font-sans text-white text-xs ml-1 font-medium">
+                Bintang {hotelSlides[hotelSlideIndex].stars}
+              </span>
             </div>
 
-            {/* Carousel Container */}
-            <div className="relative overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={hotelSlideIndex}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className="grid grid-cols-2 gap-3 sm:gap-4"
-                >
-                  {/* Hotel Makkah */}
-                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
-                    <img 
-                      src={hotelSlides[hotelSlideIndex].makkah.image} 
-                      alt="Hotel Makkah" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
-                      <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Makkah</p>
-                      <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
-                        {hotelSlides[hotelSlideIndex].makkah.name}<br />{hotelSlides[hotelSlideIndex].makkah.subname}
-                      </h3>
-                      <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
-                    </div>
-                  </div>
+            <DialogTitle className="font-sans text-base font-bold text-white text-center">
+              Hotel Makkah & Madinah
+            </DialogTitle>
+            <DialogDescription className="font-sans text-xs text-white/60 mt-1 text-center">
+              Pilihan hotel bintang 4 & 5 eksklusif
+            </DialogDescription>
 
-                  {/* Hotel Madinah */}
-                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
-                    <img 
-                      src={hotelSlides[hotelSlideIndex].madinah.image} 
-                      alt="Hotel Madinah" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
-                      <p className="text-[10px] sm:text-xs font-medium opacity-90">Hotel Madinah</p>
-                      <h3 className="text-sm sm:text-xl font-serif font-bold leading-tight">
-                        {hotelSlides[hotelSlideIndex].madinah.name}<br />{hotelSlides[hotelSlideIndex].madinah.subname}
-                      </h3>
-                      <p className="text-[10px] sm:text-xs opacity-80 mt-0.5">/setaraf</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Carousel Dots */}
-            <div className="flex justify-center gap-2 mt-4">
-              {hotelSlides.map((_, index) => (
+            {/* Dot switcher */}
+            <div className="flex gap-2 mt-4">
+              {hotelSlides.map((slide, index) => (
                 <button
                   key={index}
                   onClick={() => setHotelSlideIndex(index)}
-                  className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${
-                    index === hotelSlideIndex 
-                      ? 'bg-white scale-125' 
-                      : 'bg-white/40 hover:bg-white/60'
+                  className={`transition-all duration-300 rounded-full font-sans text-[10px] px-3 py-1 border ${
+                    index === hotelSlideIndex
+                      ? 'bg-white text-brown font-semibold border-white'
+                      : 'bg-white/15 text-white/70 border-white/25 hover:bg-white/25'
                   }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
+                >
+                  ★ {slide.stars} Bintang
+                </button>
               ))}
             </div>
+          </div>
 
-            {/* Additional info */}
+          {/* Hotel Cards */}
+          <div className="bg-white p-4 sm:p-5">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={hotelSlideIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.28, ease: 'easeInOut' }}
+                className="grid grid-cols-2 gap-3"
+              >
+                {/* Hotel Makkah */}
+                <div className="rounded-2xl overflow-hidden shadow-md relative aspect-[3/4]">
+                  <img 
+                    src={hotelSlides[hotelSlideIndex].makkah.image} 
+                    alt="Hotel Makkah" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                  <div className="absolute top-2.5 left-2.5">
+                    <span className="font-sans text-[9px] font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-full px-2 py-0.5">
+                      Makkah
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                    <h3 className="font-sans text-sm font-bold leading-tight">
+                      {hotelSlides[hotelSlideIndex].makkah.name} {hotelSlides[hotelSlideIndex].makkah.subname}
+                    </h3>
+                    <p className="font-sans text-[10px] text-white/65 mt-0.5">/setaraf</p>
+                  </div>
+                </div>
+
+                {/* Hotel Madinah */}
+                <div className="rounded-2xl overflow-hidden shadow-md relative aspect-[3/4]">
+                  <img 
+                    src={hotelSlides[hotelSlideIndex].madinah.image} 
+                    alt="Hotel Madinah" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                  <div className="absolute top-2.5 left-2.5">
+                    <span className="font-sans text-[9px] font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-full px-2 py-0.5">
+                      Madinah
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                    <h3 className="font-sans text-sm font-bold leading-tight">
+                      {hotelSlides[hotelSlideIndex].madinah.name} {hotelSlides[hotelSlideIndex].madinah.subname}
+                    </h3>
+                    <p className="font-sans text-[10px] text-white/65 mt-0.5">/setaraf</p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Info pills */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-4 text-center"
+              transition={{ delay: 0.2 }}
+              className="mt-4 flex flex-wrap gap-2 justify-center"
             >
-              <p className="text-xs sm:text-sm text-white/90">
-                Lokasi strategis dekat Masjidil Haram & Masjid Nabawi
-              </p>
-              <p className="text-[10px] sm:text-xs text-white/70 mt-1">
-                Fasilitas: Kamar ber-AC, WiFi gratis, Restoran halal
-              </p>
+              {["Dekat Masjidil Haram", "WiFi Gratis", "Restoran Halal", "Kamar Ber-AC"].map((tag) => (
+                <span key={tag} className="font-sans text-[10px] text-brown/80 bg-accent/10 border border-accent/20 rounded-full px-3 py-1">
+                  {tag}
+                </span>
+              ))}
             </motion.div>
           </div>
         </DialogContent>
