@@ -65,7 +65,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.85, delay: 0.28 + i * 0.18, ease: [0.22, 1, 0.36, 1] }}
                 className="font-display text-[13vw] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold text-white leading-none tracking-wider block"
-                style={{ textShadow: "0 4px 30px rgba(43,83,130,0.5), 0 2px 12px rgba(0,0,0,0.7)" }}
+                style={{ textShadow: "0 1px 6px rgba(0,0,0,0.25)" }}
               >
                 {word}
               </motion.span>

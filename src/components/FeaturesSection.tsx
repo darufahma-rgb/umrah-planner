@@ -30,12 +30,12 @@ const FeaturesSection = () => {
               `}
             >
               {/* Icon */}
-              <div className="w-9 h-9 md:w-11 md:h-11 mx-auto mb-2.5 bg-gradient-to-br from-accent to-gold-dark flex items-center justify-center rounded-xl shadow-md shadow-accent/25">
-                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" strokeWidth={2} />
+              <div className="w-9 h-9 md:w-11 md:h-11 mx-auto mb-2.5 border border-accent/50 rounded-full flex items-center justify-center bg-white/5">
+                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-accent" strokeWidth={1.5} />
               </div>
 
               {/* Text */}
-              <h3 className="font-semibold text-primary-foreground text-[10px] md:text-xs leading-tight mb-0.5">
+              <h3 className="font-sans font-medium text-primary-foreground text-[10px] md:text-xs leading-tight mb-0.5">
                 {feature.title}
               </h3>
               <p className="text-[8px] md:text-[10px] text-primary-foreground/55 leading-tight hidden md:block">

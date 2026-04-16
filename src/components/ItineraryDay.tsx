@@ -103,7 +103,7 @@ const ItineraryDay = ({
             </div>
 
             {/* Title */}
-            <h3 className="font-semibold text-[11px] md:text-sm text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-200 leading-snug flex-1">
+            <h3 className="font-sans font-semibold text-[11px] md:text-sm text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-200 leading-snug flex-1">
               {title}
             </h3>
 
