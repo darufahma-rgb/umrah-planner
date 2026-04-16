@@ -77,7 +77,7 @@ const ItineraryModal = ({
             <MapPin className="w-3 h-3 md:w-4 md:h-4" />
             <span className="truncate">{location}</span>
           </div>
-          <DialogTitle className="font-serif text-lg md:text-xl text-gray-900 leading-tight">
+          <DialogTitle className="font-sans text-lg md:text-xl text-gray-900 leading-tight">
             {!image && <span className="text-primary mr-2">Hari {day}:</span>}
             {title}
           </DialogTitle>

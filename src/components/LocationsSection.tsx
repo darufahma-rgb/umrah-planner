@@ -87,7 +87,7 @@ const LocationCard = ({
               <Star className="w-3 h-3 text-accent fill-accent" />
               <span className="text-primary-foreground/80 text-xs">{subtitle}</span>
             </div>
-            <h3 className="font-serif text-lg md:text-xl font-bold text-primary-foreground">
+            <h3 className="font-sans text-lg md:text-xl font-bold text-primary-foreground">
               {title}
             </h3>
           </div>
