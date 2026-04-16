@@ -21,7 +21,7 @@ export default {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
         serif: ['Poppins', 'sans-serif'],
-        display: ['Calisga', 'serif'],
+        display: ['Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -67,27 +67,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        rose: {
-          DEFAULT: "hsl(var(--rose))",
-          light: "hsl(var(--rose-light))",
-          dark: "hsl(var(--rose-dark))",
-        },
-        brown: {
-          DEFAULT: "hsl(var(--brown))",
-          light: "hsl(var(--brown-light))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
+          dark: "hsl(var(--navy-dark))",
         },
         gold: {
           DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
           dark: "hsl(var(--gold-dark))",
         },
         cream: {
           DEFAULT: "hsl(var(--cream))",
           dark: "hsl(var(--cream-dark))",
-        },
-        pink: {
-          DEFAULT: "hsl(var(--pink))",
-          light: "hsl(var(--pink-light))",
-          dark: "hsl(var(--pink-dark))",
         },
         whatsapp: {
           DEFAULT: "hsl(var(--whatsapp))",

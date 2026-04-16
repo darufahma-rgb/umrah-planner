@@ -62,7 +62,7 @@ const tips: TipItem[] = [
       "Doa-doa thawaf dan sa'i",
       "Panduan ziarah ke tempat bersejarah"
     ],
-    color: "bg-rose-light/10 text-rose-light",
+    color: "bg-gold-light/15 text-gold-dark",
     externalLink: "https://cdn.kemenag.go.id/storage/archives/buku-tuntunan-manasik-haji-dan-umrah-1-2pdf.pdf",
   },
   {
@@ -76,7 +76,7 @@ const tips: TipItem[] = [
       "Simpan nomor darurat travel",
       "Siapkan aplikasi penerjemah"
     ],
-    color: "bg-brown/10 text-brown",
+    color: "bg-navy/10 text-navy",
   },
   {
     icon: Heart,
@@ -103,7 +103,7 @@ const tips: TipItem[] = [
       "Buku kuning vaksin",
       "Surat keterangan sehat"
     ],
-    color: "bg-rose/10 text-rose",
+    color: "bg-accent/10 text-accent-foreground",
   },
 ];
 
