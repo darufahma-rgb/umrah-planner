@@ -148,10 +148,10 @@ const TipCard = ({ tip, index }: TipCardProps) => {
           <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg ${tip.color} flex items-center justify-center mb-2`}>
             <tip.icon className="w-4 h-4 md:w-5 md:h-5" />
           </div>
-          <h3 className="font-semibold text-foreground text-xs md:text-sm mb-1 pr-4">
+          <h3 className="font-sans font-semibold text-foreground text-xs md:text-sm mb-1 pr-4">
             {tip.title}
           </h3>
-          <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed mb-2">
+          <p className="font-sans text-[10px] md:text-xs text-muted-foreground leading-relaxed mb-2">
             {tip.description}
           </p>
 

@@ -55,13 +55,13 @@ const CTASection = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
           </motion.div>
 
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 leading-tight tracking-tight">
+          <h2 className="font-sans text-2xl md:text-4xl font-bold text-white mb-3 leading-tight tracking-tight">
             Siap Memulai Perjalanan Suci?
           </h2>
 
           <div className="mx-auto mb-5 h-px w-16 bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
 
-          <p className="text-sm md:text-base text-white/65 mb-8 leading-relaxed max-w-md mx-auto font-light">
+          <p className="font-sans text-sm md:text-base text-white/65 mb-8 leading-relaxed max-w-md mx-auto font-light">
             Konsultasi gratis dan penawaran terbaik paket umrah bersama El Massa.{" "}
             <span className="text-accent font-medium">Kursi terbatas!</span>
           </p>

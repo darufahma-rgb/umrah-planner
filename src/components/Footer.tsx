@@ -21,14 +21,14 @@ const Footer = () => {
               alt="El Massa Tour & Travel"
               className="h-10 md:h-12 w-auto mb-3 brightness-0 invert"
             />
-            <p className="text-primary-foreground/70 text-xs">
+            <p className="font-sans text-primary-foreground/70 text-xs">
               Perjalanan spiritual menuju Tanah Suci dengan pelayanan terbaik.
             </p>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-primary-foreground text-sm mb-3">Hubungi</h4>
+            <h4 className="font-sans font-semibold text-primary-foreground text-sm mb-3">Hubungi</h4>
             <ul className="space-y-2">
               <li>
                 <a
@@ -53,10 +53,10 @@ const Footer = () => {
 
           {/* Address */}
           <div>
-            <h4 className="font-semibold text-primary-foreground text-sm mb-3">Alamat</h4>
+            <h4 className="font-sans font-semibold text-primary-foreground text-sm mb-3">Alamat</h4>
             <div className="flex items-start gap-2 text-primary-foreground/70 text-xs">
               <MapPin className="w-3 h-3 mt-0.5 flex-shrink-0" />
-              <p>
+              <p className="font-sans">
                 Ruko Bes Cinema, Jl. Jendral Sudirman
                 <br />
                 Selindung Baru, Pangkal Pinang
@@ -67,7 +67,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 pt-4">
           <div className="flex items-center justify-center">
-            <p className="text-primary-foreground/50 text-[10px] md:text-xs text-center">
+            <p className="font-sans text-primary-foreground/50 text-[10px] md:text-xs text-center">
               © 2026 El Massa. Semoga diberkahi Allah SWT.
             </p>
           </div>
