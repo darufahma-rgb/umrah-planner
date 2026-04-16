@@ -20,8 +20,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
-        serif: ['Poppins', 'sans-serif'],
-        display: ['Poppins', 'sans-serif'],
+        serif: ['Calisga', 'Poppins', 'sans-serif'],
+        display: ['Calisga', 'Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
