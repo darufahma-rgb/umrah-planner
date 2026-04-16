@@ -64,7 +64,7 @@ const Navbar = () => {
         <nav
           className={`w-full max-w-3xl transition-all duration-400 ${
             isScrolled
-              ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-brown/10 border border-border/60 rounded-2xl"
+              ? "bg-white shadow-lg shadow-brown/8 border border-border/50 rounded-2xl"
               : "bg-white/12 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg shadow-black/10"
           }`}
         >
@@ -79,11 +79,11 @@ const Navbar = () => {
                   className={`relative font-sans px-3.5 py-1.5 text-[11px] font-semibold tracking-wider uppercase rounded-xl transition-all duration-200 ${
                     isScrolled
                       ? activeSection === link.id
-                        ? "text-brown bg-accent/15 text-accent"
-                        : "text-foreground/70 hover:text-foreground hover:bg-muted/60"
+                        ? "text-accent bg-accent/10"
+                        : "text-foreground hover:text-accent hover:bg-muted/50"
                       : activeSection === link.id
                       ? "text-white bg-white/20"
-                      : "text-white/75 hover:text-white hover:bg-white/12"
+                      : "text-white/80 hover:text-white hover:bg-white/12"
                   }`}
                 >
                   {link.label}

@@ -15,8 +15,7 @@ const destinations = [
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
-  const bgY = useTransform(scrollY, [0, 600], ["0%", "20%"]);
-  const bgScale = useTransform(scrollY, [0, 600], [1, 1.1]);
+  const bgY = useTransform(scrollY, [0, 600], ["0%", "18%"]);
   const contentOpacity = useTransform(scrollY, [0, 350], [1, 0]);
   const contentY = useTransform(scrollY, [0, 350], ["0%", "-8%"]);
 
@@ -26,14 +25,26 @@ const HeroSection = () => {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-navy-dark">
-      {/* Parallax Background */}
+      {/* Parallax Background with Ken Burns */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.img
-          style={{ y: bgY, scale: bgScale }}
-          src={heroImage}
-          alt="Masjidil Haram – Makkah"
-          className="w-full h-full object-cover origin-center"
-        />
+        <motion.div style={{ y: bgY }} className="absolute inset-0 will-change-transform">
+          <motion.img
+            animate={{
+              scale: [1, 1.08, 1.04, 1.08, 1],
+              x: ["0%", "-1.5%", "1%", "-0.5%", "0%"],
+              y: ["0%", "-1%", "0.5%", "-0.5%", "0%"],
+            }}
+            transition={{
+              duration: 22,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
+            src={heroImage}
+            alt="Masjidil Haram – Makkah"
+            className="w-full h-full object-cover origin-center"
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/85" />
         <div className="absolute inset-0 bg-gradient-to-r from-[hsl(218_58%_10%/0.3)] via-transparent to-[hsl(218_58%_10%/0.2)]" />
       </div>
