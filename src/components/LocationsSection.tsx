@@ -54,6 +54,8 @@ interface LocationCardProps {
   index: number;
 }
 
+const slideDirections = [-40, 0, 40];
+
 const LocationCard = ({
   title,
   subtitle,
@@ -63,12 +65,13 @@ const LocationCard = ({
   index,
 }: LocationCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const xInit = slideDirections[index] ?? 0;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
+      initial={{ opacity: 0, x: xInit, y: xInit === 0 ? 30 : 10 }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      transition={{ duration: 0.65, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
       viewport={{ once: true }}
     >
       <Card className="overflow-hidden border-0 shadow-lg group">

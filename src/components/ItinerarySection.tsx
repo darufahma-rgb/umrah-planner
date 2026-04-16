@@ -217,22 +217,32 @@ const ItinerarySection = () => {
       <div className="container mx-auto px-3 md:px-4 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-6 md:mb-10"
+          className="text-center mb-8 md:mb-12"
         >
-          <Badge className="mb-3 bg-white/90 text-primary border-0 text-xs shadow-sm">
-            <Calendar className="w-3 h-3 mr-1" />
-            14 Hari Perjalanan
-          </Badge>
-          <h2 className="font-serif text-2xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 mb-4 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5 text-white text-xs font-medium tracking-wide shadow-sm"
+          >
+            <Calendar className="w-3.5 h-3.5 text-white" />
+            14 Hari Perjalanan Penuh Makna
+          </motion.div>
+
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-3 drop-shadow-lg leading-tight">
             Jadwal Perjalanan
           </h2>
-          <p className="text-white/90 text-sm max-w-xl mx-auto drop-shadow">
-            Itinerary lengkap perjalanan Umroh El Massa — 30 September s/d 13 Oktober 2026.{" "}
-            <span className="text-white font-semibold">Klik untuk detail.</span>
+
+          <div className="mx-auto mb-4 h-px w-16 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+
+          <p className="text-white/85 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+            Itinerary lengkap bersama El Massa — 30 September hingga 13 Oktober 2026.{" "}
+            <span className="text-white font-semibold underline underline-offset-2 decoration-white/40">Klik kartu untuk detail.</span>
           </p>
         </motion.div>
 

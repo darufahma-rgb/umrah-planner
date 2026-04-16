@@ -123,12 +123,13 @@ const TipCard = ({ tip, index }: TipCardProps) => {
     }
   };
 
+  const xDir = index % 2 === 0 ? -15 : 15;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      viewport={{ once: true, margin: "-30px" }}
+      initial={{ opacity: 0, x: xDir, y: 12 }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      transition={{ duration: 0.48, delay: (index % 6) * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-20px" }}
     >
       <Card
         className="border border-border hover:border-accent/30 hover:shadow-md transition-all duration-300 group cursor-pointer h-full relative"
@@ -197,25 +198,38 @@ const TipCard = ({ tip, index }: TipCardProps) => {
 
 const TipsSection = () => {
   return (
-    <section className="py-10 md:py-16 bg-cream relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-white relative overflow-hidden">
+      {/* Subtle top separator */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="container mx-auto px-3 md:px-4 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-6 md:mb-10"
+          className="text-center mb-8 md:mb-12"
         >
-          <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs shadow-sm">
-            <Lightbulb className="w-3 h-3 mr-1" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/6 text-primary text-xs font-medium tracking-widest uppercase"
+          >
+            <Lightbulb className="w-3.5 h-3.5" />
             Persiapan Umrah
-          </Badge>
-          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-2">
+          </motion.div>
+
+          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
             Tips Perjalanan
           </h2>
-          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
-            Persiapkan diri dengan baik untuk ibadah yang lancar.
+
+          <div className="mx-auto mb-4 h-px w-16 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+
+          <p className="text-muted-foreground text-sm md:text-base max-w-lg mx-auto">
+            Persiapkan diri dengan baik untuk ibadah yang lebih lancar dan bermakna.
           </p>
         </motion.div>
 

@@ -253,22 +253,34 @@ const BenefitsSection = () => {
     <section className="py-16 md:py-28 bg-cream relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
           className="text-center mb-12 md:mb-16"
         >
-          <span className="text-accent font-medium text-base md:text-lg tracking-wider uppercase">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-accent/35 bg-accent/8 text-accent text-xs font-medium tracking-widest uppercase"
+          >
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Fasilitas Include
-          </span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mt-3">
+            <span className="w-1 h-1 rounded-full bg-accent" />
+          </motion.div>
+
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
             Benefit Perjalanan Umrah
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-base md:text-lg lg:text-xl">
+
+          <div className="mx-auto my-4 h-px w-16 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+
+          <p className="text-muted-foreground max-w-xl mx-auto text-base md:text-lg">
             Nikmati berbagai fasilitas lengkap bersama El Massa Tour & Travel
           </p>
-          <p className="text-accent text-sm mt-2">
+          <p className="text-accent text-sm mt-2 font-medium">
             Klik item untuk melihat detail
           </p>
         </motion.div>
@@ -277,11 +289,11 @@ const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 18, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.03 }}
-              whileHover={{ scale: 1.03, y: -2 }}
+              transition={{ duration: 0.42, delay: index * 0.04, ease: "backOut" }}
+              whileHover={{ scale: 1.03, y: -3, transition: { duration: 0.2 } }}
               className="group cursor-pointer"
               onClick={() => setSelectedBenefit(benefit)}
             >

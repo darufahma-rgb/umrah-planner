@@ -1,66 +1,53 @@
-import { Plane, Hotel, Users, Clock, Shield, Headphones } from "lucide-react";
+import { Plane, Hotel, Users, Calendar, Shield, Headphones } from "lucide-react";
 import { motion } from "framer-motion";
 
 const features = [
-  {
-    icon: Plane,
-    title: "Penerbangan Premium",
-    description: "Tiket pesawat PP dengan maskapai terpercaya",
-  },
-  {
-    icon: Hotel,
-    title: "Hotel Bintang 4-5",
-    description: "Akomodasi dekat Masjidil Haram & Nabawi",
-  },
-  {
-    icon: Users,
-    title: "Muthawwif Berpengalaman",
-    description: "Pembimbing ibadah profesional",
-  },
-  {
-    icon: Clock,
-    title: "10 Hari Perjalanan",
-    description: "Waktu optimal untuk ibadah",
-  },
-  {
-    icon: Shield,
-    title: "Asuransi Perjalanan",
-    description: "Perlindungan lengkap selama perjalanan",
-  },
-  {
-    icon: Headphones,
-    title: "Layanan 24 Jam",
-    description: "Pendampingan setiap saat",
-  },
+  { icon: Plane, title: "Penerbangan Premium", description: "Tiket PP maskapai terpercaya" },
+  { icon: Hotel, title: "Hotel Bintang 4-5", description: "Dekat Masjidil Haram & Nabawi" },
+  { icon: Users, title: "Muthawwif Ahli", description: "Pembimbing ibadah profesional" },
+  { icon: Calendar, title: "14 Hari Perjalanan", description: "30 Sep – 13 Okt 2026" },
+  { icon: Shield, title: "Asuransi Perjalanan", description: "Perlindungan lengkap" },
+  { icon: Headphones, title: "Layanan 24 Jam", description: "Pendampingan setiap saat" },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section className="py-8 md:py-12 bg-primary">
-      <div className="container mx-auto px-3 md:px-4">
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-6">
+    <section className="py-7 md:py-10 bg-primary relative overflow-hidden">
+      {/* Subtle top border accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
+
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-0">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.45, delay: index * 0.07, ease: "backOut" }}
               viewport={{ once: true }}
-              className="text-center group cursor-default"
+              className={`text-center group cursor-default py-3 md:py-4 px-2 md:px-4 relative
+                ${index < 5 ? "border-r border-white/10" : ""}
+              `}
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 bg-gradient-to-br from-accent via-gold-light to-accent border border-accent/50 flex items-center justify-center rounded-xl shadow-lg shadow-accent/20">
-                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              {/* Icon */}
+              <div className="w-9 h-9 md:w-11 md:h-11 mx-auto mb-2.5 bg-gradient-to-br from-accent to-gold-dark flex items-center justify-center rounded-xl shadow-md shadow-accent/25">
+                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" strokeWidth={2} />
               </div>
-              <h3 className="font-medium text-primary-foreground text-[10px] md:text-xs mb-0.5 leading-tight">
+
+              {/* Text */}
+              <h3 className="font-semibold text-primary-foreground text-[10px] md:text-xs leading-tight mb-0.5">
                 {feature.title}
               </h3>
-              <p className="text-[8px] md:text-[10px] text-primary-foreground/60 hidden md:block">
+              <p className="text-[8px] md:text-[10px] text-primary-foreground/55 leading-tight hidden md:block">
                 {feature.description}
               </p>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Subtle bottom border accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
     </section>
   );
 };
