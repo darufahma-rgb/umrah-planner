@@ -37,36 +37,34 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/25 via-transparent to-primary/15" />
       </div>
-
-      {/* Vignette edges */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]" />
 
       {/* Main Content */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 container mx-auto px-4 pt-28 md:pt-36 pb-10 md:pb-14 flex flex-col items-center"
+        className="relative z-10 container mx-auto px-4 pt-20 md:pt-36 pb-6 md:pb-14 flex flex-col items-center"
       >
         {/* Date badge */}
         <motion.div
           initial={{ opacity: 0, y: -14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mb-7 md:mb-9 flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-white/90 text-xs md:text-sm font-medium tracking-wide"
+          className="mb-5 md:mb-9 flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1 md:px-4 md:py-1.5 text-white/90 text-[10px] md:text-sm font-medium tracking-wide"
         >
-          <CalendarDays className="w-3.5 h-3.5 text-accent" />
+          <CalendarDays className="w-3 h-3 md:w-3.5 md:h-3.5 text-accent flex-shrink-0" />
           30 September – 13 Oktober 2026
         </motion.div>
 
-        {/* Cinematic staggered title */}
-        <div className="mb-5 md:mb-7 text-center">
-          <div className="flex flex-wrap justify-center items-baseline gap-x-4 md:gap-x-6">
+        {/* Title — two words stacked with explicit gap */}
+        <div className="mb-3 md:mb-7 text-center">
+          <div className="flex flex-col items-center gap-3 md:gap-5">
             {["Itinerary", "Umrah"].map((word, i) => (
               <motion.span
                 key={word}
-                initial={{ opacity: 0, y: 55, rotateX: -15 }}
+                initial={{ opacity: 0, y: 45, rotateX: -12 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ duration: 0.9, delay: 0.28 + i * 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-none tracking-wide"
+                transition={{ duration: 0.85, delay: 0.28 + i * 0.18, ease: [0.22, 1, 0.36, 1] }}
+                className="font-display text-[12vw] sm:text-5xl md:text-8xl lg:text-9xl font-bold text-white leading-none tracking-wider block"
                 style={{ textShadow: "0 4px 28px rgba(139,90,43,0.55), 0 2px 10px rgba(0,0,0,0.6)" }}
               >
                 {word}
@@ -74,63 +72,64 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* Gold divider line */}
+          {/* Gold divider */}
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.72, ease: "easeOut" }}
-            className="mx-auto mt-4 md:mt-5 h-px w-28 md:w-44 bg-gradient-to-r from-transparent via-accent to-transparent"
+            transition={{ duration: 0.8, delay: 0.68, ease: "easeOut" }}
+            className="mx-auto mt-3 md:mt-5 h-px w-20 md:w-44 bg-gradient-to-r from-transparent via-accent to-transparent"
           />
 
           {/* Year */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.85 }}
-            className="mt-3 md:mt-4 text-accent font-light text-xl sm:text-2xl md:text-3xl tracking-[0.3em] uppercase"
+            transition={{ duration: 0.7, delay: 0.82 }}
+            className="mt-2 md:mt-4 text-accent font-light text-lg sm:text-2xl md:text-3xl tracking-[0.3em] uppercase"
           >
             2026
           </motion.p>
         </div>
 
-        {/* Subtitle — high contrast */}
+        {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.0 }}
-          className="max-w-sm md:max-w-lg text-center text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-8 md:mb-10 font-light"
-          style={{ textShadow: "0 1px 16px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.6)" }}
+          transition={{ duration: 0.7, delay: 0.98 }}
+          className="max-w-[280px] sm:max-w-sm md:max-w-lg text-center text-xs sm:text-sm md:text-lg text-white/88 leading-relaxed mb-5 md:mb-10 font-light"
+          style={{ textShadow: "0 1px 16px rgba(0,0,0,0.9)" }}
         >
-          Wujudkan perjalanan suci Anda. Pengalaman spiritual yang penuh berkah bersama{" "}
+          Wujudkan perjalanan suci Anda bersama{" "}
           <span className="text-accent font-semibold">El Massa Tour & Travel</span>.
         </motion.p>
 
         {/* CTA Button */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.15 }}
-          className="flex justify-center mb-12 md:mb-16"
+          transition={{ duration: 0.7, delay: 1.12 }}
+          className="flex justify-center mb-6 md:mb-16"
         >
           <Button
             onClick={scrollToItinerary}
-            className="relative shimmer-effect bg-accent hover:bg-gold-dark text-accent-foreground rounded-full px-8 py-5 md:px-10 md:py-6 text-sm md:text-base font-semibold tracking-wide shadow-2xl animate-gold-glow group transition-all duration-300"
+            className="relative shimmer-effect bg-accent hover:bg-gold-dark text-accent-foreground rounded-full px-6 py-4 md:px-10 md:py-6 text-xs md:text-base font-semibold tracking-wide shadow-2xl animate-gold-glow group transition-all duration-300"
           >
             Lihat Itinerary
-            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 md:w-5 md:h-5 ml-1.5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </motion.div>
 
         {/* Destination Cards */}
-        <div className="grid grid-cols-3 gap-3 md:gap-5 w-full max-w-4xl">
+        <div className="grid grid-cols-3 gap-2 md:gap-5 w-full max-w-4xl">
           {destinations.map((dest, index) => (
             <motion.div
               key={dest.name}
-              initial={{ opacity: 0, y: 45, scale: 0.94 }}
+              initial={{ opacity: 0, y: 35, scale: 0.94 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7, delay: 1.3 + index * 0.14, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -7, scale: 1.03 }}
-              className="group relative h-28 sm:h-36 md:h-48 lg:h-56 rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
+              transition={{ duration: 0.65, delay: 1.25 + index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="group relative rounded-xl md:rounded-2xl overflow-hidden cursor-pointer shadow-xl"
+              style={{ height: "clamp(90px, 25vw, 220px)" }}
               onClick={scrollToItinerary}
             >
               <img
@@ -138,36 +137,36 @@ const HeroSection = () => {
                 alt={dest.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/12 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3.5">
-                <div className="bg-white/12 backdrop-blur-md rounded-xl p-2 md:p-3 border border-white/20 flex items-center justify-between">
-                  <div>
-                    <h3 className="font-display text-base sm:text-xl md:text-2xl text-white font-medium leading-tight">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-1.5 md:p-3.5">
+                <div className="bg-white/12 backdrop-blur-md rounded-lg md:rounded-xl p-1.5 md:p-3 border border-white/20 flex items-center justify-between gap-1">
+                  <div className="min-w-0">
+                    <h3 className="font-display text-sm sm:text-lg md:text-2xl text-white font-medium leading-tight truncate">
                       {dest.name}
                     </h3>
-                    <p className="text-white/70 text-[9px] sm:text-[10px] md:text-xs tracking-widest uppercase mt-0.5 hidden sm:block">
+                    <p className="text-white/65 text-[8px] md:text-xs tracking-widest uppercase hidden sm:block">
                       {dest.subtitle}
                     </p>
                   </div>
-                  <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-white/70 group-hover:translate-x-1 transition-transform flex-shrink-0 ml-1" />
+                  <ArrowRight className="w-3 h-3 md:w-4 md:h-4 text-white/65 group-hover:translate-x-0.5 transition-transform flex-shrink-0" />
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — desktop only */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.2, duration: 0.8 }}
-          className="mt-10 md:mt-14 flex flex-col items-center gap-1.5"
+          className="hidden md:flex mt-14 flex-col items-center gap-1.5"
         >
           <p className="text-white/35 text-[9px] tracking-widest uppercase">Scroll</p>
           <motion.div
             animate={{ y: [0, 7, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-8 md:h-10 bg-gradient-to-b from-white/40 to-transparent"
+            className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent"
           />
         </motion.div>
       </motion.div>
