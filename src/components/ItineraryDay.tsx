@@ -36,7 +36,7 @@ const getAccentColor = (highlight?: string) => {
     case "departure": return "bg-blue-500";
     case "umrah": return "bg-accent";
     case "worship": return "bg-emerald-500";
-    case "ziarah": return "bg-amber-400";
+    case "ziarah": return "bg-rose-400";
     case "travel": return "bg-purple-400";
     default: return "bg-primary";
   }

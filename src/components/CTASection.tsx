@@ -22,11 +22,11 @@ const CTASection = () => {
 
   return (
     <section className="py-14 md:py-24 relative overflow-hidden">
-      {/* Deep navy gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(218_58%_10%)] via-[hsl(218_52%_16%)] to-[hsl(220_48%_22%)]" />
+      {/* Brown gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(25_52%_18%)] via-[hsl(25_48%_26%)] to-[hsl(25_42%_32%)]" />
 
       {/* Subtle gold shimmer overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsla(43,82%,50%,0.12)_0%,transparent_65%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsla(43,82%,50%,0.14)_0%,transparent_60%)]" />
 
       {/* Islamic pattern */}
       <div className="absolute inset-0 bg-pattern-islamic opacity-20" />
