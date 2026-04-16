@@ -171,7 +171,7 @@ const LocationCard = ({
 
 const LocationsSection = () => {
   return (
-    <section className="py-10 md:py-16 bg-gradient-pink bg-pattern-dots relative overflow-hidden">
+    <section className="py-10 md:py-16 relative overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(349 70% 58%) 0%, hsl(340 60% 48%) 100%)" }}>
       <div className="container mx-auto px-3 md:px-4 relative z-10">
         {/* Header */}
         <motion.div

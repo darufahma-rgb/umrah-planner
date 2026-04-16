@@ -297,19 +297,19 @@ const BenefitsSection = () => {
               className="group cursor-pointer"
               onClick={() => setSelectedBenefit(benefit)}
             >
-              <div className="relative flex items-center gap-2 md:gap-4 bg-card border border-border/50 rounded-lg md:rounded-xl p-2.5 md:p-4 h-full hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+              <div className="relative flex flex-col items-center text-center gap-2 bg-white/80 backdrop-blur-sm border border-brown/10 rounded-2xl p-3 md:p-4 h-full hover:border-accent/40 hover:shadow-md hover:bg-white transition-all duration-300">
                 {/* Click indicator icon */}
-                <div className="absolute top-1.5 right-1.5 md:top-2 md:right-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                  <Info className="w-3 h-3 md:w-4 md:h-4 text-accent" />
+                <div className="absolute top-1.5 right-1.5 opacity-40 group-hover:opacity-80 transition-opacity">
+                  <Info className="w-3 h-3 text-accent" />
                 </div>
-                <div className="flex-shrink-0 w-9 h-9 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <benefit.icon className="w-4 h-4 md:w-6 md:h-6 text-accent" />
+                <div className="w-9 h-9 md:w-11 md:h-11 rounded-full border border-accent/40 bg-accent/5 flex items-center justify-center group-hover:bg-accent/15 group-hover:border-accent/60 transition-all duration-300">
+                  <benefit.icon className="w-4 h-4 md:w-5 md:h-5 text-accent" strokeWidth={1.5} />
                 </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-xs md:text-base font-semibold text-foreground leading-tight pr-4">
+                <div className="min-w-0 w-full">
+                  <h3 className="font-sans text-[10px] md:text-xs font-semibold text-foreground leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-[10px] md:text-sm text-muted-foreground leading-tight mt-0.5">
+                  <p className="font-sans text-[9px] md:text-[11px] text-muted-foreground leading-tight mt-0.5">
                     {benefit.desc}
                   </p>
                 </div>
