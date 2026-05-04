@@ -35,6 +35,7 @@ const comingSoon = [
     year: "2026",
     image: umrahImage,
     destinations: ["Makkah", "Madinah"],
+    slug: null,
   },
   {
     month: "September",
@@ -42,13 +43,15 @@ const comingSoon = [
     year: "2026",
     image: qubaImage,
     destinations: ["Makkah", "Madinah"],
+    slug: null,
   },
   {
     month: "Oktober",
     monthNum: "10",
     year: "2026",
     image: madinahImage,
-    destinations: ["Makkah", "Madinah"],
+    destinations: ["Makkah", "Madinah", "Thaif"],
+    slug: "/oktober-2026",
   },
   {
     month: "November",
@@ -56,6 +59,7 @@ const comingSoon = [
     year: "2026",
     image: jabalImage,
     destinations: ["Makkah", "Madinah"],
+    slug: null,
   },
 ];
 
@@ -208,7 +212,13 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.6 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              <SoonCard pkg={pkg} />
+              {pkg.slug ? (
+                <Link to={pkg.slug} className="block group">
+                  <SoonCard pkg={pkg} open />
+                </Link>
+              ) : (
+                <SoonCard pkg={pkg} open={false} />
+              )}
             </motion.div>
           ))}
         </div>
@@ -227,54 +237,74 @@ const HomePage = () => {
   );
 };
 
-const SoonCard = ({ pkg }: { pkg: typeof comingSoon[0] }) => (
-  <div className="relative rounded-xl overflow-hidden border border-white/[0.07] shadow-lg">
+const SoonCard = ({ pkg, open }: { pkg: typeof comingSoon[0]; open: boolean }) => (
+  <div className={`relative rounded-xl overflow-hidden shadow-lg border transition-all duration-300 ${
+    open
+      ? "border-white/15 group-hover:border-amber-400/30 group-hover:-translate-y-0.5"
+      : "border-white/[0.07]"
+  }`}>
     {/* Image */}
     <div className="relative h-[148px] sm:h-[160px] overflow-hidden">
       <img
         src={pkg.image}
         alt={pkg.month}
-        className="w-full h-full object-cover"
-        style={{ filter: "brightness(0.28) saturate(0.5)" }}
+        className={`w-full h-full object-cover transition-transform duration-700 ${open ? "group-hover:scale-105" : ""}`}
+        style={{ filter: open ? "brightness(0.45) saturate(0.85)" : "brightness(0.28) saturate(0.5)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10" />
     </div>
 
-    {/* Lock icon — top right */}
+    {/* Top-right badge */}
     <div className="absolute top-2.5 right-2.5">
-      <div className="w-6 h-6 rounded-full bg-white/8 border border-white/12 flex items-center justify-center backdrop-blur-sm">
-        <Lock className="w-3 h-3 text-white/30" />
-      </div>
+      {open ? (
+        <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.12em] uppercase px-2 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 backdrop-blur-sm">
+          <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+          Buka
+        </span>
+      ) : (
+        <div className="w-6 h-6 rounded-full bg-white/8 border border-white/12 flex items-center justify-center backdrop-blur-sm">
+          <Lock className="w-3 h-3 text-white/30" />
+        </div>
+      )}
     </div>
 
     {/* Month number + year — top left */}
     <div className="absolute top-3 left-3">
-      <p className="font-sans text-white/25 text-[9px] font-bold tracking-[0.15em]">{pkg.monthNum} · {pkg.year}</p>
+      <p className={`font-sans text-[9px] font-bold tracking-[0.15em] ${open ? "text-white/35" : "text-white/25"}`}>
+        {pkg.monthNum} · {pkg.year}
+      </p>
     </div>
 
-    {/* Month name — upper-center of card */}
+    {/* Month name */}
     <div className="absolute top-8 left-3 right-10">
-      <p className="font-display font-black text-white/70 leading-none text-[1.15rem]">
+      <p className={`font-display font-black leading-none text-[1.15rem] ${open ? "text-white/85" : "text-white/70"}`}>
         {pkg.month}
       </p>
     </div>
 
     {/* Bottom info */}
     <div className="absolute bottom-0 left-0 right-0 px-3 pb-3">
-      {/* Destinations */}
       <div className="flex items-center gap-2 flex-wrap mb-2">
         {pkg.destinations.map((d) => (
-          <span key={d} className="inline-flex items-center gap-0.5 text-white/25 text-[9px]">
+          <span key={d} className={`inline-flex items-center gap-0.5 text-[9px] ${open ? "text-white/35" : "text-white/25"}`}>
             <MapPin className="w-2 h-2 flex-shrink-0" />
             {d}
           </span>
         ))}
       </div>
 
-      {/* Coming soon label */}
-      <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.15em] uppercase text-white/30 border border-white/12 rounded-full px-2 py-0.5">
-        Segera Hadir
-      </span>
+      {open ? (
+        <div className="flex items-center justify-between">
+          <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.12em] uppercase text-amber-400">
+            30 Sep – 13 Okt 2026
+          </span>
+          <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 transition-transform" />
+        </div>
+      ) : (
+        <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.15em] uppercase text-white/30 border border-white/12 rounded-full px-2 py-0.5">
+          Segera Hadir
+        </span>
+      )}
     </div>
   </div>
 );
