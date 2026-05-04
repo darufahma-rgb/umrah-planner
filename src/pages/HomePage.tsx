@@ -248,17 +248,14 @@ const SoonCard = ({ pkg }: { pkg: typeof comingSoon[0] }) => (
     </div>
 
     {/* Content */}
-    <div className="absolute bottom-0 left-0 right-0 px-3.5 pb-3.5">
-      {/* Month number & name */}
-      <div className="flex items-baseline gap-1.5 mb-1.5">
-        <span className="font-sans text-white/15 text-[10px] font-bold tabular-nums">{pkg.monthNum}</span>
-        <p className="font-display font-black text-white/60 leading-none text-2xl truncate">
-          {pkg.month}
-        </p>
-      </div>
+    <div className="absolute bottom-0 left-0 right-0 px-3 pb-3">
+      {/* Month number */}
+      <p className="font-sans text-white/20 text-[9px] font-bold tracking-[0.15em] mb-0.5">{pkg.monthNum} · {pkg.year}</p>
 
-      {/* Year */}
-      <p className="text-white/25 text-[9px] tracking-[0.22em] font-semibold uppercase mb-2">{pkg.year}</p>
+      {/* Month name — fixed small size, always readable */}
+      <p className="font-display font-black text-white/65 leading-none text-[1.05rem] mb-2">
+        {pkg.month}
+      </p>
 
       {/* Destinations */}
       <div className="flex items-center gap-2 flex-wrap mb-2">
@@ -271,7 +268,7 @@ const SoonCard = ({ pkg }: { pkg: typeof comingSoon[0] }) => (
       </div>
 
       {/* Coming soon label */}
-      <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.18em] uppercase text-white/30 border border-white/12 rounded-full px-2 py-0.5">
+      <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.15em] uppercase text-white/30 border border-white/12 rounded-full px-2 py-0.5">
         Segera Hadir
       </span>
     </div>
