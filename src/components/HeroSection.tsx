@@ -63,7 +63,7 @@ const HeroSection = () => {
           className="mb-5 md:mb-8 flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3.5 py-1.5 text-white/90 text-[11px] md:text-sm font-medium"
         >
           <CalendarDays className="w-3 h-3 md:w-3.5 md:h-3.5 text-accent flex-shrink-0" />
-          30 September – 13 Oktober 2026
+          08 Juli – 18 Juli 2026
         </motion.div>
 
         {/* Title – two words stacked */}
