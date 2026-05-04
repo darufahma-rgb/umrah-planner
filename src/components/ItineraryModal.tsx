@@ -198,7 +198,7 @@ const ItineraryModal = ({
                   </div>
 
                   <ScrollArea className="flex-1 min-h-0">
-                    <ul className="px-5 pt-3 pb-5">
+                    <ul className="px-5 pt-3 pb-10">
                       {activities.map((activity, index) => (
                         <motion.li
                           key={index}
@@ -216,7 +216,7 @@ const ItineraryModal = ({
                           </div>
 
                           {/* Content block */}
-                          <div className={`flex-1 min-w-0 ${index < activities.length - 1 ? "pb-4" : "pb-1"}`}>
+                          <div className="flex-1 min-w-0 pb-4">
                             {activity.time ? (
                               <div className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md mb-1.5 ${cfg.timeBg}`}>
                                 <Clock className={`w-3 h-3 flex-shrink-0 ${cfg.timeColor}`} />
