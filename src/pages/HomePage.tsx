@@ -112,7 +112,7 @@ const HomePage = () => {
             style={{ fontSize: "clamp(3rem, 10vw, 5.5rem)", textShadow: "0 4px 32px rgba(0,0,0,0.7)" }}
           >
             Itinerary<br />
-            <span style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.35)", color: "transparent" }}>Umrah</span>
+            Umrah
           </h1>
           <div className="mx-auto mt-4 mb-2 h-px w-10 bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
           <p className="text-white/40 text-xs tracking-wide mt-3">
@@ -252,10 +252,7 @@ const SoonCard = ({ pkg }: { pkg: typeof comingSoon[0] }) => (
       {/* Month number & name */}
       <div className="flex items-baseline gap-1.5 mb-1.5">
         <span className="font-sans text-white/15 text-[10px] font-bold tabular-nums">{pkg.monthNum}</span>
-        <p
-          className="font-display font-black text-white/60 leading-none"
-          style={{ fontSize: "clamp(1.4rem, 5vw, 1.8rem)" }}
-        >
+        <p className="font-display font-black text-white/60 leading-none text-2xl truncate">
           {pkg.month}
         </p>
       </div>
