@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import HomePage from "./pages/HomePage";
 import JuliPage from "./pages/JuliPage";
 import OktoberPage from "./pages/OktoberPage";
+import NovemberPage from "./pages/NovemberPage";
 import NotFound from "./pages/NotFound";
 import PageTransition from "./components/PageTransition";
 
@@ -20,6 +21,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
         <Route path="/juli-2026" element={<PageTransition><JuliPage /></PageTransition>} />
         <Route path="/oktober-2026" element={<PageTransition><OktoberPage /></PageTransition>} />
+        <Route path="/november-2026" element={<PageTransition><NovemberPage /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

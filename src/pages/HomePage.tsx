@@ -82,10 +82,20 @@ const oktober = {
   destinations: ["Makkah", "Madinah", "Thaif"],
 };
 
+const november = {
+  slug: "/november-2026",
+  month: "November",
+  year: "2026",
+  dates: "08 – 18 Nov 2026",
+  days: "11 Hari",
+  highlight: "Bonus City Tour Thaif Gratis",
+  image: jabalImage,
+  destinations: ["Makkah", "Madinah", "Thaif"],
+};
+
 const locked = [
   { month: "Agustus", monthNum: "08", year: "2026", image: umrahImage },
   { month: "September", monthNum: "09", year: "2026", image: qubaImage },
-  { month: "November", monthNum: "11", year: "2026", image: jabalImage },
 ];
 
 /* ── Page ─────────────────────────────────────────────────── */
@@ -131,6 +141,7 @@ const HomePage = () => (
       {[
         { pkg: juli, delay: 0.3, duration: 3 },
         { pkg: oktober, delay: 0.45, duration: 3.5 },
+        { pkg: november, delay: 0.6, duration: 4 },
       ].map(({ pkg, delay, duration }) => (
         <motion.div key={pkg.month}
           initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
