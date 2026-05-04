@@ -20,17 +20,62 @@ interface ItineraryModalProps {
   highlight?: string;
 }
 
-const highlightConfig: Record<string, { label: string; color: string; bg: string; icon: typeof Plane; dot: string }> = {
-  departure: { label: "Perjalanan",  color: "text-sky-300",     bg: "bg-sky-500/20 border-sky-400/40",     icon: Plane,    dot: "bg-sky-400"     },
-  umrah:     { label: "Ibadah Umroh",color: "text-amber-300",   bg: "bg-amber-500/20 border-amber-400/40", icon: Building, dot: "bg-amber-400"   },
-  worship:   { label: "Ibadah",      color: "text-emerald-300", bg: "bg-emerald-500/20 border-emerald-400/40", icon: Sunrise, dot: "bg-emerald-400" },
-  ziarah:    { label: "Ziarah",      color: "text-rose-300",    bg: "bg-rose-500/20 border-rose-400/40",   icon: Moon,     dot: "bg-rose-400"    },
-  travel:    { label: "City Tour",   color: "text-purple-300",  bg: "bg-purple-500/20 border-purple-400/40", icon: Star,   dot: "bg-purple-400"  },
+type HighlightKey = "departure" | "umrah" | "worship" | "ziarah" | "travel";
+
+const highlightConfig: Record<HighlightKey, {
+  label: string;
+  badgeColor: string;
+  badgeBg: string;
+  badgeBorder: string;
+  icon: typeof Plane;
+  timeColor: string;
+  timeBg: string;
+  dotColor: string;
+  lineColor: string;
+}> = {
+  departure: {
+    label: "Perjalanan",
+    badgeColor: "text-sky-700", badgeBg: "bg-sky-50", badgeBorder: "border-sky-200",
+    icon: Plane,
+    timeColor: "text-sky-700", timeBg: "bg-sky-50",
+    dotColor: "bg-sky-500", lineColor: "bg-sky-200",
+  },
+  umrah: {
+    label: "Ibadah Umroh",
+    badgeColor: "text-amber-700", badgeBg: "bg-amber-50", badgeBorder: "border-amber-200",
+    icon: Building,
+    timeColor: "text-amber-700", timeBg: "bg-amber-50",
+    dotColor: "bg-amber-500", lineColor: "bg-amber-200",
+  },
+  worship: {
+    label: "Ibadah",
+    badgeColor: "text-emerald-700", badgeBg: "bg-emerald-50", badgeBorder: "border-emerald-200",
+    icon: Sunrise,
+    timeColor: "text-emerald-700", timeBg: "bg-emerald-50",
+    dotColor: "bg-emerald-500", lineColor: "bg-emerald-200",
+  },
+  ziarah: {
+    label: "Ziarah",
+    badgeColor: "text-rose-700", badgeBg: "bg-rose-50", badgeBorder: "border-rose-200",
+    icon: Moon,
+    timeColor: "text-rose-700", timeBg: "bg-rose-50",
+    dotColor: "bg-rose-500", lineColor: "bg-rose-200",
+  },
+  travel: {
+    label: "City Tour",
+    badgeColor: "text-purple-700", badgeBg: "bg-purple-50", badgeBorder: "border-purple-200",
+    icon: Star,
+    timeColor: "text-purple-700", timeBg: "bg-purple-50",
+    dotColor: "bg-purple-500", lineColor: "bg-purple-200",
+  },
 };
 
 const defaultConfig = {
-  label: "Kegiatan", color: "text-white/70",
-  bg: "bg-white/10 border-white/20", icon: Star, dot: "bg-white/60",
+  label: "Kegiatan",
+  badgeColor: "text-stone-600", badgeBg: "bg-stone-50", badgeBorder: "border-stone-200",
+  icon: Star,
+  timeColor: "text-stone-600", timeBg: "bg-stone-100",
+  dotColor: "bg-stone-400", lineColor: "bg-stone-200",
 };
 
 const ItineraryModal = ({
@@ -44,7 +89,7 @@ const ItineraryModal = ({
   image,
   highlight,
 }: ItineraryModalProps) => {
-  const cfg = (highlight && highlightConfig[highlight]) || defaultConfig;
+  const cfg = (highlight && highlightConfig[highlight as HighlightKey]) || defaultConfig;
   const Icon = cfg.icon;
 
   return (
@@ -60,12 +105,12 @@ const ItineraryModal = ({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+                transition={{ duration: 0.22 }}
+                className="fixed inset-0 z-50 bg-black/65 backdrop-blur-sm"
               />
             </DialogPrimitive.Overlay>
 
-            {/* Content — fixed centering container */}
+            {/* Centering container */}
             <DialogPrimitive.Content
               forceMount
               className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none"
@@ -74,109 +119,115 @@ const ItineraryModal = ({
             >
               <motion.div
                 key="modal"
-                initial={{ opacity: 0, y: 40, scale: 0.97 }}
+                initial={{ opacity: 0, y: 36, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 24, scale: 0.97 }}
-                transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full max-w-md rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+                exit={{ opacity: 0, y: 20, scale: 0.97 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full max-w-md rounded-2xl overflow-hidden shadow-2xl flex flex-col bg-white"
                 style={{ maxHeight: "88vh" }}
                 onClick={(e) => e.stopPropagation()}
               >
+
                 {/* ── Hero Image ── */}
-                <div className="relative h-52 md:h-60 w-full flex-shrink-0 overflow-hidden">
+                <div className="relative h-48 md:h-56 w-full flex-shrink-0 overflow-hidden">
                   {image ? (
                     <img
                       src={image}
                       alt={title}
-                      className="w-full h-full object-cover scale-105"
-                      style={{ filter: "brightness(0.72) saturate(1.15)" }}
+                      className="w-full h-full object-cover"
+                      style={{ filter: "brightness(0.68) saturate(1.1)" }}
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-primary via-secondary to-black" />
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/5" />
 
-                  {/* Deep gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
-
-                  {/* Close button */}
-                  <DialogPrimitive.Close className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/60 transition-all">
+                  {/* Close */}
+                  <DialogPrimitive.Close
+                    onClick={(e) => { e.stopPropagation(); onClose(); }}
+                    className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/70 transition-all"
+                  >
                     <X className="w-4 h-4" />
                     <span className="sr-only">Tutup</span>
                   </DialogPrimitive.Close>
 
-                  {/* Day number — large editorial */}
-                  <div className="absolute top-4 left-4 flex flex-col items-start">
-                    <span className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-semibold leading-none mb-0.5">
-                      Hari
-                    </span>
-                    <span
+                  {/* Day number */}
+                  <div className="absolute top-4 left-4">
+                    <p className="text-white/45 text-[9px] uppercase tracking-[0.22em] font-semibold leading-none mb-0.5">Hari</p>
+                    <p
                       className="font-display font-extrabold leading-none text-white"
-                      style={{ fontSize: "clamp(2.8rem, 8vw, 4rem)", textShadow: "0 2px 16px rgba(0,0,0,0.6)" }}
+                      style={{ fontSize: "clamp(2.6rem, 9vw, 3.6rem)", textShadow: "0 3px 20px rgba(0,0,0,0.7)" }}
                     >
                       {String(day).padStart(2, "0")}
-                    </span>
+                    </p>
                   </div>
 
-                  {/* Category badge */}
-                  <div className="absolute top-5 right-14">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold border backdrop-blur-sm ${cfg.bg} ${cfg.color}`}>
+                  {/* Category badge — top right, next to close */}
+                  <div className="absolute top-3.5 right-14">
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold border backdrop-blur-sm ${cfg.badgeBg} ${cfg.badgeColor} ${cfg.badgeBorder}`}>
                       <Icon className="w-3 h-3" />
                       {cfg.label}
                     </span>
                   </div>
 
-                  {/* Title & location at bottom of image */}
-                  <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-8">
+                  {/* Title block */}
+                  <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
                     {date && (
-                      <p className="text-white/55 text-[10px] uppercase tracking-widest font-medium mb-1">{date}</p>
+                      <p className="text-white/50 text-[10px] uppercase tracking-[0.18em] font-medium mb-1">{date}</p>
                     )}
-                    <DialogPrimitive.Title className="font-serif font-bold text-white text-lg md:text-xl leading-snug mb-1.5">
+                    <DialogPrimitive.Title className="font-serif font-bold text-white text-xl md:text-2xl leading-tight mb-1.5">
                       {title}
                     </DialogPrimitive.Title>
-                    <div className="flex items-center gap-1.5 text-white/60 text-xs">
+                    <div className="flex items-center gap-1.5 text-white/55 text-xs">
                       <MapPin className="w-3 h-3 flex-shrink-0" />
-                      <span className="truncate">{location}</span>
+                      <span>{location}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* ── Activities ── */}
-                <div className="bg-[hsl(25,20%,10%)] flex flex-col overflow-hidden flex-1">
-                  {/* Section header */}
-                  <div className="flex items-center gap-2 px-5 pt-4 pb-3 border-b border-white/8 flex-shrink-0">
-                    <Clock className="w-3.5 h-3.5 text-white/40" />
-                    <span className="text-white/50 text-[10px] uppercase tracking-[0.18em] font-semibold">
+                {/* ── Activities — light background ── */}
+                <div className="flex flex-col overflow-hidden flex-1 bg-white">
+
+                  {/* Section label */}
+                  <div className="flex items-center gap-2 px-5 pt-4 pb-3 border-b border-stone-100 flex-shrink-0">
+                    <Clock className="w-3.5 h-3.5 text-stone-400" />
+                    <span className="text-stone-500 text-[10px] uppercase tracking-[0.2em] font-semibold">
                       Jadwal Kegiatan
                     </span>
-                    <span className="ml-auto text-white/25 text-[10px]">{activities.length} kegiatan</span>
+                    <span className="ml-auto text-stone-300 text-[10px]">{activities.length} kegiatan</span>
                   </div>
 
                   <ScrollArea className="flex-1 min-h-0">
-                    <ul className="px-5 py-4 space-y-0">
+                    <ul className="px-5 pt-3 pb-5">
                       {activities.map((activity, index) => (
                         <motion.li
                           key={index}
-                          initial={{ opacity: 0, x: -12 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.32, delay: 0.08 + index * 0.06, ease: "easeOut" }}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.28, delay: 0.06 + index * 0.05, ease: "easeOut" }}
                           className="flex gap-3 relative"
                         >
-                          {/* Timeline connector */}
-                          <div className="flex flex-col items-center flex-shrink-0 pt-1">
-                            <div className={`w-2 h-2 rounded-full flex-shrink-0 ring-2 ring-white/10 ${cfg.dot}`} />
+                          {/* Timeline spine */}
+                          <div className="flex flex-col items-center flex-shrink-0 pt-[3px]">
+                            <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ring-2 ring-white shadow-sm ${cfg.dotColor}`} />
                             {index < activities.length - 1 && (
-                              <div className="w-px flex-1 mt-1.5 mb-1.5 bg-white/10" style={{ minHeight: "1.25rem" }} />
+                              <div className={`w-px flex-1 mt-1 mb-1 ${cfg.lineColor}`} style={{ minHeight: "1.5rem" }} />
                             )}
                           </div>
 
-                          {/* Content */}
-                          <div className={`flex-1 ${index === activities.length - 1 ? "pb-2" : "pb-4"}`}>
-                            {activity.time && (
-                              <span className={`inline-block mb-1 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${cfg.bg} ${cfg.color}`}>
-                                {activity.time}
-                              </span>
+                          {/* Content block */}
+                          <div className={`flex-1 min-w-0 ${index < activities.length - 1 ? "pb-4" : "pb-1"}`}>
+                            {activity.time ? (
+                              <div className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md mb-1.5 ${cfg.timeBg}`}>
+                                <Clock className={`w-3 h-3 flex-shrink-0 ${cfg.timeColor}`} />
+                                <span className={`text-[11px] font-bold tracking-wide ${cfg.timeColor}`}>
+                                  {activity.time}
+                                </span>
+                              </div>
+                            ) : (
+                              <div className="mb-1" />
                             )}
-                            <p className="text-white/80 text-xs md:text-sm leading-relaxed">
+                            <p className="text-stone-700 text-sm leading-relaxed">
                               {activity.description}
                             </p>
                           </div>
@@ -185,6 +236,7 @@ const ItineraryModal = ({
                     </ul>
                   </ScrollArea>
                 </div>
+
               </motion.div>
             </DialogPrimitive.Content>
 
