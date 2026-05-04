@@ -151,7 +151,7 @@ const HomePage = () => {
               </div>
 
               {/* Month name */}
-              <div className="absolute top-4 left-5">
+              <div className="absolute top-6 left-5">
                 <p
                   className="font-display font-black text-white leading-none"
                   style={{ fontSize: "clamp(2.8rem, 9vw, 4rem)", textShadow: "0 4px 24px rgba(0,0,0,0.9)" }}
@@ -230,33 +230,37 @@ const HomePage = () => {
 const SoonCard = ({ pkg }: { pkg: typeof comingSoon[0] }) => (
   <div className="relative rounded-xl overflow-hidden border border-white/[0.07] shadow-lg">
     {/* Image */}
-    <div className="relative h-[130px] sm:h-[148px] overflow-hidden">
+    <div className="relative h-[148px] sm:h-[160px] overflow-hidden">
       <img
         src={pkg.image}
         alt={pkg.month}
         className="w-full h-full object-cover"
         style={{ filter: "brightness(0.28) saturate(0.5)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10" />
     </div>
 
-    {/* Lock icon */}
-    <div className="absolute top-3 right-3">
+    {/* Lock icon — top right */}
+    <div className="absolute top-2.5 right-2.5">
       <div className="w-6 h-6 rounded-full bg-white/8 border border-white/12 flex items-center justify-center backdrop-blur-sm">
         <Lock className="w-3 h-3 text-white/30" />
       </div>
     </div>
 
-    {/* Content */}
-    <div className="absolute bottom-0 left-0 right-0 px-3 pb-3">
-      {/* Month number */}
-      <p className="font-sans text-white/20 text-[9px] font-bold tracking-[0.15em] mb-0.5">{pkg.monthNum} · {pkg.year}</p>
+    {/* Month number + year — top left */}
+    <div className="absolute top-3 left-3">
+      <p className="font-sans text-white/25 text-[9px] font-bold tracking-[0.15em]">{pkg.monthNum} · {pkg.year}</p>
+    </div>
 
-      {/* Month name — fixed small size, always readable */}
-      <p className="font-display font-black text-white/65 leading-none text-[1.05rem] mb-2">
+    {/* Month name — upper-center of card */}
+    <div className="absolute top-8 left-3 right-10">
+      <p className="font-display font-black text-white/70 leading-none text-[1.15rem]">
         {pkg.month}
       </p>
+    </div>
 
+    {/* Bottom info */}
+    <div className="absolute bottom-0 left-0 right-0 px-3 pb-3">
       {/* Destinations */}
       <div className="flex items-center gap-2 flex-wrap mb-2">
         {pkg.destinations.map((d) => (
