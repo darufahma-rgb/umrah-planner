@@ -1,6 +1,5 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X, MapPin, Clock, Plane, Building, Sunrise, Moon, Star } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Activity {
@@ -186,7 +185,7 @@ const ItineraryModal = ({
                 </div>
 
                 {/* ── Activities — light background ── */}
-                <div className="flex flex-col overflow-hidden flex-1 bg-white">
+                <div className="bg-white flex flex-col" style={{ minHeight: 0 }}>
 
                   {/* Section label */}
                   <div className="flex items-center gap-2 px-5 pt-4 pb-3 border-b border-stone-100 flex-shrink-0">
@@ -197,7 +196,7 @@ const ItineraryModal = ({
                     <span className="ml-auto text-stone-300 text-[10px]">{activities.length} kegiatan</span>
                   </div>
 
-                  <ScrollArea className="flex-1 min-h-0">
+                  <div className="overflow-y-auto" style={{ maxHeight: "42vh", WebkitOverflowScrolling: "touch" }}>
                     <ul className="px-5 pt-3 pb-10">
                       {activities.map((activity, index) => (
                         <motion.li
@@ -234,7 +233,7 @@ const ItineraryModal = ({
                         </motion.li>
                       ))}
                     </ul>
-                  </ScrollArea>
+                  </div>
                 </div>
 
               </motion.div>
