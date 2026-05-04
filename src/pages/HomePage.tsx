@@ -117,7 +117,7 @@ const HomePage = () => (
         <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.22em] uppercase text-white/35 mb-4">
           <CalendarDays className="w-3 h-3" /> Pilih Jadwal Keberangkatan
         </span>
-        <h1 className="font-display font-extrabold text-white leading-[0.92] tracking-tight"
+        <h1 className="font-display font-extrabold text-white leading-[1.05] sm:leading-[0.92] tracking-tight"
           style={{ fontSize: "clamp(3rem, 10vw, 5.5rem)", textShadow: "0 4px 32px rgba(0,0,0,0.7)" }}>
           Itinerary<br />Umrah
         </h1>
@@ -145,7 +145,8 @@ const HomePage = () => (
                 <div className="absolute top-3 right-3 z-20">
                   <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 backdrop-blur-sm">
                     <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
-                    Pendaftaran Dibuka
+                    <span className="sm:hidden">Dibuka</span>
+                    <span className="hidden sm:inline">Pendaftaran Dibuka</span>
                   </span>
                 </div>
 
