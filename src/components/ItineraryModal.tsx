@@ -70,6 +70,7 @@ const ItineraryModal = ({
               forceMount
               className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none"
               aria-describedby={undefined}
+              onClick={onClose}
             >
               <motion.div
                 key="modal"
@@ -79,6 +80,7 @@ const ItineraryModal = ({
                 transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
                 className="w-full max-w-md rounded-2xl overflow-hidden shadow-2xl flex flex-col"
                 style={{ maxHeight: "88vh" }}
+                onClick={(e) => e.stopPropagation()}
               >
                 {/* ── Hero Image ── */}
                 <div className="relative h-52 md:h-60 w-full flex-shrink-0 overflow-hidden">
