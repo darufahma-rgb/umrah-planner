@@ -90,33 +90,24 @@ const HeroSection = ({
       {/* Vignette edges */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.45)_100%)]" />
 
-      {/* ── Month label — top-left prominent ── */}
-      {monthLabel && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute top-16 md:top-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center"
-        >
-          <p
-            className="font-display font-black uppercase leading-none tracking-widest text-white select-none"
-            style={{
-              fontSize: "clamp(0.9rem, 2.5vw, 1.3rem)",
-              textShadow: "0 2px 16px rgba(0,0,0,0.7)",
-              letterSpacing: "0.25em",
-            }}
-          >
-            {monthLabel}
-          </p>
-          <div className="mt-1.5 h-[2px] w-8 rounded-full bg-gradient-to-r from-transparent via-accent/80 to-transparent" />
-        </motion.div>
-      )}
 
       {/* ── Main content ── */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
         className="relative z-10 container mx-auto px-4 pt-20 md:pt-36 pb-8 md:pb-16 flex flex-col items-center"
       >
+        {/* Month label */}
+        {monthLabel && (
+          <motion.p
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="mb-2 font-sans font-semibold uppercase tracking-[0.3em] text-white/70 text-[11px] md:text-xs text-center"
+          >
+            {monthLabel}
+          </motion.p>
+        )}
+
         {/* Date badge */}
         <motion.div
           initial={{ opacity: 0, y: -12 }}
