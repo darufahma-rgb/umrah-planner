@@ -1,214 +1,282 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { CalendarDays, ArrowRight, MapPin } from "lucide-react";
+import { CalendarDays, ArrowRight, MapPin, Lock } from "lucide-react";
 import logoElmassa from "@/assets/logo-elmassa.png";
 import heroImage from "@/assets/hero-makkah.jpg";
 import madinahImage from "@/assets/madinah-mosque.jpg";
 import departureImage from "@/assets/departure-airport.jpg";
+import umrahImage from "@/assets/umrah-pilgrims.jpg";
+import qubaImage from "@/assets/masjid-quba.jpg";
+import jabalImage from "@/assets/jabal-rahmah.jpg";
+import cityTaifImage from "@/assets/city-taif.jpg";
 
-const packages = [
+const WA_PATH = "https://wa.me/6281249476778?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh";
+
+const openWhatsApp = () => window.open(WA_PATH, "_blank");
+
+const featured = {
+  slug: "/juli-2026",
+  month: "Juli",
+  monthNum: "07",
+  year: "2026",
+  dates: "08 – 18 Juli 2026",
+  days: "11 Hari",
+  status: "open" as const,
+  statusLabel: "Pendaftaran Dibuka",
+  image: heroImage,
+  destinations: ["Makkah", "Madinah", "Thaif"],
+  highlight: "Bonus City Tour Thaif Gratis",
+};
+
+const comingSoon = [
   {
-    slug: "/juli-2026",
-    month: "Juli",
+    month: "Agustus",
+    monthNum: "08",
     year: "2026",
-    dates: "08 – 18 Juli 2026",
-    days: "11 Hari",
-    status: "open",
-    statusLabel: "Pendaftaran Dibuka",
-    image: heroImage,
-    destinations: ["Makkah", "Madinah", "Thaif"],
-    highlight: "Bonus City Tour Thaif!",
+    image: umrahImage,
+    destinations: ["Makkah", "Madinah"],
   },
   {
-    slug: "/oktober-2026",
-    month: "Oktober",
+    month: "September",
+    monthNum: "09",
     year: "2026",
-    dates: "Oktober 2026",
-    days: "Coming Soon",
-    status: "soon",
-    statusLabel: "Segera Hadir",
+    image: qubaImage,
+    destinations: ["Makkah", "Madinah"],
+  },
+  {
+    month: "Oktober",
+    monthNum: "10",
+    year: "2026",
     image: madinahImage,
     destinations: ["Makkah", "Madinah"],
-    highlight: "Segera diumumkan",
+  },
+  {
+    month: "November",
+    monthNum: "11",
+    year: "2026",
+    image: jabalImage,
+    destinations: ["Makkah", "Madinah"],
   },
 ];
 
-const openWhatsApp = () => {
-  window.open(
-    "https://wa.me/6281249476778?text=Halo%20El%20Massa,%20saya%20tertarik%20dengan%20paket%20Umroh",
-    "_blank"
-  );
-};
+const WHATSAPP_SVG = (
+  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+);
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden flex flex-col">
-      {/* Background */}
-      <div className="absolute inset-0">
+    <div className="min-h-screen bg-[#0c0a08] flex flex-col">
+
+      {/* ── Fixed background ── */}
+      <div className="fixed inset-0 pointer-events-none">
         <img
           src={departureImage}
-          alt="background"
+          alt=""
           className="w-full h-full object-cover"
-          style={{ filter: "brightness(0.35) saturate(0.8)" }}
+          style={{ filter: "brightness(0.22) saturate(0.6)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(180,120,60,0.15),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#0c0a08]/95" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(180,120,40,0.08),transparent)]" />
       </div>
 
-      {/* Navbar */}
-      <header className="relative z-10 flex items-center justify-between px-5 md:px-10 py-5">
-        <img
-          src={logoElmassa}
-          alt="El Massa Tour & Travel"
-          className="h-8 md:h-10 w-auto brightness-0 invert"
-        />
+      {/* ── Navbar ── */}
+      <header className="relative z-20 flex items-center justify-between px-5 md:px-10 pt-6 pb-2">
+        <img src={logoElmassa} alt="El Massa Tour & Travel" className="h-7 md:h-9 w-auto brightness-0 invert opacity-90" />
         <button
           onClick={openWhatsApp}
-          className="flex items-center gap-2 font-sans text-[11px] font-semibold tracking-widest uppercase px-4 py-2 rounded-full bg-white text-stone-800 hover:bg-white/90 transition-all"
+          className="flex items-center gap-2 text-stone-800 font-sans text-[10px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full bg-white hover:bg-white/90 transition-all shadow-sm"
         >
-          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-stone-800 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
+          {WHATSAPP_SVG}
           Hubungi
         </button>
       </header>
 
-      {/* Hero text */}
-      <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-5 text-center pt-4 pb-8">
+      {/* ── Page content ── */}
+      <main className="relative z-10 flex-1 flex flex-col items-center px-4 md:px-6 pt-8 pb-10">
+
+        {/* Title block */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="mb-4 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-white/80 text-[11px] font-medium"
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-2"
         >
-          <CalendarDays className="w-3 h-3 text-accent flex-shrink-0" />
-          Pilih Jadwal Keberangkatan
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.22em] uppercase text-white/35 mb-4">
+            <CalendarDays className="w-3 h-3" />
+            Pilih Jadwal Keberangkatan
+          </span>
+          <h1
+            className="font-display font-extrabold text-white leading-[0.92] tracking-tight"
+            style={{ fontSize: "clamp(3rem, 10vw, 5.5rem)", textShadow: "0 4px 32px rgba(0,0,0,0.7)" }}
+          >
+            Itinerary<br />
+            <span style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.35)", color: "transparent" }}>Umrah</span>
+          </h1>
+          <div className="mx-auto mt-4 mb-2 h-px w-10 bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
+          <p className="text-white/40 text-xs tracking-wide mt-3">
+            Bersama <span className="text-amber-400/80 font-medium">El Massa Tour & Travel</span> · 2026
+          </p>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-none tracking-wide mb-2"
-          style={{ textShadow: "0 2px 20px rgba(0,0,0,0.6)" }}
-        >
-          Itinerary
-        </motion.h1>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-none tracking-wide mb-6"
-          style={{ textShadow: "0 2px 20px rgba(0,0,0,0.6)" }}
-        >
-          Umrah
-        </motion.h1>
-
+        {/* ── Featured card (Juli – OPEN) ── */}
         <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="mb-4 h-px w-16 bg-gradient-to-r from-transparent via-accent to-transparent"
-        />
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full max-w-xl mt-8"
+        >
+          <Link to={featured.slug} className="block group">
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_8px_48px_rgba(0,0,0,0.6)] border border-white/10 group-hover:border-amber-400/30 transition-all duration-500">
 
-        <motion.p
+              {/* Image */}
+              <div className="relative h-52 sm:h-64 overflow-hidden">
+                <img
+                  src={featured.image}
+                  alt={featured.month}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  style={{ filter: "brightness(0.55) saturate(1.05)" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/5" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+              </div>
+
+              {/* Open badge */}
+              <div className="absolute top-3.5 right-3.5">
+                <span className="inline-flex items-center gap-1 text-[9px] font-bold tracking-[0.18em] uppercase px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Pendaftaran Dibuka
+                </span>
+              </div>
+
+              {/* Month name */}
+              <div className="absolute top-4 left-5">
+                <p
+                  className="font-display font-black text-white leading-none"
+                  style={{ fontSize: "clamp(2.8rem, 9vw, 4rem)", textShadow: "0 4px 24px rgba(0,0,0,0.9)" }}
+                >
+                  {featured.month}
+                </p>
+                <p className="text-white/35 text-[10px] tracking-[0.25em] font-semibold uppercase mt-0.5">{featured.year}</p>
+              </div>
+
+              {/* Bottom meta */}
+              <div className="absolute bottom-0 left-0 right-0 px-5 pb-5">
+                {/* Destinations */}
+                <div className="flex items-center gap-3 mb-2.5">
+                  {featured.destinations.map((d) => (
+                    <span key={d} className="inline-flex items-center gap-1 text-white/45 text-[10px] font-medium">
+                      <MapPin className="w-2.5 h-2.5 flex-shrink-0" />
+                      {d}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-end justify-between gap-3">
+                  <div>
+                    <p className="text-white font-bold text-base leading-tight tracking-tight">{featured.dates}</p>
+                    <p className="text-amber-400 text-[11px] font-semibold mt-1 tracking-wide">{featured.days} · {featured.highlight}</p>
+                  </div>
+                  <div className="flex-shrink-0 w-9 h-9 rounded-full bg-amber-400/15 border border-amber-400/40 flex items-center justify-center group-hover:bg-amber-400/30 group-hover:border-amber-400/70 transition-all duration-300">
+                    <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+
+        {/* ── Section label: Coming Soon ── */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="text-white/65 text-sm max-w-xs md:max-w-sm leading-relaxed mb-10"
+          transition={{ duration: 0.5, delay: 0.55 }}
+          className="w-full max-w-xl mt-8 mb-4 flex items-center gap-3"
         >
-          Bersama <span className="text-accent font-semibold">El Massa Tour & Travel</span> — pilih keberangkatan yang sesuai untuk Anda.
-        </motion.p>
+          <div className="flex-1 h-px bg-white/10" />
+          <span className="text-white/30 text-[9px] font-bold tracking-[0.28em] uppercase">Jadwal Berikutnya</span>
+          <div className="flex-1 h-px bg-white/10" />
+        </motion.div>
 
-        {/* Package Cards */}
-        <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {packages.map((pkg, i) => (
+        {/* ── 2×2 Coming soon grid ── */}
+        <div className="w-full max-w-xl grid grid-cols-2 gap-3">
+          {comingSoon.map((pkg, i) => (
             <motion.div
-              key={pkg.slug}
-              initial={{ opacity: 0, y: 32, scale: 0.96 }}
+              key={pkg.month}
+              initial={{ opacity: 0, y: 20, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.65, delay: 0.65 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.55, delay: 0.6 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              {pkg.status === "open" ? (
-                <Link to={pkg.slug} className="block group">
-                  <PackageCard pkg={pkg} />
-                </Link>
-              ) : (
-                <div className="opacity-75 cursor-default">
-                  <PackageCard pkg={pkg} />
-                </div>
-              )}
+              <SoonCard pkg={pkg} />
             </motion.div>
           ))}
         </div>
-      </div>
 
-      {/* Bottom brand tag */}
-      <div className="relative z-10 text-center pb-6">
-        <p className="text-white/25 text-[10px] tracking-widest uppercase">
-          © 2026 El Massa Tour & Travel
-        </p>
-      </div>
+        {/* ── Footer note ── */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+          className="mt-10 text-white/20 text-[9px] tracking-[0.2em] uppercase text-center"
+        >
+          © 2026 El Massa Tour & Travel · Pangkal Pinang
+        </motion.p>
+      </main>
     </div>
   );
 };
 
-const PackageCard = ({ pkg }: { pkg: typeof packages[0] }) => (
-  <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-white/25 transition-all duration-300 group-hover:-translate-y-1">
+const SoonCard = ({ pkg }: { pkg: typeof comingSoon[0] }) => (
+  <div className="relative rounded-xl overflow-hidden border border-white/[0.07] shadow-lg">
     {/* Image */}
-    <div className="relative h-44 sm:h-52 overflow-hidden">
+    <div className="relative h-[130px] sm:h-[148px] overflow-hidden">
       <img
         src={pkg.image}
         alt={pkg.month}
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        style={{ filter: pkg.status === "soon" ? "brightness(0.5) saturate(0.6)" : "brightness(0.6) saturate(1.05)" }}
+        className="w-full h-full object-cover"
+        style={{ filter: "brightness(0.28) saturate(0.5)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+    </div>
 
-      {/* Status badge */}
-      <div className="absolute top-3 right-3">
-        <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full border backdrop-blur-sm ${
-          pkg.status === "open"
-            ? "bg-emerald-500/20 border-emerald-400/40 text-emerald-300"
-            : "bg-white/10 border-white/20 text-white/50"
-        }`}>
-          {pkg.statusLabel}
-        </span>
+    {/* Lock icon */}
+    <div className="absolute top-3 right-3">
+      <div className="w-6 h-6 rounded-full bg-white/8 border border-white/12 flex items-center justify-center backdrop-blur-sm">
+        <Lock className="w-3 h-3 text-white/30" />
       </div>
+    </div>
 
-      {/* Month / big number */}
-      <div className="absolute top-3 left-4">
+    {/* Content */}
+    <div className="absolute bottom-0 left-0 right-0 px-3.5 pb-3.5">
+      {/* Month number & name */}
+      <div className="flex items-baseline gap-1.5 mb-1.5">
+        <span className="font-sans text-white/15 text-[10px] font-bold tabular-nums">{pkg.monthNum}</span>
         <p
-          className="font-display font-extrabold text-white/90 leading-none"
-          style={{ fontSize: "clamp(2.2rem, 8vw, 3rem)", textShadow: "0 3px 16px rgba(0,0,0,0.8)" }}
+          className="font-display font-black text-white/60 leading-none"
+          style={{ fontSize: "clamp(1.4rem, 5vw, 1.8rem)" }}
         >
           {pkg.month}
         </p>
-        <p className="text-white/40 text-xs tracking-[0.2em] font-medium mt-0.5">{pkg.year}</p>
       </div>
 
-      {/* Bottom info */}
-      <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
-        <div className="flex items-center gap-1.5 mb-2 flex-wrap">
-          {pkg.destinations.map((d) => (
-            <span key={d} className="inline-flex items-center gap-1 text-white/55 text-[10px]">
-              <MapPin className="w-2.5 h-2.5" />
-              {d}
-            </span>
-          ))}
-        </div>
-        <div className="flex items-end justify-between">
-          <div>
-            <p className="text-white font-semibold text-sm leading-snug">{pkg.dates}</p>
-            <p className="text-accent text-[11px] font-medium mt-0.5">{pkg.days} · {pkg.highlight}</p>
-          </div>
-          {pkg.status === "open" && (
-            <div className="w-8 h-8 rounded-full bg-accent/20 border border-accent/50 flex items-center justify-center group-hover:bg-accent/40 transition-colors flex-shrink-0">
-              <ArrowRight className="w-3.5 h-3.5 text-accent group-hover:translate-x-0.5 transition-transform" />
-            </div>
-          )}
-        </div>
+      {/* Year */}
+      <p className="text-white/25 text-[9px] tracking-[0.22em] font-semibold uppercase mb-2">{pkg.year}</p>
+
+      {/* Destinations */}
+      <div className="flex items-center gap-2 flex-wrap mb-2">
+        {pkg.destinations.map((d) => (
+          <span key={d} className="inline-flex items-center gap-0.5 text-white/25 text-[9px]">
+            <MapPin className="w-2 h-2 flex-shrink-0" />
+            {d}
+          </span>
+        ))}
       </div>
+
+      {/* Coming soon label */}
+      <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.18em] uppercase text-white/30 border border-white/12 rounded-full px-2 py-0.5">
+        Segera Hadir
+      </span>
     </div>
   </div>
 );
