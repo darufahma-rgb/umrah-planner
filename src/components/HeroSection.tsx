@@ -101,7 +101,7 @@ const HeroSection = ({
           <p
             className="font-display font-black uppercase leading-none tracking-tight text-white select-none"
             style={{
-              fontSize: "clamp(2.8rem, 9vw, 5.5rem)",
+              fontSize: "clamp(1.4rem, 4vw, 2.2rem)",
               textShadow: "0 4px 32px rgba(0,0,0,0.8)",
               WebkitTextStroke: "1px rgba(255,255,255,0.12)",
             }}
