@@ -40,6 +40,7 @@ const OktoberPage = () => {
       <main>
         <HeroSection
           dateText="30 Sep – 13 Okt 2026"
+          monthLabel="OKTOBER 2026"
           bgImage={madinahImage}
           sideTint="rgba(10,60,55,0.35)"
           cornerGlow="rgba(20,100,80,0.28)"

@@ -39,6 +39,7 @@ const JuliPage = () => {
       <main>
         <HeroSection
           dateText="08 Juli – 18 Juli 2026"
+          monthLabel="JULI 2026"
           bgImage={heroImage}
           sideTint="rgba(120,65,10,0.32)"
           cornerGlow="rgba(200,130,20,0.25)"
