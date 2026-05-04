@@ -1,12 +1,7 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Badge } from "@/components/ui/badge";
-import { MapPin, Clock, Plane, CheckCircle2 } from "lucide-react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { X, MapPin, Clock, Plane, Building, Sunrise, Moon, Star } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Activity {
   time?: string;
@@ -17,6 +12,7 @@ interface ItineraryModalProps {
   isOpen: boolean;
   onClose: () => void;
   day: number;
+  date?: string;
   title: string;
   location: string;
   activities: Activity[];
@@ -24,98 +20,167 @@ interface ItineraryModalProps {
   highlight?: string;
 }
 
-const getHighlightLabel = (highlight?: string) => {
-  switch (highlight) {
-    case "departure":
-      return "Perjalanan";
-    case "umrah":
-      return "Ibadah Umroh";
-    case "worship":
-      return "Ibadah";
-    case "ziarah":
-      return "Ziarah";
-    case "travel":
-      return "Tour";
-    default:
-      return "Kegiatan";
-  }
+const highlightConfig: Record<string, { label: string; color: string; bg: string; icon: typeof Plane; dot: string }> = {
+  departure: { label: "Perjalanan", color: "text-sky-300", bg: "bg-sky-500/20 border-sky-400/40", icon: Plane, dot: "bg-sky-400" },
+  umrah:     { label: "Ibadah Umroh", color: "text-amber-300", bg: "bg-amber-500/20 border-amber-400/40", icon: Building, dot: "bg-amber-400" },
+  worship:   { label: "Ibadah", color: "text-emerald-300", bg: "bg-emerald-500/20 border-emerald-400/40", icon: Sunrise, dot: "bg-emerald-400" },
+  ziarah:    { label: "Ziarah", color: "text-rose-300", bg: "bg-rose-500/20 border-rose-400/40", icon: Moon, dot: "bg-rose-400" },
+  travel:    { label: "City Tour", color: "text-purple-300", bg: "bg-purple-500/20 border-purple-400/40", icon: Star, dot: "bg-purple-400" },
 };
+
+const defaultConfig = { label: "Kegiatan", color: "text-white/70", bg: "bg-white/10 border-white/20", icon: Star, dot: "bg-white/60" };
 
 const ItineraryModal = ({
   isOpen,
   onClose,
   day,
+  date,
   title,
   location,
   activities,
   image,
   highlight,
 }: ItineraryModalProps) => {
+  const cfg = (highlight && highlightConfig[highlight]) || defaultConfig;
+  const Icon = cfg.icon;
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] md:max-w-lg max-h-[90vh] p-0 overflow-hidden rounded-xl bg-white">
-        {/* Header Image */}
-        {image && (
-          <div className="relative h-32 md:h-44 w-full">
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent" />
-            <div className="absolute bottom-3 left-3 right-3">
-              <Badge className="bg-primary text-white text-xs">
-                <Plane className="w-3 h-3 mr-1" />
-                Hari {day}
-              </Badge>
-            </div>
-          </div>
-        )}
+    <DialogPrimitive.Root open={isOpen} onOpenChange={onClose}>
+      <AnimatePresence>
+        {isOpen && (
+          <DialogPrimitive.Portal forceMount>
+            {/* Backdrop */}
+            <DialogPrimitive.Overlay asChild forceMount>
+              <motion.div
+                key="overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+              />
+            </DialogPrimitive.Overlay>
 
-        <DialogHeader className={`px-4 md:px-6 ${image ? "pt-1" : "pt-4"}`}>
-          <div className="flex items-center gap-1.5 text-gray-600 text-xs md:text-sm">
-            <MapPin className="w-3 h-3 md:w-4 md:h-4" />
-            <span className="truncate">{location}</span>
-          </div>
-          <DialogTitle className="font-sans text-lg md:text-xl text-gray-900 leading-tight">
-            {!image && <span className="text-primary mr-2">Hari {day}:</span>}
-            {title}
-          </DialogTitle>
-          <Badge variant="outline" className="w-fit mt-1 border-primary text-primary text-xs">
-            {getHighlightLabel(highlight)}
-          </Badge>
-        </DialogHeader>
+            {/* Panel */}
+            <DialogPrimitive.Content asChild forceMount>
+              <motion.div
+                key="modal"
+                initial={{ opacity: 0, y: 48, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 32, scale: 0.97 }}
+                transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-[calc(100vw-2rem)] max-w-md rounded-2xl overflow-hidden shadow-2xl focus:outline-none"
+                style={{ maxHeight: "88vh" }}
+              >
+                {/* ── Hero Image ── */}
+                <div className="relative h-52 md:h-60 w-full flex-shrink-0 overflow-hidden">
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={title}
+                      className="w-full h-full object-cover scale-105"
+                      style={{ filter: "brightness(0.72) saturate(1.15)" }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-primary via-secondary to-black" />
+                  )}
 
-        <ScrollArea className="px-4 md:px-6 pb-4 md:pb-6 max-h-[50vh]">
-          <div className="space-y-1 mt-3">
-            <h4 className="font-semibold flex items-center gap-2 mb-3 text-sm bg-primary text-white rounded-lg px-3 py-2 w-fit">
-              <Clock className="w-3.5 h-3.5" />
-              Jadwal Kegiatan
-            </h4>
-            <ul className="space-y-2">
-              {activities.map((activity, index) => (
-                <li
-                  key={index}
-                  className="flex items-start gap-2 p-2 md:p-3 rounded-lg bg-gray-100"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
-                    {activity.time && (
-                      <span className="font-semibold text-gray-900 block text-xs md:text-sm">
-                        {activity.time}
-                      </span>
-                    )}
-                    <span className="text-gray-600 text-xs md:text-sm">
-                      {activity.description}
+                  {/* Deep gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+
+                  {/* Close button */}
+                  <DialogPrimitive.Close className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/60 transition-all">
+                    <X className="w-4 h-4" />
+                    <span className="sr-only">Tutup</span>
+                  </DialogPrimitive.Close>
+
+                  {/* Day number — large editorial */}
+                  <div className="absolute top-4 left-4 flex flex-col items-start">
+                    <span className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-semibold leading-none mb-0.5">
+                      Hari
+                    </span>
+                    <span
+                      className="font-display font-extrabold leading-none text-white"
+                      style={{ fontSize: "clamp(2.8rem, 8vw, 4rem)", textShadow: "0 2px 16px rgba(0,0,0,0.6)" }}
+                    >
+                      {String(day).padStart(2, "0")}
                     </span>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </ScrollArea>
-      </DialogContent>
-    </Dialog>
+
+                  {/* Category badge */}
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-4 md:top-auto md:bottom-14">
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold border backdrop-blur-sm ${cfg.bg} ${cfg.color}`}>
+                      <Icon className="w-3 h-3" />
+                      {cfg.label}
+                    </span>
+                  </div>
+
+                  {/* Title & location at bottom of image */}
+                  <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-8">
+                    {date && (
+                      <p className="text-white/55 text-[10px] uppercase tracking-widest font-medium mb-1">{date}</p>
+                    )}
+                    <DialogPrimitive.Title className="font-serif font-bold text-white text-lg md:text-xl leading-snug mb-1.5">
+                      {title}
+                    </DialogPrimitive.Title>
+                    <div className="flex items-center gap-1.5 text-white/60 text-xs">
+                      <MapPin className="w-3 h-3 flex-shrink-0" />
+                      <span className="truncate">{location}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── Activities ── */}
+                <div className="bg-[hsl(25_20%_10%)] flex flex-col" style={{ maxHeight: "calc(88vh - 13rem)" }}>
+                  {/* Section header */}
+                  <div className="flex items-center gap-2 px-5 pt-4 pb-3 border-b border-white/8">
+                    <Clock className="w-3.5 h-3.5 text-white/40" />
+                    <span className="text-white/50 text-[10px] uppercase tracking-[0.18em] font-semibold">
+                      Jadwal Kegiatan
+                    </span>
+                    <span className="ml-auto text-white/25 text-[10px]">{activities.length} kegiatan</span>
+                  </div>
+
+                  <ScrollArea className="flex-1 overflow-auto">
+                    <ul className="px-5 py-4 space-y-0">
+                      {activities.map((activity, index) => (
+                        <motion.li
+                          key={index}
+                          initial={{ opacity: 0, x: -12 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.32, delay: 0.05 + index * 0.06, ease: "easeOut" }}
+                          className="flex gap-3 relative"
+                        >
+                          {/* Timeline connector */}
+                          <div className="flex flex-col items-center flex-shrink-0 pt-1">
+                            <div className={`w-2 h-2 rounded-full flex-shrink-0 ring-2 ring-white/10 ${cfg.dot}`} />
+                            {index < activities.length - 1 && (
+                              <div className="w-px flex-1 mt-1.5 mb-1.5 bg-white/10" style={{ minHeight: "1.25rem" }} />
+                            )}
+                          </div>
+
+                          {/* Content */}
+                          <div className={`flex-1 pb-4 ${index === activities.length - 1 ? "pb-2" : ""}`}>
+                            {activity.time && (
+                              <span className={`inline-block mb-1 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${cfg.bg} ${cfg.color}`}>
+                                {activity.time}
+                              </span>
+                            )}
+                            <p className="text-white/80 text-xs md:text-sm leading-relaxed">
+                              {activity.description}
+                            </p>
+                          </div>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </ScrollArea>
+                </div>
+              </motion.div>
+            </DialogPrimitive.Content>
+          </DialogPrimitive.Portal>
+        )}
+      </AnimatePresence>
+    </DialogPrimitive.Root>
   );
 };
 

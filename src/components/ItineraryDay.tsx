@@ -130,6 +130,7 @@ const ItineraryDay = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         day={day}
+        date={date}
         title={title}
         location={location}
         activities={activities}
