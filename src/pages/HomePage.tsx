@@ -141,13 +141,16 @@ const HomePage = () => (
               outerClassName="shadow-[0_8px_40px_rgba(0,0,0,0.6)]">
               <div className="relative bg-[#0e0c0a] flex overflow-hidden" style={{ minHeight: 148 }}>
 
-                {/* Left: text content */}
-                <div className="flex-1 flex flex-col justify-between p-4 pr-2 z-10">
-                  <span className="self-start inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 backdrop-blur-sm">
+                {/* Badge — top right, absolute */}
+                <div className="absolute top-3 right-3 z-20">
+                  <span className="inline-flex items-center gap-1 text-[8px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 backdrop-blur-sm">
                     <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
                     Pendaftaran Dibuka
                   </span>
+                </div>
 
+                {/* Left: text content */}
+                <div className="flex-1 flex flex-col justify-end p-4 pr-2 z-10">
                   <div>
                     <p className="font-display font-black text-white leading-none"
                       style={{ fontSize: "clamp(2rem, 8vw, 2.75rem)", textShadow: "0 2px 20px rgba(0,0,0,0.9)" }}>
