@@ -93,28 +93,22 @@ const HeroSection = ({
       {/* ── Month label — top-left prominent ── */}
       {monthLabel && (
         <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute top-16 md:top-20 left-4 md:left-10 z-20 pointer-events-none"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute top-16 md:top-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center"
         >
           <p
-            className="font-display font-black uppercase leading-none tracking-tight text-white select-none"
+            className="font-display font-black uppercase leading-none tracking-widest text-white select-none"
             style={{
-              fontSize: "clamp(1.4rem, 4vw, 2.2rem)",
-              textShadow: "0 4px 32px rgba(0,0,0,0.8)",
-              WebkitTextStroke: "1px rgba(255,255,255,0.12)",
+              fontSize: "clamp(0.9rem, 2.5vw, 1.3rem)",
+              textShadow: "0 2px 16px rgba(0,0,0,0.7)",
+              letterSpacing: "0.25em",
             }}
           >
-            {monthLabel.split(" ")[0]}
+            {monthLabel}
           </p>
-          <p
-            className="font-sans font-bold tracking-[0.35em] text-white/50 uppercase mt-1"
-            style={{ fontSize: "clamp(0.65rem, 2vw, 0.95rem)" }}
-          >
-            {monthLabel.split(" ")[1]}
-          </p>
-          <div className="mt-2 h-[2px] w-10 rounded-full bg-gradient-to-r from-accent/80 to-transparent" />
+          <div className="mt-1.5 h-[2px] w-8 rounded-full bg-gradient-to-r from-transparent via-accent/80 to-transparent" />
         </motion.div>
       )}
 
