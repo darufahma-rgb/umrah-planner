@@ -1,6 +1,6 @@
 # Project Overview
 
-A React + Vite + TypeScript frontend application (migrated from Lovable). It is a travel/tourism landing page with sections for hero, features, benefits, itinerary, locations, tips, and a CTA.
+El Massa Tour & Travel — landing page itinerary Umrah 2026. A React + Vite + TypeScript frontend application showcasing Umrah travel schedules for Juli and Oktober 2026, with destinations including Makkah, Madinah, and Thaif.
 
 ## Tech Stack
 
@@ -14,12 +14,13 @@ A React + Vite + TypeScript frontend application (migrated from Lovable). It is 
 
 ## Project Structure
 
-- `src/pages/` - Page components (Index, NotFound)
-- `src/components/` - Feature and UI components (HeroSection, Navbar, FeaturesSection, etc.)
+- `src/pages/` - Page components (HomePage, JuliPage, OktoberPage, NotFound)
+- `src/components/` - Feature and UI components (HeroSection, ItinerarySection, FloatingWhatsApp, etc.)
 - `src/components/ui/` - shadcn/ui primitives
 - `src/hooks/` - Custom React hooks
 - `src/lib/` - Utility functions
-- `public/` - Static assets
+- `public/` - Static assets (fonts, favicon)
+- `src/assets/` - Images and logos
 
 ## Running the App
 
@@ -27,7 +28,7 @@ A React + Vite + TypeScript frontend application (migrated from Lovable). It is 
 npm run dev
 ```
 
-Runs on port 5000 (Replit webview).
+Runs on port 5000.
 
 ## Building for Production
 
@@ -36,8 +37,3 @@ npm run build
 ```
 
 Output goes to `dist/`.
-
-## Notes
-
-- Migrated from Lovable; `lovable-tagger` dev plugin removed from vite.config.ts (Replit incompatible)
-- Server binds to `0.0.0.0` for Replit preview pane compatibility
