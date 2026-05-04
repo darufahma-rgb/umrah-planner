@@ -6,55 +6,89 @@ import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const destinations = [
-  { name: "Makkah", subtitle: "Kota Suci", image: heroImage },
-  { name: "Madinah", subtitle: "Kota Bercahaya", image: madinahImage },
-  { name: "Thaif", subtitle: "City Tour", image: cityTaifImage },
-];
+interface Destination {
+  name: string;
+  subtitle: string;
+  image: string;
+}
 
 interface HeroSectionProps {
   dateText?: string;
+  bgImage?: string;
+  /* CSS color used in the left-side tint overlay — matches photo mood */
+  sideTint?: string;
+  /* Radial glow at bottom-left corner — warm or cool */
+  cornerGlow?: string;
+  destinations?: Destination[];
+  month?: string;
 }
 
-const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps) => {
+const defaultDestinations: Destination[] = [
+  { name: "Makkah",  subtitle: "Kota Suci",       image: heroImage    },
+  { name: "Madinah", subtitle: "Kota Bercahaya",   image: madinahImage },
+  { name: "Thaif",   subtitle: "City Tour",        image: cityTaifImage },
+];
+
+const HeroSection = ({
+  dateText      = "08 Juli – 18 Juli 2026",
+  bgImage       = heroImage,
+  sideTint      = "rgba(90,45,10,0.28)",
+  cornerGlow    = "rgba(180,120,30,0.22)",
+  destinations  = defaultDestinations,
+}: HeroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
-  const bgY = useTransform(scrollY, [0, 600], ["0%", "18%"]);
-  const contentOpacity = useTransform(scrollY, [0, 350], [1, 0]);
-  const contentY = useTransform(scrollY, [0, 350], ["0%", "-8%"]);
+  const bgY            = useTransform(scrollY, [0, 600],  ["0%", "18%"]);
+  const contentOpacity = useTransform(scrollY, [0, 350],  [1, 0]);
+  const contentY       = useTransform(scrollY, [0, 350],  ["0%", "-8%"]);
 
-  const scrollToItinerary = () => {
+  const scrollToItinerary = () =>
     document.getElementById("jadwal")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-navy-dark">
-      {/* Parallax Background with Ken Burns */}
+
+      {/* ── Parallax background ── */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div style={{ y: bgY }} className="absolute inset-0 will-change-transform">
           <motion.img
+            key={bgImage}
             animate={{
               scale: [1, 1.08, 1.04, 1.08, 1],
               x: ["0%", "-1.5%", "1%", "-0.5%", "0%"],
               y: ["0%", "-1%", "0.5%", "-0.5%", "0%"],
             }}
-            transition={{
-              duration: 22,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "mirror",
-            }}
-            src={heroImage}
-            alt="Masjidil Haram – Makkah"
+            transition={{ duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+            src={bgImage}
+            alt="Hero"
             className="w-full h-full object-cover origin-center"
           />
         </motion.div>
+
+        {/* Base dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(218_58%_10%/0.3)] via-transparent to-[hsl(218_58%_10%/0.2)]" />
+
+        {/* Side tint — unique per month */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(to right, ${sideTint} 0%, transparent 55%)`,
+          }}
+        />
+
+        {/* Corner glow — warm or cool */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(ellipse 70% 50% at 20% 90%, ${cornerGlow} 0%, transparent 70%)`,
+          }}
+        />
       </div>
+
+      {/* Vignette edges */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.45)_100%)]" />
 
-      {/* Main Content */}
+      {/* ── Main content ── */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
         className="relative z-10 container mx-auto px-4 pt-20 md:pt-36 pb-8 md:pb-16 flex flex-col items-center"
@@ -70,7 +104,7 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
           {dateText}
         </motion.div>
 
-        {/* Title – two words stacked */}
+        {/* Title */}
         <div className="mb-4 md:mb-8 text-center">
           <div className="flex flex-col items-center gap-2 md:gap-4">
             {["Itinerary", "Umrah"].map((word, i) => (
@@ -87,7 +121,6 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
             ))}
           </div>
 
-          {/* Gold divider */}
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
@@ -95,7 +128,6 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
             className="mx-auto mt-3 md:mt-5 h-px w-20 md:w-44 bg-gradient-to-r from-transparent via-accent to-transparent"
           />
 
-          {/* Year */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -134,9 +166,9 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
           </Button>
         </motion.div>
 
-        {/* Destination Cards */}
+        {/* Destination cards */}
         <div className="w-full max-w-4xl">
-          {/* Mobile: horizontal scroll strip */}
+          {/* Mobile */}
           <div className="flex gap-3 overflow-x-auto pb-1 snap-x snap-mandatory md:hidden scrollbar-hide">
             {destinations.map((dest, index) => (
               <motion.div
@@ -147,19 +179,14 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
                 onClick={scrollToItinerary}
                 className="group relative flex-shrink-0 w-[140px] h-[100px] rounded-2xl overflow-hidden cursor-pointer snap-start shadow-xl"
               >
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+                <img src={dest.image} alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-2.5">
                   <div className="flex items-end justify-between">
                     <div>
                       <p className="text-white font-bold text-sm leading-none">{dest.name}</p>
                       <p className="text-white/60 text-[9px] mt-0.5 flex items-center gap-0.5">
-                        <MapPin className="w-2 h-2" />
-                        {dest.subtitle}
+                        <MapPin className="w-2 h-2" />{dest.subtitle}
                       </p>
                     </div>
                     <ArrowRight className="w-3 h-3 text-accent flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
@@ -169,7 +196,7 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
             ))}
           </div>
 
-          {/* Desktop: 3-column grid */}
+          {/* Desktop */}
           <div className="hidden md:grid grid-cols-3 gap-5">
             {destinations.map((dest, index) => (
               <motion.div
@@ -181,19 +208,14 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
                 className="group relative h-52 lg:h-60 rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
                 onClick={scrollToItinerary}
               >
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
+                <img src={dest.image} alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <div className="flex items-end justify-between">
                     <div>
                       <h3 className="text-white font-bold text-xl leading-none mb-1">{dest.name}</h3>
                       <p className="text-white/60 text-xs tracking-widest uppercase flex items-center gap-1">
-                        <MapPin className="w-3 h-3" />
-                        {dest.subtitle}
+                        <MapPin className="w-3 h-3" />{dest.subtitle}
                       </p>
                     </div>
                     <div className="w-8 h-8 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center group-hover:bg-accent/40 transition-colors">
@@ -206,7 +228,7 @@ const HeroSection = ({ dateText = "08 Juli – 18 Juli 2026" }: HeroSectionProps
           </div>
         </div>
 
-        {/* Scroll indicator – desktop only */}
+        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

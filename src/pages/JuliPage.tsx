@@ -12,13 +12,15 @@ import SectionDivider from "@/components/SectionDivider";
 import { Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import heroImage from "@/assets/hero-makkah.jpg";
+import madinahImage from "@/assets/madinah-mosque.jpg";
+import cityTaifImage from "@/assets/city-taif.jpg";
 
 const JuliPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Back to home pill — sits on top of hero */}
       <motion.div
         initial={{ opacity: 0, x: -16 }}
         animate={{ opacity: 1, x: 0 }}
@@ -35,7 +37,17 @@ const JuliPage = () => {
       </motion.div>
 
       <main>
-        <HeroSection />
+        <HeroSection
+          dateText="08 Juli – 18 Juli 2026"
+          bgImage={heroImage}
+          sideTint="rgba(120,65,10,0.32)"
+          cornerGlow="rgba(200,130,20,0.25)"
+          destinations={[
+            { name: "Makkah",  subtitle: "Kota Suci",      image: heroImage     },
+            { name: "Madinah", subtitle: "Kota Bercahaya",  image: madinahImage  },
+            { name: "Thaif",   subtitle: "City Tour",       image: cityTaifImage },
+          ]}
+        />
         <SectionDivider color="gold" delay={0} />
         <FeaturesSection />
         <SectionDivider color="gold" delay={0.3} />

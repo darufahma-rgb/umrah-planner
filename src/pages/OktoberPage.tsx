@@ -12,6 +12,10 @@ import SectionDivider from "@/components/SectionDivider";
 import { Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import madinahImage from "@/assets/madinah-mosque.jpg";
+import heroImage from "@/assets/hero-makkah.jpg";
+import qubaImage from "@/assets/masjid-quba.jpg";
+import cityTaifImage from "@/assets/city-taif.jpg";
 
 const OktoberPage = () => {
   return (
@@ -34,7 +38,17 @@ const OktoberPage = () => {
       </motion.div>
 
       <main>
-        <HeroSection dateText="30 Sep – 13 Okt 2026" />
+        <HeroSection
+          dateText="30 Sep – 13 Okt 2026"
+          bgImage={madinahImage}
+          sideTint="rgba(10,60,55,0.35)"
+          cornerGlow="rgba(20,100,80,0.28)"
+          destinations={[
+            { name: "Madinah", subtitle: "Kota Bercahaya",  image: madinahImage  },
+            { name: "Makkah",  subtitle: "Kota Suci",       image: heroImage     },
+            { name: "Thaif",   subtitle: "City Tour",       image: cityTaifImage },
+          ]}
+        />
         <SectionDivider color="gold" delay={0} />
         <FeaturesSection />
         <SectionDivider color="gold" delay={0.3} />
