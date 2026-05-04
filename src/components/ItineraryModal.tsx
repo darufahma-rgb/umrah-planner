@@ -21,14 +21,17 @@ interface ItineraryModalProps {
 }
 
 const highlightConfig: Record<string, { label: string; color: string; bg: string; icon: typeof Plane; dot: string }> = {
-  departure: { label: "Perjalanan", color: "text-sky-300", bg: "bg-sky-500/20 border-sky-400/40", icon: Plane, dot: "bg-sky-400" },
-  umrah:     { label: "Ibadah Umroh", color: "text-amber-300", bg: "bg-amber-500/20 border-amber-400/40", icon: Building, dot: "bg-amber-400" },
-  worship:   { label: "Ibadah", color: "text-emerald-300", bg: "bg-emerald-500/20 border-emerald-400/40", icon: Sunrise, dot: "bg-emerald-400" },
-  ziarah:    { label: "Ziarah", color: "text-rose-300", bg: "bg-rose-500/20 border-rose-400/40", icon: Moon, dot: "bg-rose-400" },
-  travel:    { label: "City Tour", color: "text-purple-300", bg: "bg-purple-500/20 border-purple-400/40", icon: Star, dot: "bg-purple-400" },
+  departure: { label: "Perjalanan",  color: "text-sky-300",     bg: "bg-sky-500/20 border-sky-400/40",     icon: Plane,    dot: "bg-sky-400"     },
+  umrah:     { label: "Ibadah Umroh",color: "text-amber-300",   bg: "bg-amber-500/20 border-amber-400/40", icon: Building, dot: "bg-amber-400"   },
+  worship:   { label: "Ibadah",      color: "text-emerald-300", bg: "bg-emerald-500/20 border-emerald-400/40", icon: Sunrise, dot: "bg-emerald-400" },
+  ziarah:    { label: "Ziarah",      color: "text-rose-300",    bg: "bg-rose-500/20 border-rose-400/40",   icon: Moon,     dot: "bg-rose-400"    },
+  travel:    { label: "City Tour",   color: "text-purple-300",  bg: "bg-purple-500/20 border-purple-400/40", icon: Star,   dot: "bg-purple-400"  },
 };
 
-const defaultConfig = { label: "Kegiatan", color: "text-white/70", bg: "bg-white/10 border-white/20", icon: Star, dot: "bg-white/60" };
+const defaultConfig = {
+  label: "Kegiatan", color: "text-white/70",
+  bg: "bg-white/10 border-white/20", icon: Star, dot: "bg-white/60",
+};
 
 const ItineraryModal = ({
   isOpen,
@@ -49,6 +52,7 @@ const ItineraryModal = ({
       <AnimatePresence>
         {isOpen && (
           <DialogPrimitive.Portal forceMount>
+
             {/* Backdrop */}
             <DialogPrimitive.Overlay asChild forceMount>
               <motion.div
@@ -61,15 +65,19 @@ const ItineraryModal = ({
               />
             </DialogPrimitive.Overlay>
 
-            {/* Panel */}
-            <DialogPrimitive.Content asChild forceMount>
+            {/* Content — fixed centering container */}
+            <DialogPrimitive.Content
+              forceMount
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none"
+              aria-describedby={undefined}
+            >
               <motion.div
                 key="modal"
-                initial={{ opacity: 0, y: 48, scale: 0.97 }}
+                initial={{ opacity: 0, y: 40, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 32, scale: 0.97 }}
+                exit={{ opacity: 0, y: 24, scale: 0.97 }}
                 transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-[calc(100vw-2rem)] max-w-md rounded-2xl overflow-hidden shadow-2xl focus:outline-none"
+                className="w-full max-w-md rounded-2xl overflow-hidden shadow-2xl flex flex-col"
                 style={{ maxHeight: "88vh" }}
               >
                 {/* ── Hero Image ── */}
@@ -108,7 +116,7 @@ const ItineraryModal = ({
                   </div>
 
                   {/* Category badge */}
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-4 md:top-auto md:bottom-14">
+                  <div className="absolute top-5 right-14">
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold border backdrop-blur-sm ${cfg.bg} ${cfg.color}`}>
                       <Icon className="w-3 h-3" />
                       {cfg.label}
@@ -131,9 +139,9 @@ const ItineraryModal = ({
                 </div>
 
                 {/* ── Activities ── */}
-                <div className="bg-[hsl(25_20%_10%)] flex flex-col" style={{ maxHeight: "calc(88vh - 13rem)" }}>
+                <div className="bg-[hsl(25,20%,10%)] flex flex-col overflow-hidden flex-1">
                   {/* Section header */}
-                  <div className="flex items-center gap-2 px-5 pt-4 pb-3 border-b border-white/8">
+                  <div className="flex items-center gap-2 px-5 pt-4 pb-3 border-b border-white/8 flex-shrink-0">
                     <Clock className="w-3.5 h-3.5 text-white/40" />
                     <span className="text-white/50 text-[10px] uppercase tracking-[0.18em] font-semibold">
                       Jadwal Kegiatan
@@ -141,14 +149,14 @@ const ItineraryModal = ({
                     <span className="ml-auto text-white/25 text-[10px]">{activities.length} kegiatan</span>
                   </div>
 
-                  <ScrollArea className="flex-1 overflow-auto">
+                  <ScrollArea className="flex-1 min-h-0">
                     <ul className="px-5 py-4 space-y-0">
                       {activities.map((activity, index) => (
                         <motion.li
                           key={index}
                           initial={{ opacity: 0, x: -12 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.32, delay: 0.05 + index * 0.06, ease: "easeOut" }}
+                          transition={{ duration: 0.32, delay: 0.08 + index * 0.06, ease: "easeOut" }}
                           className="flex gap-3 relative"
                         >
                           {/* Timeline connector */}
@@ -160,7 +168,7 @@ const ItineraryModal = ({
                           </div>
 
                           {/* Content */}
-                          <div className={`flex-1 pb-4 ${index === activities.length - 1 ? "pb-2" : ""}`}>
+                          <div className={`flex-1 ${index === activities.length - 1 ? "pb-2" : "pb-4"}`}>
                             {activity.time && (
                               <span className={`inline-block mb-1 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${cfg.bg} ${cfg.color}`}>
                                 {activity.time}
@@ -177,6 +185,7 @@ const ItineraryModal = ({
                 </div>
               </motion.div>
             </DialogPrimitive.Content>
+
           </DialogPrimitive.Portal>
         )}
       </AnimatePresence>
