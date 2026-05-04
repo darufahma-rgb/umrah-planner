@@ -94,8 +94,9 @@ const november = {
 };
 
 const locked = [
-  { month: "Agustus", monthNum: "08", year: "2026", image: umrahImage },
-  { month: "September", monthNum: "09", year: "2026", image: qubaImage },
+  { month: "Desember", monthNum: "12", year: "2026", image: umrahImage },
+  { month: "Januari", monthNum: "01", year: "2027", image: qubaImage },
+  { month: "Ramadan", monthNum: "03", year: "2027", image: jabalImage },
 ];
 
 /* ── Page ─────────────────────────────────────────────────── */
